@@ -72,8 +72,8 @@ create_package("~/path/to/regexcite")
 Para la creación de este libro tenemos que trabajar en un directorio temporal, porque el libro está construido de forma no interactiva en la nube. Detrás de escena, estamos ejecutando nuestro propio comando `create++_++package()`, pero no te sorprendas si nuestra salida difiere un poco de la tuya.
 
 ....
-#> ✔ Creating '/tmp/RtmpJR4gjQ/regexcite/'
-#> ✔ Setting active project to '/tmp/RtmpJR4gjQ/regexcite'
+#> ✔ Creating '/tmp/RtmpZRxZV7/regexcite/'
+#> ✔ Setting active project to '/tmp/RtmpZRxZV7/regexcite'
 #> ✔ Creating 'R/'
 #> ✔ Writing 'DESCRIPTION'
 #> Package: regexcite
@@ -159,7 +159,7 @@ Haga clic en Historial (el ícono del reloj en el panel de Git) y, si dio su con
 [width="100%",cols="<14%,<71%,<15%",options="header",]
 |===
 |commit |author |message
-|0dfb94f384… |Quarto GHA Workflow Runner quarto-github-actions-publish@example.com |Initial commit
+|b2808288db… |Quarto GHA Workflow Runner quarto-github-actions-publish@example.com |Initial commit
 |===
 
 [TIP]
@@ -320,7 +320,7 @@ check()
 
 ....
 ── R CMD check results ─────────────────── regexcite 0.0.0.9000 ────
-Duration: 5.5s
+Duration: 5.4s
 
 ❯ checking DESCRIPTION meta-information ... WARNING
   Non-standard license specification:
@@ -496,7 +496,7 @@ check()
 
 ....
 ── R CMD check results ─────────────────── regexcite 0.0.0.9000 ────
-Duration: 7.1s
+Duration: 6.9s
 
 0 errors ✔ | 0 warnings ✔ | 0 notes ✔
 ....
@@ -512,14 +512,14 @@ install()
 
 ....
 ── R CMD build ─────────────────────────────────────────────────────
-* checking for file ‘/tmp/RtmpJR4gjQ/regexcite/DESCRIPTION’ ... OK
+* checking for file ‘/tmp/RtmpZRxZV7/regexcite/DESCRIPTION’ ... OK
 * preparing ‘regexcite’:
 * checking DESCRIPTION meta-information ... OK
 * checking for LF line-endings in source and make files and shell scripts
 * checking for empty or unneeded directories
 * building ‘regexcite_0.0.0.9000.tar.gz’
 Running /opt/R/4.4.0/lib/R/bin/R CMD INSTALL \
-  /tmp/RtmpJR4gjQ/regexcite_0.0.0.9000.tar.gz --install-tests 
+  /tmp/RtmpZRxZV7/regexcite_0.0.0.9000.tar.gz --install-tests 
 * installing to library ‘/home/runner/work/r-pkgses/r-pkgses/renv/library/linux-ubuntu-noble/R-4.4/x86_64-pc-linux-gnu’
 * installing *source* package ‘regexcite’ ...
 ** using staged installation
@@ -608,8 +608,6 @@ test()
 #> 
 #> ══ Results ═════════════════════════════════════════════════════════
 #> [ FAIL 0 | WARN 0 | SKIP 0 | PASS 1 ]
-#> 
-#> 😀
 ----
 
 [TIP]
@@ -874,7 +872,7 @@ La mejor manera de renderizar `README.Rmd` es con `build++_++readme()`, porque s
 ----
 build_readme()
 #> ℹ Installing regexcite in temporary library
-#> ℹ Building '/tmp/RtmpJR4gjQ/regexcite/README.Rmd'
+#> ℹ Building '/tmp/RtmpZRxZV7/regexcite/README.Rmd'
 ----
 
 Puede ver el `README.md` renderizado simplemente https://github.com/jennybc/regexcite#readme[visitando regexcite en GitHub].
@@ -892,7 +890,7 @@ check()
 
 ....
 ── R CMD check results ─────────────────── regexcite 0.0.0.9000 ────
-Duration: 8.2s
+Duration: 8.1s
 
 0 errors ✔ | 0 warnings ✔ | 0 notes ✔
 ....
@@ -906,7 +904,7 @@ install()
 
 ....
 ── R CMD build ─────────────────────────────────────────────────────
-* checking for file ‘/tmp/RtmpJR4gjQ/regexcite/DESCRIPTION’ ... OK
+* checking for file ‘/tmp/RtmpZRxZV7/regexcite/DESCRIPTION’ ... OK
 * preparing ‘regexcite’:
 * checking DESCRIPTION meta-information ... OK
 * checking for LF line-endings in source and make files and shell scripts
@@ -914,7 +912,7 @@ install()
 Removed empty directory ‘regexcite/tests/testthat/_snaps’
 * building ‘regexcite_0.0.0.9000.tar.gz’
 Running /opt/R/4.4.0/lib/R/bin/R CMD INSTALL \
-  /tmp/RtmpJR4gjQ/regexcite_0.0.0.9000.tar.gz --install-tests 
+  /tmp/RtmpZRxZV7/regexcite_0.0.0.9000.tar.gz --install-tests 
 * installing to library ‘/home/runner/work/r-pkgses/r-pkgses/renv/library/linux-ubuntu-noble/R-4.4/x86_64-pc-linux-gnu’
 * installing *source* package ‘regexcite’ ...
 ** using staged installation

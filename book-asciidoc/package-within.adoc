@@ -76,7 +76,7 @@ Finalmente, estos datos limpios (¿más limpios?) se vuelven a escribir en un ar
 now <- Sys.time()
 timestamp <- format(now, "%Y-%B-%d_%H-%M-%S")
 (outfile <- paste0(timestamp, "_", sub("(.*)([.]csv$)", "\\1_clean\\2", infile)))
-#> [1] "2025-August-06_22-02-57_swim_clean.csv"
+#> [1] "2025-August-23_05-59-54_swim_clean.csv"
 write.csv(dat, file = outfile, quote = FALSE, row.names = FALSE)
 ----
 
@@ -504,7 +504,7 @@ Las marcas de tiempo ahora reflejan la hora actual, pero el grupo plantea una nu
 [source,r,cell-code]
 ----
 format(Sys.time(), "%Y-%B-%d_%H-%M-%S")
-#> [1] "2025-August-06_22-02-57"
+#> [1] "2025-August-23_05-59-54"
 ----
 
 Esto formatea `Sys.time()` de tal manera que incluya el nombre del mes (no el número) y la hora local.footnote:[Claramente sería mejor formatear de acuerdo con ISO 8601, que codifica el mes por número, pero por favor, hazme el favor para que este ejemplo sea más obvio.].
@@ -552,7 +552,7 @@ format(Sys.time(), "%Y-%B-%d_%H-%M-%S")
 ....
 #> Warning in (function (category = "LC_ALL", locale = "") : OS
 #> reports request to set locale to "pt_BR.UTF-8" cannot be honored
-#> [1] "2025-August-06_19-02-58"
+#> [1] "2025-August-23_02-59-55"
 ....
 
 Después:
@@ -560,10 +560,10 @@ Después:
 [source,r,cell-code]
 ----
 outfile_path("INFILE.csv")
-#> [1] "2025-August-06_22-02-57_INFILE_clean.csv"
+#> [1] "2025-August-23_05-59-54_INFILE_clean.csv"
 
 format(Sys.time(), "%Y-%B-%d_%H-%M-%S")
-#> [1] "2025-August-06_22-02-58"
+#> [1] "2025-August-23_05-59-55"
 ----
 
 Observe que el nombre de su mes cambió de portugués a inglés y que la hora claramente se informa en una zona horaria diferente. Las llamadas a `Sys.setlocale()` y `Sys.setenv()` dentro de `timestamp()` han realizado cambios persistentes (y muy sorprendentes) en su sesión de R. Este tipo de efecto secundario es muy indeseable y extremadamente difícil de rastrear y depurar, especialmente en entornos más complicados.

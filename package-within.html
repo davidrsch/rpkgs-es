@@ -74,7 +74,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-23a7e5cae8bdedb06b327b55120fd4f0.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+<link href="site_libs/bootstrap/bootstrap-cecd649be66239f4a3c9dceaf651ba2d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
@@ -498,7 +498,7 @@ Evan,seaside,31</code></pre>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">now</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.time</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="va">timestamp</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/format.html">format</a></span><span class="op">(</span><span class="va">now</span>, <span class="st">"%Y-%B-%d_%H-%M-%S"</span><span class="op">)</span></span>
 <span><span class="op">(</span><span class="va">outfile</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="va">timestamp</span>, <span class="st">"_"</span>, <span class="fu"><a href="https://rdrr.io/r/base/grep.html">sub</a></span><span class="op">(</span><span class="st">"(.*)([.]csv$)"</span>, <span class="st">"\\1_clean\\2"</span>, <span class="va">infile</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "2025-August-06_22-02-53_swim_clean.csv"</span></span>
+<span><span class="co">#&gt; [1] "2025-August-23_05-59-49_swim_clean.csv"</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/write.table.html">write.csv</a></span><span class="op">(</span><span class="va">dat</span>, file <span class="op">=</span> <span class="va">outfile</span>, quote <span class="op">=</span> <span class="cn">FALSE</span>, row.names <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Aquí está <code>data-cleaning.R</code> en su totalidad:</p>
@@ -844,7 +844,7 @@ Undefined global functions or variables:
 <p>Las marcas de tiempo ahora reflejan la hora actual, pero el grupo plantea una nueva preocupación. Tal como están las cosas, las marcas de tiempo reflejan quién ha realizado la limpieza de datos y en qué parte del mundo se encuentran. El corazón de la estrategia de marca de tiempo es esta cadena de formato<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a>:</p>
 <div class="cell">
 <div class="sourceCode" id="cb28"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/format.html">format</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.time</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"%Y-%B-%d_%H-%M-%S"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "2025-August-06_22-02-53"</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; [1] "2025-August-23_05-59-50"</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Esto formatea <code><a href="https://rdrr.io/r/base/Sys.time.html">Sys.time()</a></code> de tal manera que incluya el nombre del mes (no el número) y la hora local.<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a>.</p>
 <p><a href="#tbl-timestamps" class="quarto-xref">Tabla&nbsp;<span>5.1</span></a> muestra lo que sucede cuando varios colegas hipotéticos producen una marca de tiempo de este tipo limpiando algunos datos exactamente en el mismo instante.</p>
@@ -922,15 +922,15 @@ Tabla&nbsp;5.1: La marca de tiempo varía según la ubicación y la zona horaria
 <div class="cell">
 <pre><code>#&gt; Warning in (function (category = "LC_ALL", locale = "") : OS
 #&gt; reports request to set locale to "pt_BR.UTF-8" cannot be honored
-#&gt; [1] "2025-August-06_19-02-53"</code></pre>
+#&gt; [1] "2025-August-23_02-59-50"</code></pre>
 </div>
 <p>Después:</p>
 <div class="cell">
 <div class="sourceCode" id="cb32"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">outfile_path</span><span class="op">(</span><span class="st">"INFILE.csv"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "2025-August-06_22-02-53_INFILE_clean.csv"</span></span>
+<span><span class="co">#&gt; [1] "2025-August-23_05-59-50_INFILE_clean.csv"</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/format.html">format</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.time</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"%Y-%B-%d_%H-%M-%S"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "2025-August-06_22-02-53"</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; [1] "2025-August-23_05-59-50"</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Observe que el nombre de su mes cambió de portugués a inglés y que la hora claramente se informa en una zona horaria diferente. Las llamadas a <code><a href="https://rdrr.io/r/base/locales.html">Sys.setlocale()</a></code> y <code><a href="https://rdrr.io/r/base/Sys.setenv.html">Sys.setenv()</a></code> dentro de <code><a href="https://rdrr.io/r/utils/savehistory.html">timestamp()</a></code> han realizado cambios persistentes (y muy sorprendentes) en su sesión de R. Este tipo de efecto secundario es muy indeseable y extremadamente difícil de rastrear y depurar, especialmente en entornos más complicados.</p>
 <p>Aquí hay mejores versiones de <code><a href="https://rdrr.io/r/utils/savehistory.html">timestamp()</a></code>:</p>

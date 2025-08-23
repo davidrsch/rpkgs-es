@@ -118,7 +118,7 @@ Algunas cosas a tener en cuenta sobre este iniciador `README.Rmd`:
 * Crea un lugar para futuras insignias, como los resultados de las comprobaciones automáticas de integración continua (<<sec-sw-dev-practices-ci>>). Ejemplos de funciones que insertan insignias de desarrollo:
 ** `usethis::use++_++cran++_++badge()` informa la versión actual de su paquete en CRAN.
 ** `usethis::use++_++coverage()` informa la cobertura de la prueba.
-** `use++_++github++_++actions()` y amigos informan el estado de `R CMD check` de su paquete de desarrollo.
+** `usethis::use++_++github++_++action("check-standard")` y amigos informan el estado de `R CMD check` de su paquete de desarrollo.
 * Incluye marcadores de posición donde debes proporcionar código para la instalación del paquete y para algunos usos básicos.
 * Le recuerda datos clave sobre el mantenimiento de su `README`.
 
