@@ -422,14 +422,15 @@ Si su análisis indica que el error inicial fue un falso positivo, responda al c
 Ahora pasamos a la sección más feliz de la lista de verificación.
 
 -   [ ] Aceptada 🎉
--   [ ] `git push`
+-   [ ] Termina y publica en blog
+-   [ ] Añade link de la punlicación en `pkgdown` news menu
 -   [ ] `usethis::use_github_release()`
--   [ ] `usethis::use_dev_version()`
+-   [ ] `usethis::use_dev_version(push = TRUE)`
 -   [ ] `git push`
--   [ ] Terminar la publicación del blog, compartir en las redes sociales, etc.
--   [ ] Agregar enlace a la publicación del blog en el menú de noticias de pkgdown
+-   [ ] Compartir en las redes sociales
 
-CRAN le notificará por correo electrónico una vez que su paquete sea aceptado. Aquí es cuando enviamos por primera vez a GitHub con el nuevo número de versión, es decir, esperamos hasta que esté seguro de que esta versión realmente se lanzará en CRAN. A continuación, creamos una versión de GitHub correspondiente a esta versión de CRAN, usando `usethis::use_github_release()`. Una versión de GitHub es básicamente una etiqueta de Git glorificada. El único aspecto de las versiones de GitHub que aprovechamos regularmente son las notas de la versión. `usethis::use_github_release()` crea notas de la versión a partir de las viñetas `NEWS` relevantes para la versión actual. Tenga en cuenta que `usethis::use_github_release()` depende crucialmente del archivo `CRAN-SUBMISSION` que fue escrito por `devtools::submit_cran()`: así es como sabe qué SHA etiquetar. Después de la creación exitosa de la versión de GitHub, `use_github_release()` elimina este archivo temporal.
+CRAN le notificará por correo electrónico una vez que su paquete sea aceptado. Este es un buen momento para terminar una entrada de blog, si es relevante. `usethis::use_github_release()` realiza un par de cosas importantes.
+En primer lugar, es cuando subimos por primera vez a GitHub el nuevo número de versión; es decir, esperamos hasta que estemos seguros de que esta versión se publicará en CRAN. Esta función también crea una versión de GitHub correspondiente a esta versión de CRAN. Una versión de GitHub es básicamente una etiqueta de Git glorificada. El único aspecto de las versiones de GitHub que aprovechamos regularmente son las notas de la versión. `usethis::use_github_release()` crea notas de la versión a partir de las viñetas `NEWS` relevantes para la versión actual. Tenga en cuenta que `usethis::use_github_release()` depende crucialmente del archivo `CRAN-SUBMISSION` que fue escrito por `devtools::submit_cran()`: así es como sabe qué SHA etiquetar. Después de la creación exitosa de la versión de GitHub, `use_github_release()` elimina este archivo temporal.
 
 Ahora nos preparamos para la próxima versión incrementando el número de versión una vez más, esta vez a una versión de desarrollo usando `usethis::use_dev_version()`. Tiene sentido enviar inmediatamente este estado a GitHub para que, por ejemplo, cualquier rama nueva o solicitud de extracción tenga claramente una versión de desarrollo como base.
 

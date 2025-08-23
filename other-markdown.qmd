@@ -148,7 +148,7 @@ Algunas cosas a tener en cuenta sobre este iniciador `README.Rmd`:
 
     -   `usethis::use_coverage()` informa la cobertura de la prueba.
 
-    -   `use_github_actions()` y amigos informan el estado de `R CMD check` de su paquete de desarrollo.
+    -   `usethis::use_github_action("check-standard")` y amigos informan el estado de `R CMD check` de su paquete de desarrollo.
 
 -   Incluye marcadores de posición donde debes proporcionar código para la instalación del paquete y para algunos usos básicos.
 

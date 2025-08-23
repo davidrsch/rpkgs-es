@@ -176,8 +176,8 @@ library(devtools)
 #| label: init-show-files
 #| echo: false
 #| eval: !expr create
-dir_info(all = TRUE) %>% 
-  select(path, type) %>%
+dir_info(all = TRUE) |> 
+  select(path, type) |>
   knitr::kable()
 ```
 
@@ -222,8 +222,8 @@ Entonces, ¿qué ha cambiado en el paquete? Sólo la creación de un directorio 
 #| label: post-git-file-list
 #| echo: false
 #| eval: !expr create
-dir_info(all = TRUE, regexp = "^[.]git$") %>% 
-  select(path, type) %>%
+dir_info(all = TRUE, regexp = "^[.]git$") |> 
+  select(path, type) |>
   knitr::kable()
 ```
 
@@ -237,9 +237,9 @@ Haga clic en Historial (el ícono del reloj en el panel de Git) y, si dio su con
 #| label: inspect-first-commit
 #| echo: false
 #| eval: !expr create
-git_log(max = 1) %>% 
-  select(commit, author, message) %>%
-  mutate(commit = paste0(substr(commit, 1, 10), "...")) %>%
+git_log(max = 1) |> 
+  select(commit, author, message) |>
+  mutate(commit = paste0(substr(commit, 1, 10), "...")) |>
   knitr::kable()
 ```
 
