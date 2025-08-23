@@ -16,7 +16,7 @@ jobs:
 
       - name: Insatall OS packages
         run: |
-          sudo apt-get
+          sudo apt-get update
           sudo apt-get install -y --fix-missing libudunits2-dev libgdal-dev libgeos-dev libproj-dev libsqlite3-dev
         
       - name: Set up Pandoc    
