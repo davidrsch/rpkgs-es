@@ -66,6 +66,8 @@ Si visita la página de inicio de CRAN para usar esto, puede acceder a su histor
 |2.2.3 |2024-02-19 16:00:02 UTC
 |3.0.0 |2024-07-29 07:20:02 UTC
 |3.1.0 |2024-11-26 10:20:02 UTC
+|3.2.0 |2025-08-28 04:00:03 UTC
+|3.2.1 |2025-09-06 05:10:02 UTC
 |===
 
 ====

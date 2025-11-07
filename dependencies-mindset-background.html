@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.33">
+<meta name="generator" content="quarto-1.8.25">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="author" content="Hadley Wickham y Jenny Bryan">
 <meta name="description" content="Aprenda a crear un paquete, la unidad fundamental de contenido compartible, reutilizable, y código R reproducible.">
@@ -67,14 +67,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="./logo.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-cecd649be66239f4a3c9dceaf651ba2d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+<link href="site_libs/bootstrap/bootstrap-6a8d939bdf32084eecd9f414bffd5650.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
@@ -88,7 +89,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   ],
   "show-item-context": false,
   "language": {
-    "search-no-results-text": "Sin resultados",
+    "search-no-results-text": "No se han encontrado resultados",
     "search-matching-documents-text": "documentos encontrados",
     "search-copy-link-title": "Copiar el enlace en la búsqueda",
     "search-hide-matches-text": "Ocultar resultados adicionales",
@@ -118,7 +119,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </div>
   </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="./index.html" class="sidebar-logo-link">
+      </a>
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Paquetes de R</a> 
         <div class="sidebar-tools-main">
@@ -131,7 +134,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             </a>
           </li>
           <li>
-            <a class="dropdown-item sidebar-tools-main-item" href="https://github.com/davidrsch/r-pkgses">
+            <a class="dropdown-item sidebar-tools-main-item" href="https://github.com/davidrsch/rpkgs-es">
             Traducción
             </a>
           </li>
@@ -484,7 +487,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Por el contrario, eliminar una dependencia reduce el tiempo de instalación, el espacio en disco y evita posibles cambios importantes. Sin embargo, significa que su paquete tendrá menos funciones o que deberá volver a implementarlas usted mismo. Esto, a su vez, requiere tiempo de desarrollo e introduce nuevos errores. Una ventaja de utilizar una solución existente es que obtendrá el beneficio de todos los errores que ya se han descubierto y solucionado. Especialmente si muchos otros paquetes dependen de la dependencia, este es un regalo que sigue dando.</p>
 <p>De manera similar a la optimización del rendimiento, si le preocupa la carga de las dependencias, tiene sentido abordar esas preocupaciones de una manera específica y cuantitativa. El paquete experimental <a href="https://github.com/r-lib/itdepends">itdepends</a> fue creado para la <a href="https://www.rstudio.com/resources/rstudioconf-2019/it-depends-a%20-dialog-about-dependencies/">charla</a> y <a href="https://www.tidyverse.org/blog/2019/05/itdepends/">publicación de blog</a> en los que se basa esta sección. Sigue siendo una fuente útil de ideas concretas (y código) para analizar qué tan pesada es una dependencia. El paquete <a href="https://pak.r-lib.org/">pak</a> también tiene varias funciones que son útiles para el análisis de dependencias:</p>
 <div class="cell">
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">pak</span><span class="fu">::</span><span class="fu"><a href="https://pak.r-lib.org/reference/pkg_deps_tree.html">pkg_deps_tree</a></span><span class="op">(</span><span class="st">"tibble"</span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">pak</span><span class="fu">::</span><span class="fu"><a href="https://pak.r-lib.org/reference/pkg_deps_tree.html">pkg_deps_tree</a></span><span class="op">(</span><span class="st">"tibble"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; tibble 3.1.8 ✨</span></span>
 <span><span class="co">#&gt; ├─fansi 1.0.3 ✨</span></span>
 <span><span class="co">#&gt; ├─lifecycle 1.0.3 ✨</span></span>
@@ -518,14 +521,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">#&gt; tibble -&gt; pillar -&gt; vctrs -&gt; rlang</span></span>
 <span><span class="co">#&gt; tibble -&gt; rlang</span></span>
 <span><span class="co">#&gt; tibble -&gt; vctrs -&gt; lifecycle -&gt; rlang</span></span>
-<span><span class="co">#&gt; tibble -&gt; vctrs -&gt; rlang</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; tibble -&gt; vctrs -&gt; rlang</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section><section id="sec-dependencies-tidyverse" class="level3" data-number="10.1.3"><h3 data-number="10.1.3" class="anchored" data-anchor-id="sec-dependencies-tidyverse">
 <span class="header-section-number">10.1.3</span> Pensamientos de dependencia específicos del tidyverse</h3>
 <p>Los paquetes mantenidos por el equipo de tidyverse desempeñan diferentes funciones en el ecosistema y se gestionan en consecuencia. Por ejemplo, los paquetes tidyverse y devtools son esencialmente metapaquetes que existen para comodidad del usuario final. En consecuencia, se recomienda que otros paquetes <strong>no dependan</strong> de tidyverse<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> o devtools (<a href="setup.html#sec-setup-usage" class="quarto-xref"><span>Sección 2.2</span></a>), es decir, estos dos paquetes casi nunca deberían aparecer en <code>Imports</code> . En cambio, un mantenedor de paquetes debe identificar y depender del paquete específico que realmente implementa la funcionalidad deseada.</p>
 <p>En la sección anterior hablamos de diferentes formas de medir el peso de una dependencia. Tanto tidyverse como devtools pueden considerarse pesados ​​debido al gran número de dependencias recursivas:</p>
 <div class="cell">
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">n_hard_deps</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">pkg</span><span class="op">)</span> <span class="op">{</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">n_hard_deps</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">pkg</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">deps</span> <span class="op">&lt;-</span> <span class="fu">tools</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/tools/package_dependencies.html">package_dependencies</a></span><span class="op">(</span><span class="va">pkg</span>, recursive <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">sapply</a></span><span class="op">(</span><span class="va">deps</span>, <span class="va">length</span><span class="op">)</span></span>
 <span><span class="op">}</span></span>
@@ -534,7 +537,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">#&gt; Warning: unable to access index for repository http://cran.us.r-project.org /src/contrib:</span></span>
 <span><span class="co">#&gt;   cannot open URL 'http://cran.us.r-project.org /src/contrib/PACKAGES'</span></span>
 <span><span class="co">#&gt; tidyverse  devtools </span></span>
-<span><span class="co">#&gt;         0         0</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt;         0         0</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Por el contrario, varios paquetes están concebidos específicamente como paquetes de bajo nivel que implementan características que deberían funcionar y sentirse igual en todo el ecosistema. Al momento de escribir este artículo, esto incluye:</p>
 <ul>
@@ -545,7 +548,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <p>Básicamente, se consideran dependencias gratuitas y se pueden agregar a <code>DESCRIPTION</code> mediante <code><a href="https://usethis.r-lib.org/reference/tidyverse.html">usethis::use_tidy_dependencies()</a></code> (que también hace algunas cosas más). No debería sorprender que estos paquetes tengan una huella de dependencia muy pequeña.</p>
 <div class="cell">
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">tools</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/tools/package_dependencies.html">package_dependencies</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"rlang"</span>, <span class="st">"cli"</span>, <span class="st">"glue"</span>, <span class="st">"withr"</span>, <span class="st">"lifecycle"</span><span class="op">)</span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">tools</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/tools/package_dependencies.html">package_dependencies</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"rlang"</span>, <span class="st">"cli"</span>, <span class="st">"glue"</span>, <span class="st">"withr"</span>, <span class="st">"lifecycle"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Warning: unable to access index for repository http://cran.us.r-project.org /src/contrib:</span></span>
 <span><span class="co">#&gt;   cannot open URL 'http://cran.us.r-project.org /src/contrib/PACKAGES'</span></span>
 <span><span class="co">#&gt; $rlang</span></span>
@@ -561,7 +564,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">#&gt; NULL</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $lifecycle</span></span>
-<span><span class="co">#&gt; NULL</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; NULL</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -569,7 +572,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Envío a CRAN
+<span class="screen-reader-only">Advertencia</span>Envío a CRAN
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -605,35 +608,35 @@ Envío a CRAN
 <p>Como sugiere el nombre, los espacios de nombres proporcionan “espacios” para “nombres”. Proporcionan un contexto para buscar el valor de un objeto asociado con un nombre.</p>
 <p>Sin saberlo, probablemente ya hayas utilizado espacios de nombres. ¿Ha utilizado alguna vez el operador <code>::</code>? Elimina la ambigüedad de funciones con el mismo nombre. Por ejemplo, los paquetes lubridate y here proporcionan una función <code>here()</code>. Si adjunta lubridate primero, entonces aquí, <code>here()</code> se referirá a la versión de here, porque gana el último paquete adjunto. Pero si adjunta los paquetes en el orden opuesto, <code>here()</code> se referirá a la versión lubridate.</p>
 <div class="cell">
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://lubridate.tidyverse.org">lubridate</a></span><span class="op">)</span>    <span class="op">|</span>  <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://here.r-lib.org/">here</a></span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://lubridate.tidyverse.org">lubridate</a></span><span class="op">)</span>    <span class="op">|</span>  <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://here.r-lib.org/">here</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://here.r-lib.org/">here</a></span><span class="op">)</span>         <span class="op">|</span>  <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://lubridate.tidyverse.org">lubridate</a></span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu">here</span><span class="op">(</span><span class="op">)</span> <span class="co"># here::here() |  here() # lubridate::here()</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="fu">here</span><span class="op">(</span><span class="op">)</span> <span class="co"># here::here() |  here() # lubridate::here()</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Esto puede resultar confuso. En su lugar, puede calificar la llamada a la función con un espacio de nombres específico: <code>lubridate::here()</code> y <code>here::here()</code>. Entonces el orden en el que se adjuntan los paquetes no importará<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>.</p>
 <div class="cell">
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">lubridate</span><span class="fu">::</span><span class="fu">here</span><span class="op">(</span><span class="op">)</span> <span class="co"># always gets lubridate::here()</span></span>
-<span><span class="fu">here</span><span class="fu">::</span><span class="fu">here</span><span class="op">(</span><span class="op">)</span>      <span class="co"># always gets here::here()</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">lubridate</span><span class="fu">::</span><span class="fu">here</span><span class="op">(</span><span class="op">)</span> <span class="co"># always gets lubridate::here()</span></span>
+<span><span class="fu">here</span><span class="fu">::</span><span class="fu">here</span><span class="op">(</span><span class="op">)</span>      <span class="co"># always gets here::here()</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Como verá en <a href="dependencies-in-practice.html#sec-dependencies-in-imports" class="quarto-xref"><span>Sección 11.4</span></a>, el estilo de llamada <code>package::function()</code> también es nuestra recomendación predeterminada sobre cómo usar sus dependencias en el código debajo de <code>R/</code>, porque elimina toda ambigüedad. .</p>
 <p>Pero, en el contexto del código del paquete, el uso de <code>::</code> no es realmente nuestra principal línea de defensa contra la confusión vista en el ejemplo anterior. En los paquetes, confiamos en los espacios de nombres para garantizar que todos los paquetes funcionen de la misma manera independientemente de qué paquetes adjunte el usuario.</p>
 <p>Considere la función <code><a href="https://rdrr.io/r/stats/sd.html">sd()</a></code> del paquete de estadísticas que forma parte de la base R:</p>
 <div class="cell">
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">sd</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">sd</span></span>
 <span><span class="co">#&gt; function (x, na.rm = FALSE) </span></span>
 <span><span class="co">#&gt; sqrt(var(if (is.vector(x) || is.factor(x)) x else as.double(x), </span></span>
 <span><span class="co">#&gt;     na.rm = na.rm))</span></span>
-<span><span class="co">#&gt; &lt;bytecode: 0x55682cc1b338&gt;</span></span>
-<span><span class="co">#&gt; &lt;environment: namespace:stats&gt;</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; &lt;bytecode: 0x56548afac9b8&gt;</span></span>
+<span><span class="co">#&gt; &lt;environment: namespace:stats&gt;</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Se define en términos de otra función, <code><a href="https://rdrr.io/r/stats/cor.html">var()</a></code>, también del paquete de estadísticas. Entonces, ¿qué sucede si anulamos <code><a href="https://rdrr.io/r/stats/cor.html">var()</a></code> con nuestra propia definición? ¿Se rompe <code><a href="https://rdrr.io/r/stats/sd.html">sd()</a></code>?</p>
 <div class="cell">
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">var</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">-</span><span class="fl">5</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">var</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">-</span><span class="fl">5</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/stats/cor.html">var</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] -5</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] 1.58</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; [1] 1.58</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>¡Sorprendentemente no es así! Esto se debe a que cuando <code><a href="https://rdrr.io/r/stats/sd.html">sd()</a></code> busca un objeto llamado <code><a href="https://rdrr.io/r/stats/cor.html">var()</a></code>, busca primero en el espacio de nombres del paquete de estadísticas, por lo que encuentra <code><a href="https://rdrr.io/r/stats/cor.html">stats::var()</a></code>, no el <code><a href="https://rdrr.io/r/stats/cor.html">var()</a></code> que creamos en el entorno mundial. Sería un caos si funciones como <code><a href="https://rdrr.io/r/stats/sd.html">sd()</a></code> pudieran ser interrumpidas por un usuario redefiniendo <code><a href="https://rdrr.io/r/stats/cor.html">var()</a></code> o adjuntando un paquete que anule <code><a href="https://rdrr.io/r/stats/cor.html">var()</a></code>. El sistema de espacio de nombres del paquete es lo que nos salva de este destino.</p>
 </section><section id="sec-dependencies-NAMESPACE-file" class="level3" data-number="10.2.2"><h3 data-number="10.2.2" class="anchored" data-anchor-id="sec-dependencies-NAMESPACE-file">
@@ -685,11 +688,11 @@ useDynLib(testthat, .registration = TRUE)</code></pre>
 <span class="header-section-number">10.3.1</span> Búsqueda de funciones para el código de usuario</h3>
 <p>El primer lugar donde R busca un objeto es el entorno global. Si R no lo encuentra allí, busca en la ruta de búsqueda, la lista de todos los paquetes que ha <strong>adjuntado</strong>. Puede ver esta lista ejecutando <code><a href="https://rdrr.io/r/base/search.html">search()</a></code>. Por ejemplo, aquí está la ruta de búsqueda del código de este libro:</p>
 <div class="cell">
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/search.html">search</a></span><span class="op">(</span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/search.html">search</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt;  [1] ".GlobalEnv"        "package:stats"     "package:graphics" </span></span>
 <span><span class="co">#&gt;  [4] "package:grDevices" "package:datasets"  "renv:shims"       </span></span>
 <span><span class="co">#&gt;  [7] "package:utils"     "package:methods"   "Autoloads"        </span></span>
-<span><span class="co">#&gt; [10] "package:base"</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; [10] "package:base"</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Esto tiene una forma específica (ver <a href="#fig-search-path-baseline" class="quarto-xref">Figura&nbsp;<span>10.1</span></a>):</p>
 <ol type="1">
@@ -840,12 +843,12 @@ Tabla&nbsp;10.1: Funciones que cargan o adjuntan un paquete.
 <p>A menos que exista una buena razón para lo contrario, siempre debe enumerar los paquetes en <code>Imports</code>, no en <code>Depends</code>. Esto se debe a que un buen paquete es autónomo y minimiza los cambios en el panorama global, incluida la ruta de búsqueda.<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a></p>
 <p>Los usuarios de devtools en realidad están expuestos regularmente al hecho de que devtools “depende” de usethis:</p>
 <div class="cell">
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://devtools.r-lib.org/">devtools</a></span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://devtools.r-lib.org/">devtools</a></span><span class="op">)</span></span>
 <span><span class="co">#&gt; Loading required package: usethis</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/search.html">search</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt;  [1] ".GlobalEnv"        "package:devtools"  "package:usethis"  </span></span>
-<span><span class="co">#&gt;  ...</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt;  ...</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Esta elección está motivada por la compatibilidad con versiones anteriores. Cuando devtools se dividió en varios paquetes más pequeños (<a href="setup.html#sec-setup-usage" class="quarto-xref"><span>Sección 2.2</span></a>), muchas de las funciones orientadas al usuario pasaron a usaethis. Poner usethis en dependencias fue una elección pragmática para evitar que los usuarios realicen un seguimiento de qué función terminó y dónde.</p>
 <p>Un ejemplo más clásico de dependencia es cómo el <a href="https://censored.tidymodels.org">paquete censored</a> depende de los paquetes <a href="https://parsnip.tidymodels.org">parsnip</a> y <a href="https:%20//cran.r-project.org/package=survival">surival</a>. parsnip proporciona una interfaz unificada para ajustar modelos y censored es un paquete de extensión para análisis de supervivencia. censored no es útil sin parsnip y survival, por lo que tiene sentido enumerarlos en <code>Depends</code>.</p>
@@ -864,15 +867,15 @@ Tabla&nbsp;10.1: Funciones que cargan o adjuntan un paquete.
   // Chapter name
   const currentChapterFile = window.location.pathname.split('/').pop().replace('.html', '');
 
-  //Deffining urls
+  //Defining urls
   const originalURL = "https://github.com/hadley/r-pkgs/";
-  const translationURL = "https://github.com/davidrsch/r-pkgses";
+  const translationURL = "https://github.com/davidrsch/rpkgs-es";
 
-  //Deffining texts
+  //Defining texts
   const edit_text = "Editar esta página";
   const issue_text = "Informar de un problema"
 
-  //Deffining git_i
+  //Defining git_i
   const git_i = '<div><i class="bi bi-github"></i></div>';
 
   // Adding TOC if not exist
@@ -977,13 +980,14 @@ Tabla&nbsp;10.1: Funciones que cargan o adjuntan un paquete.
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy

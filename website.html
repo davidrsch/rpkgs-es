@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.33">
+<meta name="generator" content="quarto-1.8.25">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="author" content="Hadley Wickham y Jenny Bryan">
 <meta name="description" content="Aprenda a crear un paquete, la unidad fundamental de contenido compartible, reutilizable, y código R reproducible.">
@@ -67,14 +67,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="./logo.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-cecd649be66239f4a3c9dceaf651ba2d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+<link href="site_libs/bootstrap/bootstrap-6a8d939bdf32084eecd9f414bffd5650.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
@@ -88,7 +89,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   ],
   "show-item-context": false,
   "language": {
-    "search-no-results-text": "Sin resultados",
+    "search-no-results-text": "No se han encontrado resultados",
     "search-matching-documents-text": "documentos encontrados",
     "search-copy-link-title": "Copiar el enlace en la búsqueda",
     "search-hide-matches-text": "Ocultar resultados adicionales",
@@ -118,7 +119,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </div>
   </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="./index.html" class="sidebar-logo-link">
+      </a>
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Paquetes de R</a> 
         <div class="sidebar-tools-main">
@@ -131,7 +134,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             </a>
           </li>
           <li>
-            <a class="dropdown-item sidebar-tools-main-item" href="https://github.com/davidrsch/r-pkgses">
+            <a class="dropdown-item sidebar-tools-main-item" href="https://github.com/davidrsch/rpkgs-es">
             Traducción
             </a>
           </li>
@@ -464,10 +467,10 @@ Tip
 </div>
 <p><code><a href="https://usethis.r-lib.org/reference/use_pkgdown.html">usethis::use_pkgdown()</a></code> es una función que se ejecuta una vez y realiza la configuración inicial mínima necesaria para comenzar a usar pkgdown:</p>
 <div class="cell">
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">usethis</span><span class="fu">::</span><span class="fu"><a href="https://usethis.r-lib.org/reference/use_pkgdown.html">use_pkgdown</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">usethis</span><span class="fu">::</span><span class="fu"><a href="https://usethis.r-lib.org/reference/use_pkgdown.html">use_pkgdown</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell">
-<pre><code>#&gt; ✔ Setting active project to '/tmp/RtmpAa7sYn/mypackage'
+<pre><code>#&gt; ✔ Setting active project to '/tmp/RtmpllNbaY/mypackage'
 #&gt; ✔ Adding '^_pkgdown\\.yml$', '^docs$', '^pkgdown$' to '.Rbuildignore'
 #&gt; ✔ Adding 'docs' to '.gitignore'
 #&gt; ✔ Writing '_pkgdown.yml'
@@ -482,14 +485,14 @@ Tip
 </ul>
 <p><code><a href="https://pkgdown.r-lib.org/reference/build_site.html">pkgdown::build_site()</a></code> es una función que llamará repetidamente para volver a representar su sitio localmente. En un paquete extremadamente básico, verá algo como esto:</p>
 <div class="cell">
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">pkgdown</span><span class="fu">::</span><span class="fu"><a href="https://pkgdown.r-lib.org/reference/build_site.html">build_site</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">pkgdown</span><span class="fu">::</span><span class="fu"><a href="https://pkgdown.r-lib.org/reference/build_site.html">build_site</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell">
-<pre><code>#&gt; ✔ Setting active project to '/tmp/RtmpAa7sYn/mypackage'
+<pre><code>#&gt; ✔ Setting active project to '/tmp/RtmpllNbaY/mypackage'
 #&gt; ── Installing package mypackage into temporary library ─────────────
 #&gt; ── Building pkgdown site for package mypackage ─────────────────────────────────
-#&gt; Reading from: /tmp/RtmpAa7sYn/mypackage
-#&gt; Writing to: /tmp/RtmpAa7sYn/mypackage/docs
+#&gt; Reading from: /tmp/RtmpllNbaY/mypackage
+#&gt; Writing to: /tmp/RtmpllNbaY/mypackage/docs
 #&gt; ── Initialising site ───────────────────────────────────────────────────────────
 #&gt; Copying
 #&gt; ../../../home/runner/work/_temp/renv/cache/v5/linux-ubuntu-noble/R-4.4/x86_64-pc-linux-gnu/pkgdown/2.0.9/8bf1151ed1a48328d71b937e651117a6/pkgdown/BS5/assets/link.svg
@@ -514,7 +517,7 @@ Tip
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-RStudio
+<span class="screen-reader-only">Tip</span>RStudio
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -533,7 +536,7 @@ RStudio
 </ul>
 <p>Los consejos para usar GitHub Action y Pages se implementan en la función <code><a href="https://usethis.r-lib.org/reference/use_pkgdown.html">usethis::use_pkgdown_github_pages()</a></code>. No es una tarea especialmente difícil, pero hay varios pasos y sería fácil pasar por alto alguno o fallar. La salida de <code>use_pkgdown_github_pages()</code> debería verse así:</p>
 <div class="cell">
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">usethis</span><span class="fu">::</span><span class="fu"><a href="https://usethis.r-lib.org/reference/use_pkgdown.html">use_pkgdown_github_pages</a></span><span class="op">(</span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">usethis</span><span class="fu">::</span><span class="fu"><a href="https://usethis.r-lib.org/reference/use_pkgdown.html">use_pkgdown_github_pages</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; ✔ Initializing empty, orphan 'gh-pages' branch in GitHub repo 'jane/mypackage'</span></span>
 <span><span class="co">#&gt; ✔ GitHub Pages is publishing from:</span></span>
 <span><span class="co">#&gt; • URL: 'https://jane.github.io/mypackage/'</span></span>
@@ -547,7 +550,7 @@ RStudio
 <span><span class="co">#&gt; • Learn more at &lt;https://github.com/r-lib/actions/blob/v2/examples/README.md&gt;.</span></span>
 <span><span class="co">#&gt; ✔ Recording 'https://jane.github.io/mypackage/' as site's url in '_pkgdown.yml'</span></span>
 <span><span class="co">#&gt; ✔ Adding 'https://jane.github.io/mypackage/' to URL field in DESCRIPTION</span></span>
-<span><span class="co">#&gt; ✔ Setting 'https:/jane.github.io/mypackage/' as homepage of GitHub repo 'jane/mypackage'</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; ✔ Setting 'https:/jane.github.io/mypackage/' as homepage of GitHub repo 'jane/mypackage'</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Al igual que <code>use_pkgdown()</code>, esta es una función que básicamente llamas una vez, cuando configuras un nuevo sitio. De hecho, lo primero que hace es llamar a <code>use_pkgdown()</code> (está bien si ya has llamado a <code>use_pkgdown()</code>), por lo que normalmente saltamos directamente a <code>use_pkgdown_github_pages()</code> cuando configuramos un sitio nuevo.</p>
 <p>Veamos qué hace realmente <code>use_pkgdown_github_pages()</code>:</p>
@@ -598,19 +601,19 @@ Figura&nbsp;19.1: Dimensiones estándar de una pegatina hexagonal.
 <span class="header-section-number">19.5.2</span> Vinculación</h3>
 <p>Estos temas de ayuda estarán vinculados desde muchas ubicaciones dentro y, potencialmente, más allá de su sitio pkgdown. De esto es de lo que estamos hablando en <a href="man.html#sec-man-key-md-features" class="quarto-xref"><span>Sección 16.1.3</span></a> cuando recomendamos poner funciones entre corchetes al mencionarlas en un comentario de roxygen:</p>
 <div class="cell">
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">#' Soy un gran admirador de [estaduncion()] en mi paquete. I</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">#' Soy un gran admirador de [estaduncion()] en mi paquete. I</span></span>
 <span><span class="co">#' también tengo algo que decir sobre [otropqt::otrafuncion()]</span></span>
-<span><span class="co">#' en el paquete de otra persona.</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#' en el paquete de otra persona.</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>En los sitios de pkgdown, esas funciones entre corchetes se convierten en hipervínculos a las páginas relevantes de su sitio de pkgdown. Esto es automático dentro de su paquete. Pero los enlaces entrantes de paquetes de <em>otras</em> personas (y sitios web, etc.) requieren dos cosas<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>:</p>
 <ul>
 <li>
 <p>El campo <code>URL</code> de su archivo <code>DESCRIPTION</code> debe incluir la URL de su sitio pkgdown (preferiblemente seguida de la URL de su repositorio de GitHub):</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">URL</span><span class="kw">:</span><span class="at"> https://dplyr.tidyverse.org, https://github.com/tidyverse/dplyr</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">URL</span><span class="kw">:</span><span class="at"> https://dplyr.tidyverse.org, https://github.com/tidyverse/dplyr</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </li>
 <li>
 <p>Su archivo <code>_pkgdown.yml</code> debe incluir la URL de su sitio:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">URL</span><span class="kw">:</span><span class="at"> https://dplyr.tidyverse.org</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">URL</span><span class="kw">:</span><span class="at"> https://dplyr.tidyverse.org</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </li>
 </ul>
 <p>devtools aprovecha cada oportunidad que tiene para realizar este tipo de configuración por usted. Pero si elige hacer las cosas manualmente, esto es algo que podría pasar por alto. Un recurso general sobre el enlace automático en pkgdown es <code><a href="https://pkgdown.r-lib.org/articles/linking.html">vignette("linking", package = "pkgdown")</a></code>.</p>
@@ -618,7 +621,7 @@ Figura&nbsp;19.1: Dimensiones estándar de una pegatina hexagonal.
 <span class="header-section-number">19.5.3</span> Organización del índice</h3>
 <p>De forma predeterminada, el índice de referencia es solo una lista de funciones ordenada alfabéticamente. Para paquetes con más de un puñado de funciones, a menudo vale la pena seleccionar el índice y organizar las funciones en grupos. Por ejemplo, dplyr utiliza esta técnica: <a href="https://dplyr.tidyverse.org/reference/index.html" class="uri">https://dplyr.tidyverse.org/reference/index.html</a>.</p>
 <p>Esto se logra proporcionando un campo de <code>reference</code> en <code>_pkgdown.yml</code>. Aquí hay un extracto redactado del archivo <code>_pkgdown.yml</code> de dplyr que le da una idea de lo que implica:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">reference</span><span class="kw">:</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">reference</span><span class="kw">:</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="kw">-</span><span class="at"> </span><span class="fu">title</span><span class="kw">:</span><span class="at"> Data frame verbs</span></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="kw">-</span><span class="at"> </span><span class="fu">subtitle</span><span class="kw">:</span><span class="at"> Rows</span></span>
@@ -661,7 +664,7 @@ Figura&nbsp;19.1: Dimensiones estándar de una pegatina hexagonal.
 <span id="cb9-41"><a href="#cb9-41" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">contents</span><span class="kw">:</span></span>
 <span id="cb9-42"><a href="#cb9-42" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> sample_frac</span></span>
 <span id="cb9-43"><a href="#cb9-43" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> top_n</span></span>
-<span id="cb9-44"><a href="#cb9-44" aria-hidden="true" tabindex="-1"></a><span class="at">  ...</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-44"><a href="#cb9-44" aria-hidden="true" tabindex="-1"></a><span class="at">  ...</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Para obtener más información, consulte <code><a href="https://pkgdown.r-lib.org/reference/build_reference.html">?pkgdown::build_reference</a></code>.</p>
 </section></section><section id="viñetas-y-artículos" class="level2" data-number="19.6"><h2 data-number="19.6" class="anchored" data-anchor-id="viñetas-y-artículos">
 <span class="header-section-number">19.6</span> Viñetas y artículos</h2>
@@ -677,8 +680,8 @@ Figura&nbsp;19.1: Dimensiones estándar de una pegatina hexagonal.
 </ul>
 <p>Tenga en cuenta que esta abreviatura <strong>no</strong> funciona para vincular a artículos que no son viñetas. Dado que la sintaxis se apoya tanto en la función <code><a href="https://rdrr.io/r/utils/vignette.html">vignette()</a></code>, sería demasiado confuso, es decir, evaluar el código en la consola fallaría porque R no podrá encontrar dicha viñeta. Los artículos que no sean viñetas deben vincularse como cualquier otra URL.</p>
 <p>Cuando haga referencia a una función en su paquete, en sus viñetas y artículos, asegúrese de ponerla entre comillas invertidas e incluir paréntesis. Califica funciones de otros paquetes con su espacio de nombres. A continuación se muestra un ejemplo de prosa en una de sus propias viñetas o artículos:</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>Soy un gran admirador de <span class="in">`thisfunction()`</span> en mi paquete. yo también tengo algo que</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>decir sobre <span class="in">`otherpkg::otherfunction()`</span> en el paquete de otra persona.</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>Soy un gran admirador de <span class="in">`thisfunction()`</span> en mi paquete. yo también tengo algo que</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>decir sobre <span class="in">`otherpkg::otherfunction()`</span> en el paquete de otra persona.</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Recuerde que los enlaces entrantes automáticos de paquetes de <em>otras</em> personas (y sitios web, etc.) requieren que su paquete anuncie la URL de su sitio web en <code>DESCRIPTION</code> y <code>_pkgdown.yaml</code>, según lo configurado por <code><a href="https://usethis.r-lib.org/reference/use_pkgdown.html">usethis:: use_pkgdown_github_pages()</a></code> y como se describe en <a href="#sec-website-reference-linking" class="quarto-xref"><span>Sección 19.5.2</span></a>.</p>
 </section><section id="organización-del-índice-1" class="level3" data-number="19.6.2"><h3 data-number="19.6.2" class="anchored" data-anchor-id="organización-del-índice-1">
 <span class="header-section-number">19.6.2</span> Organización del índice</h3>
@@ -722,8 +725,8 @@ Improve error message     v0.2.9000  &lt;-- site documenta esta
 <p>Los usuarios que instalan desde CRAN obtienen la versión 0.2.0. Pero el sitio pkgdown se construye a partir de la versión de desarrollo del paquete.</p>
 <p>Esto crea la posibilidad de que los usuarios lean sobre alguna característica nueva en el sitio web que no está presente en la versión del paquete que han instalado con <code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages()</a></code>. Descubrimos que la simplicidad de esta configuración supera las desventajas, hasta que un paquete tiene una base de usuarios amplia, es decir, muchos usuarios de distintos niveles de sofisticación. Probablemente sea seguro permanecer en el modo “liberar” hasta que escuche a un usuario confundido.</p>
 <p>Los paquetes con una base de usuarios sustancial deben utilizar el modo de desarrollo “auto”:</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">development</span><span class="kw">:</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">mode</span><span class="kw">:</span><span class="at"> auto</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">development</span><span class="kw">:</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">mode</span><span class="kw">:</span><span class="at"> auto</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Esto indica a pkgdown que genere un sitio de nivel superior a partir de la versión publicada y que documente la versión de desarrollo en un subdirectorio <code>dev/</code>. Revisamos el mismo paquete hipotético que el anterior, pero asumiendo que el sitio pkdown está en modo “auto”.</p>
 <pre><code>...
  |
@@ -758,15 +761,15 @@ Improve error message     v0.2.9000  &lt;-- dev/ site documenta esta
   // Chapter name
   const currentChapterFile = window.location.pathname.split('/').pop().replace('.html', '');
 
-  //Deffining urls
+  //Defining urls
   const originalURL = "https://github.com/hadley/r-pkgs/";
-  const translationURL = "https://github.com/davidrsch/r-pkgses";
+  const translationURL = "https://github.com/davidrsch/rpkgs-es";
 
-  //Deffining texts
+  //Defining texts
   const edit_text = "Editar esta página";
   const issue_text = "Informar de un problema"
 
-  //Deffining git_i
+  //Defining git_i
   const git_i = '<div><i class="bi bi-github"></i></div>';
 
   // Adding TOC if not exist
@@ -871,13 +874,14 @@ Improve error message     v0.2.9000  &lt;-- dev/ site documenta esta
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy

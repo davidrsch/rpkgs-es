@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.33">
+<meta name="generator" content="quarto-1.8.25">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="author" content="Hadley Wickham y Jenny Bryan">
 <meta name="description" content="Aprenda a crear un paquete, la unidad fundamental de contenido compartible, reutilizable, y código R reproducible.">
@@ -67,14 +67,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="./logo.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-cecd649be66239f4a3c9dceaf651ba2d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+<link href="site_libs/bootstrap/bootstrap-6a8d939bdf32084eecd9f414bffd5650.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
@@ -88,7 +89,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   ],
   "show-item-context": false,
   "language": {
-    "search-no-results-text": "Sin resultados",
+    "search-no-results-text": "No se han encontrado resultados",
     "search-matching-documents-text": "documentos encontrados",
     "search-copy-link-title": "Copiar el enlace en la búsqueda",
     "search-hide-matches-text": "Ocultar resultados adicionales",
@@ -118,7 +119,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </div>
   </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="./index.html" class="sidebar-logo-link">
+      </a>
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Paquetes de R</a> 
         <div class="sidebar-tools-main">
@@ -131,7 +134,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             </a>
           </li>
           <li>
-            <a class="dropdown-item sidebar-tools-main-item" href="https://github.com/davidrsch/r-pkgses">
+            <a class="dropdown-item sidebar-tools-main-item" href="https://github.com/davidrsch/rpkgs-es">
             Traducción
             </a>
           </li>
@@ -457,8 +460,8 @@ Importante
 <div class="callout-body-container callout-body">
 <p>Sus archivos de prueba no deben incluir estas llamadas <code><a href="https://rdrr.io/r/base/library.html">library()</a></code>. También solicitamos explícitamente testthat edición 3, pero en un paquete real esto se declarará en DESCRIPTION.</p>
 <div class="cell">
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://testthat.r-lib.org">testthat</a></span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://testthat.r-lib.org/reference/local_edition.html">local_edition</a></span><span class="op">(</span><span class="fl">3</span><span class="op">)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://testthat.r-lib.org">testthat</a></span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://testthat.r-lib.org/reference/local_edition.html">local_edition</a></span><span class="op">(</span><span class="fl">3</span><span class="op">)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -517,7 +520,7 @@ Importante
 <p>Al escribir pruebas, puede resultar conveniente confiar en estos objetos con ámbito de archivo, especialmente al principio de la vida de un conjunto de pruebas, por ejemplo, cuando cada archivo de prueba cabe en una pantalla. Pero encontramos que confiar implícitamente en objetos en el entorno principal de una prueba tiende a hacer que un conjunto de pruebas sea más difícil de entender y mantener con el tiempo.</p>
 <p>Considere un archivo de prueba con código de nivel superior esparcido a su alrededor, fuera de <code><a href="https://testthat.r-lib.org/reference/test_that.html">test_that()</a></code>:</p>
 <div class="cell">
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">dat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span><span class="op">)</span>, y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span><span class="op">)</span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">dat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span><span class="op">)</span>, y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://testthat.r-lib.org/reference/skip.html">skip_if</a></span><span class="op">(</span><span class="fu">today_is_a_monday</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
@@ -531,11 +534,11 @@ Importante
 <span></span>
 <span><span class="fu"><a href="https://testthat.r-lib.org/reference/test_that.html">test_that</a></span><span class="op">(</span><span class="st">"foofy2() does that"</span>, <span class="op">{</span></span>
 <span>  <span class="fu"><a href="https://testthat.r-lib.org/reference/expect_snapshot.html">expect_snapshot</a></span><span class="op">(</span><span class="fu">foofy2</span><span class="op">(</span><span class="va">dat</span>, <span class="va">dat2</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="op">}</span><span class="op">)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="op">}</span><span class="op">)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Recomendamos reubicar la lógica de ámbito de archivo a un ámbito más limitado o más amplio. Así es como se vería usar un alcance limitado, es decir, alinear todo dentro de las llamadas <code><a href="https://testthat.r-lib.org/reference/test_that.html">test_that()</a></code>:</p>
 <div class="cell">
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://testthat.r-lib.org/reference/test_that.html">test_that</a></span><span class="op">(</span><span class="st">"foofy() does this"</span>, <span class="op">{</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://testthat.r-lib.org/reference/test_that.html">test_that</a></span><span class="op">(</span><span class="st">"foofy() does this"</span>, <span class="op">{</span></span>
 <span>  <span class="fu"><a href="https://testthat.r-lib.org/reference/skip.html">skip_if</a></span><span class="op">(</span><span class="fu">today_is_a_monday</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
 <span>  </span>
 <span>  <span class="va">dat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span><span class="op">)</span>, y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span><span class="op">)</span><span class="op">)</span></span>
@@ -551,14 +554,14 @@ Importante
 <span>  <span class="va">dat2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"x"</span>, <span class="st">"y"</span>, <span class="st">"z"</span><span class="op">)</span>, y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">4</span>, <span class="fl">5</span>, <span class="fl">6</span><span class="op">)</span><span class="op">)</span></span>
 <span>  </span>
 <span>  <span class="fu"><a href="https://testthat.r-lib.org/reference/expect_snapshot.html">expect_snapshot</a></span><span class="op">(</span><span class="fu">foofy</span><span class="op">(</span><span class="va">dat</span>, <span class="va">dat2</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="op">}</span><span class="op">)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="op">}</span><span class="op">)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>A continuación, analizaremos técnicas para mover la lógica de ámbito de archivo a un ámbito más amplio.</p>
 </section><section id="sec-testing-design-self-contained" class="level3" data-number="14.2.2"><h3 data-number="14.2.2" class="anchored" data-anchor-id="sec-testing-design-self-contained">
 <span class="header-section-number">14.2.2</span> Pruebas autónomas</h3>
 <p>Cada prueba <code><a href="https://testthat.r-lib.org/reference/test_that.html">test_that()</a></code> tiene su propio entorno de ejecución, lo que la hace algo autónoma. Por ejemplo, un objeto R que crea dentro de una prueba no existe después de que finaliza la prueba:</p>
 <div class="cell">
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/exists.html">exists</a></span><span class="op">(</span><span class="st">"thingy"</span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/exists.html">exists</a></span><span class="op">(</span><span class="st">"thingy"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] FALSE</span></span>
 <span></span>
 <span><span class="fu"><a href="https://testthat.r-lib.org/reference/test_that.html">test_that</a></span><span class="op">(</span><span class="st">"thingy exists"</span>, <span class="op">{</span></span>
@@ -568,7 +571,7 @@ Importante
 <span><span class="co">#&gt; Test passed</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/exists.html">exists</a></span><span class="op">(</span><span class="st">"thingy"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] FALSE</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; [1] FALSE</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>El objeto <code>thingy</code> vive y muere completamente dentro de los límites de <code><a href="https://testthat.r-lib.org/reference/test_that.html">test_that()</a></code>. Sin embargo, testthat no sabe cómo limpiar después de acciones que afectan otros aspectos del panorama de R:</p>
 <ul>
@@ -578,7 +581,7 @@ Importante
 </ul>
 <p>Observe cómo llamadas como <code><a href="https://rdrr.io/r/base/library.html">library()</a></code>, <code><a href="https://rdrr.io/r/base/options.html">options()</a></code> y <code><a href="https://rdrr.io/r/base/Sys.setenv.html">Sys.setenv()</a></code> tienen un efecto persistente <em>después</em> de una prueba, incluso cuando se ejecutan dentro de <code><a href="https://testthat.r-lib.org/reference/test_that.html">test_that()</a></code>:</p>
 <div class="cell">
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/grep.html">grep</a></span><span class="op">(</span><span class="st">"jsonlite"</span>, <span class="fu"><a href="https://rdrr.io/r/base/search.html">search</a></span><span class="op">(</span><span class="op">)</span>, value <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/grep.html">grep</a></span><span class="op">(</span><span class="st">"jsonlite"</span>, <span class="fu"><a href="https://rdrr.io/r/base/search.html">search</a></span><span class="op">(</span><span class="op">)</span>, value <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="co">#&gt; character(0)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/options.html">getOption</a></span><span class="op">(</span><span class="st">"opt_whatever"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; NULL</span></span>
@@ -601,18 +604,18 @@ Importante
 <span><span class="fu"><a href="https://rdrr.io/r/base/options.html">getOption</a></span><span class="op">(</span><span class="st">"opt_whatever"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "whatever"</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/Sys.getenv.html">Sys.getenv</a></span><span class="op">(</span><span class="st">"envvar_whatever"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "whatever"</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; [1] "whatever"</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Estos cambios en el panorama persisten incluso más allá del archivo de prueba actual, es decir, se trasladan a todos los archivos de prueba posteriores.</p>
 <p>Si es fácil evitar realizar tales cambios en su código de prueba, ¡esa es la mejor estrategia! Pero si es inevitable, entonces debes asegurarte de limpiar lo que ensucias. Esta mentalidad es muy similar a la que defendimos en <a href="code.html#sec-code-r-landscape" class="quarto-xref"><span>Sección 6.5</span></a>, cuando analizamos cómo diseñar funciones educadas.</p>
 <p>Nos gusta usar el paquete withr (<a href="https://withr.r-lib.org" class="uri">https://withr.r-lib.org</a>) para realizar cambios temporales en el estado global, porque captura automáticamente el estado inicial y organiza la restauración final. Ya has visto un ejemplo de su uso cuando exploramos las pruebas instantáneas:</p>
 <div class="cell">
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://testthat.r-lib.org/reference/test_that.html">test_that</a></span><span class="op">(</span><span class="st">"side-by-side diffs work"</span>, <span class="op">{</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://testthat.r-lib.org/reference/test_that.html">test_that</a></span><span class="op">(</span><span class="st">"side-by-side diffs work"</span>, <span class="op">{</span></span>
 <span>  <span class="fu">withr</span><span class="fu">::</span><span class="fu"><a href="https://withr.r-lib.org/reference/with_options.html">local_options</a></span><span class="op">(</span>width <span class="op">=</span> <span class="fl">20</span><span class="op">)</span> <span class="co"># &lt;-- (°_°) look here!</span></span>
 <span>  <span class="fu"><a href="https://testthat.r-lib.org/reference/expect_snapshot.html">expect_snapshot</a></span><span class="op">(</span></span>
 <span>    <span class="fu">waldo</span><span class="fu">::</span><span class="fu"><a href="https://waldo.r-lib.org/reference/compare.html">compare</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"X"</span>, <span class="va">letters</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">letters</span>, <span class="st">"X"</span><span class="op">)</span><span class="op">)</span></span>
 <span>  <span class="op">)</span></span>
-<span><span class="op">}</span><span class="op">)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="op">}</span><span class="op">)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Esta prueba requiere que el ancho de visualización se establezca en 20 columnas, que es considerablemente menor que el ancho predeterminado. <code>withr::local_options(width = 20)</code> establece la opción <code>width</code> en 20 y, al final de la prueba, restaura la opción a su valor original. withr también es agradable de usar durante el desarrollo interactivo: las acciones diferidas aún se capturan en el entorno global y se pueden ejecutar explícitamente a través de <code><a href="https://withr.r-lib.org/reference/defer.html">withr::deferred_run()</a></code> o implícitamente reiniciando R.</p>
 <p>Recomendamos incluir withr en <code>Suggests</code>, si solo lo vas a usar en tus pruebas, o en <code>Imports</code>, si también lo usas debajo de <code>R/</code>. Llame a las funciones withr como lo hicimos anteriormente, por ejemplo, como <code>withr::local_whatever()</code>, en cualquier caso. Consulte <a href="dependencies-mindset-background.html#sec-dependencies-imports-vs-depends" class="quarto-xref"><span>Sección 10.4.1</span></a> y <a href="dependencies-in-practice.html#sec-dependencies-in-suggests-in-tests" class="quarto-xref"><span>Sección 11.5.2</span></a> para obtener más información.</p>
@@ -632,7 +635,7 @@ Tip
 <p>withr tiene un gran conjunto de funciones <code>local_*()</code> / <code>with_*()</code> preimplementadas que deberían manejar la mayoría de sus necesidades de prueba, así que verifique allí antes de escribir las suyas. Si no existe nada que satisfaga sus necesidades, <code><a href="https://withr.r-lib.org/reference/defer.html">withr::defer()</a></code> es la forma general de programar alguna acción al final de una prueba.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
 <p>Así es como solucionaríamos los problemas en el ejemplo anterior usando withr: <em>Detrás de escena, revertimos los cambios de paisaje, así que podemos intentar esto nuevamente.</em></p>
 <div class="cell">
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/grep.html">grep</a></span><span class="op">(</span><span class="st">"jsonlite"</span>, <span class="fu"><a href="https://rdrr.io/r/base/search.html">search</a></span><span class="op">(</span><span class="op">)</span>, value <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/grep.html">grep</a></span><span class="op">(</span><span class="st">"jsonlite"</span>, <span class="fu"><a href="https://rdrr.io/r/base/search.html">search</a></span><span class="op">(</span><span class="op">)</span>, value <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="co">#&gt; character(0)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/options.html">getOption</a></span><span class="op">(</span><span class="st">"opt_whatever"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; NULL</span></span>
@@ -655,16 +658,16 @@ Tip
 <span><span class="fu"><a href="https://rdrr.io/r/base/options.html">getOption</a></span><span class="op">(</span><span class="st">"opt_whatever"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; NULL</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/Sys.getenv.html">Sys.getenv</a></span><span class="op">(</span><span class="st">"envvar_whatever"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] ""</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; [1] ""</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>testthat se apoya en gran medida en withr para hacer que los entornos de ejecución de pruebas sean lo más reproducibles y autónomos posible. En testthat 3e, <code><a href="https://testthat.r-lib.org/reference/local_test_context.html">testthat::local_reproducible_output()</a></code> es implícitamente parte de cada prueba <code><a href="https://testthat.r-lib.org/reference/test_that.html">test_that()</a></code>.</p>
 <div class="cell">
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://testthat.r-lib.org/reference/test_that.html">test_that</a></span><span class="op">(</span><span class="st">"something specific happens"</span>, <span class="op">{</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://testthat.r-lib.org/reference/test_that.html">test_that</a></span><span class="op">(</span><span class="st">"something specific happens"</span>, <span class="op">{</span></span>
 <span>  <span class="fu"><a href="https://testthat.r-lib.org/reference/local_test_context.html">local_reproducible_output</a></span><span class="op">(</span><span class="op">)</span> <span class="co"># &lt;-- this happens implicitly</span></span>
 <span>  </span>
 <span>  <span class="co"># su código de prueba, que puede ser sensible a las condiciones ambientales, como</span></span>
 <span>  <span class="co"># ancho de visualización o el número de colores admitidos</span></span>
-<span><span class="op">}</span><span class="op">)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="op">}</span><span class="op">)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><code><a href="https://testthat.r-lib.org/reference/local_test_context.html">local_reproducible_output()</a></code> establece temporalmente varias opciones y variables de entorno en valores favorables para las pruebas, por ejemplo, suprime la salida en color, desactiva las comillas elegantes, establece el ancho de la consola y establece <code>LC_COLLATE = "C"</code>. Por lo general, puedes disfrutar pasivamente de los beneficios de <code><a href="https://testthat.r-lib.org/reference/local_test_context.html">local_reproducible_output()</a></code>. Pero es posible que desee llamarlo explícitamente al replicar resultados de pruebas de forma interactiva o si desea anular la configuración predeterminada en una prueba específica.</p>
 </section><section id="plan-para-el-fracaso-de-la-prueba" class="level3" data-number="14.2.3"><h3 data-number="14.2.3" class="anchored" data-anchor-id="plan-para-el-fracaso-de-la-prueba">
@@ -680,24 +683,24 @@ Tip
 <p>El nirvana de solución de problemas de prueba se ve así: en una nueva sesión de R, puede hacer <code><a href="https://devtools.r-lib.org/reference/load_all.html">devtools::load_all()</a></code> e inmediatamente ejecutar una prueba individual o recorrerla línea por línea. No es necesario buscar código de configuración que deba ejecutarse manualmente primero, que se encuentre en otra parte del archivo de prueba o quizás en un archivo completamente diferente. El código relacionado con las pruebas que se encuentra en una ubicación no convencional provoca un dolor adicional autoinfligido cuando menos lo necesita.</p>
 <p>Considere este ejemplo extremo y abstracto de una prueba que es difícil de solucionar debido a dependencias implícitas en el código de rango libre:</p>
 <div class="cell">
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># docenas o cientos de líneas de código de nivel superior, intercaladas con otras pruebas,</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># docenas o cientos de líneas de código de nivel superior, intercaladas con otras pruebas,</span></span>
 <span><span class="co"># que debes leer y ejecutar selectivamente</span></span>
 <span></span>
 <span><span class="fu"><a href="https://testthat.r-lib.org/reference/test_that.html">test_that</a></span><span class="op">(</span><span class="st">"f() works"</span>, <span class="op">{</span></span>
 <span>  <span class="va">x</span> <span class="op">&lt;-</span> <span class="fu">function_from_some_dependency</span><span class="op">(</span><span class="va">object_with_unknown_origin</span><span class="op">)</span></span>
 <span>  <span class="fu"><a href="https://testthat.r-lib.org/reference/equality-expectations.html">expect_equal</a></span><span class="op">(</span><span class="fu">f</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>, <span class="fl">2.5</span><span class="op">)</span></span>
-<span><span class="op">}</span><span class="op">)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="op">}</span><span class="op">)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Esta prueba es mucho más fácil de realizar si las dependencias se invocan de la manera normal, es decir, mediante <code>::</code>, y los objetos de prueba se crean en línea:</p>
 <div class="cell">
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># docenas o cientos de líneas de pruebas autónomas y autosuficientes,</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># docenas o cientos de líneas de pruebas autónomas y autosuficientes,</span></span>
 <span><span class="co"># ¡todo lo cual puedes ignorar con seguridad!</span></span>
 <span></span>
 <span><span class="fu"><a href="https://testthat.r-lib.org/reference/test_that.html">test_that</a></span><span class="op">(</span><span class="st">"f() works"</span>, <span class="op">{</span></span>
 <span>  <span class="va">useful_thing</span> <span class="op">&lt;-</span> <span class="va">...</span></span>
 <span>  <span class="va">x</span> <span class="op">&lt;-</span> <span class="fu">somePkg</span><span class="fu">::</span><span class="fu">someFunction</span><span class="op">(</span><span class="va">useful_thing</span><span class="op">)</span></span>
 <span>  <span class="fu"><a href="https://testthat.r-lib.org/reference/equality-expectations.html">expect_equal</a></span><span class="op">(</span><span class="fu">f</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>, <span class="fl">2.5</span><span class="op">)</span></span>
-<span><span class="op">}</span><span class="op">)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="op">}</span><span class="op">)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Esta prueba es autosuficiente. El código dentro de <code>{... }</code> crea explícitamente los objetos o condiciones necesarios y realiza llamadas explícitas a cualquier función auxiliar. Esta prueba no se basa en objetos o dependencias que estén disponibles ambientalmente.</p>
 <p>Las pruebas autosuficientes y autónomas son beneficiosas para todos: es literalmente más seguro diseñar las pruebas de esta manera y también hace que las pruebas sean mucho más fáciles de solucionar para los humanos más adelante.</p>
@@ -710,7 +713,7 @@ Tip
 </blockquote>
 <p>Aquí hay un ejemplo de juguete para concretar las cosas.</p>
 <div class="cell">
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://testthat.r-lib.org/reference/test_that.html">test_that</a></span><span class="op">(</span><span class="st">"multiplication works"</span>, <span class="op">{</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://testthat.r-lib.org/reference/test_that.html">test_that</a></span><span class="op">(</span><span class="st">"multiplication works"</span>, <span class="op">{</span></span>
 <span>  <span class="va">useful_thing</span> <span class="op">&lt;-</span> <span class="fl">3</span></span>
 <span>  <span class="fu"><a href="https://testthat.r-lib.org/reference/equality-expectations.html">expect_equal</a></span><span class="op">(</span><span class="fl">2</span> <span class="op">*</span> <span class="va">useful_thing</span>, <span class="fl">6</span><span class="op">)</span></span>
 <span><span class="op">}</span><span class="op">)</span></span>
@@ -720,11 +723,11 @@ Tip
 <span>  <span class="va">useful_thing</span> <span class="op">&lt;-</span> <span class="fl">3</span></span>
 <span>  <span class="fu"><a href="https://testthat.r-lib.org/reference/equality-expectations.html">expect_equal</a></span><span class="op">(</span><span class="fl">5</span> <span class="op">-</span> <span class="va">useful_thing</span>, <span class="fl">2</span><span class="op">)</span></span>
 <span><span class="op">}</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Test passed</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; Test passed</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>En la vida real, <code>useful_thing</code> suele ser un objeto más complicado cuya creación de instancias resulta de alguna manera engorrosa. Observe cómo aparece <code>useful_thing &lt;- 3</code> en más de un lugar. La sabiduría convencional dice que deberíamos SECAR este código. Es tentador simplemente mover la definición de <code>useful_thing</code> fuera de las pruebas:</p>
 <div class="cell">
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">useful_thing</span> <span class="op">&lt;-</span> <span class="fl">3</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">useful_thing</span> <span class="op">&lt;-</span> <span class="fl">3</span></span>
 <span></span>
 <span><span class="fu"><a href="https://testthat.r-lib.org/reference/test_that.html">test_that</a></span><span class="op">(</span><span class="st">"multiplication works"</span>, <span class="op">{</span></span>
 <span>  <span class="fu"><a href="https://testthat.r-lib.org/reference/equality-expectations.html">expect_equal</a></span><span class="op">(</span><span class="fl">2</span> <span class="op">*</span> <span class="va">useful_thing</span>, <span class="fl">6</span><span class="op">)</span></span>
@@ -734,7 +737,7 @@ Tip
 <span><span class="fu"><a href="https://testthat.r-lib.org/reference/test_that.html">test_that</a></span><span class="op">(</span><span class="st">"subtraction works"</span>, <span class="op">{</span></span>
 <span>  <span class="fu"><a href="https://testthat.r-lib.org/reference/equality-expectations.html">expect_equal</a></span><span class="op">(</span><span class="fl">5</span> <span class="op">-</span> <span class="va">useful_thing</span>, <span class="fl">2</span><span class="op">)</span></span>
 <span><span class="op">}</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Test passed</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; Test passed</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Pero realmente creemos que la primera forma, con repetición, suele ser la mejor opción.</p>
 <p>En este punto, muchos lectores podrían estar pensando “¡pero el código que quizás tenga que repetir es mucho más largo que 1 línea!”. A continuación describimos el uso de dispositivos de prueba. A menudo, esto puede reducir situaciones complicadas a algo parecido a este ejemplo simple.</p>
@@ -789,7 +792,7 @@ Tip
     └── ...</code></pre>
 <p>Por ejemplo, el paquete dbplyr usa <a href="https://github.com/tidyverse/dbplyr/blob/e8bfa760a465cd7d8fa45cc53d4435ee1fbd2361/R/testthat.R"><code>R/testthat.R</code></a> para definir un par de ayudas para facilitar las comparaciones y las expectativas. que involucra objetos <code>tbl</code>, que se utiliza para representar tablas de bases de datos.</p>
 <div class="cell">
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">compare_tbl</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, <span class="va">label</span> <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">expected.label</span> <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span> <span class="op">{</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">compare_tbl</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, <span class="va">label</span> <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">expected.label</span> <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="fu">testthat</span><span class="fu">::</span><span class="fu"><a href="https://testthat.r-lib.org/reference/equality-expectations.html">expect_equal</a></span><span class="op">(</span></span>
 <span>    <span class="fu">arrange</span><span class="op">(</span><span class="fu">collect</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>, <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/across.html">across</a></span><span class="op">(</span><span class="fu">everything</span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>,</span>
 <span>    <span class="fu">arrange</span><span class="op">(</span><span class="fu">collect</span><span class="op">(</span><span class="va">y</span><span class="op">)</span>, <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/across.html">across</a></span><span class="op">(</span><span class="fu">everything</span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>,</span>
@@ -810,17 +813,17 @@ Tip
 <span>  <span class="op">}</span></span>
 <span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/invisible.html">invisible</a></span><span class="op">(</span><span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="op">}</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="op">}</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section><section id="teststestthat.r" class="level3" data-number="14.3.2"><h3 data-number="14.3.2" class="anchored" data-anchor-id="teststestthat.r">
 <span class="header-section-number">14.3.2</span> <code>tests/testthat.R</code>
 </h3>
 <p>Recuerde la configuración de prueba inicial descrita en <a href="testing-basics.html#sec-tests-mechanics-workflow" class="quarto-xref"><span>Sección 13.3</span></a>: El archivo estándar <code>tests/testthat.R</code> tiene este aspecto:</p>
 <div class="cell">
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://testthat.r-lib.org">testthat</a></span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://testthat.r-lib.org">testthat</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">pkg</span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu"><a href="https://testthat.r-lib.org/reference/test_package.html">test_check</a></span><span class="op">(</span><span class="st">"pkg"</span><span class="op">)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="fu"><a href="https://testthat.r-lib.org/reference/test_package.html">test_check</a></span><span class="op">(</span><span class="st">"pkg"</span><span class="op">)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Repetimos el consejo de no editar <code>tests/testthat.R</code>. Se ejecuta durante <code>R CMD check</code> (y, por lo tanto, <code><a href="https://devtools.r-lib.org/reference/check.html">devtools::check()</a></code>), pero no se usa en la mayoría de los otros escenarios de ejecución de pruebas (como <code><a href="https://devtools.r-lib.org/reference/test.html">devtools::test()</a></code> o <code>devtools: :test_active_file()</code> o durante el desarrollo interactivo). No adjunte sus dependencias aquí con <code><a href="https://rdrr.io/r/base/library.html">library()</a></code>. Llámelos en sus pruebas de la misma manera que lo hace debajo de <code>R/</code> (<a href="dependencies-in-practice.html#sec-dependencies-in-imports-in-tests" class="quarto-xref"><span>Sección 11.4.2</span></a>, <a href="dependencies-in-practice.html#sec-dependencies-in-suggests-in-tests" class="quarto-xref"><span>Sección 11.5.2</span></a>).</p>
 </section><section id="pruebe-esos-archivos-auxiliares" class="level3" data-number="14.3.3"><h3 data-number="14.3.3" class="anchored" data-anchor-id="pruebe-esos-archivos-auxiliares">
@@ -839,8 +842,8 @@ Tip
     └── testthat.R</code></pre>
 <p>Muchos desarrolladores utilizan archivos auxiliares para definir funciones auxiliares de prueba personalizadas, que describimos en detalle en <a href="testing-advanced.html" class="quarto-xref"><span>Capítulo 15</span></a>. En comparación con la definición de ayudantes debajo de <code>R/</code>, algunas personas encuentran que <code>tests/testthat/helper.R</code> deja más claro que estas utilidades son específicamente para probar el paquete. Esta ubicación también parece más natural si sus ayudantes confían en las funciones de prueba. Por ejemplo, <a href="https://github.com/r-lib/usethis/blob/main/tests/testthat/helper.R">usethis</a> y <a href="https://github.com/tidyverse/vroom/%20blob/main/tests/testthat/helper.R">vroom</a> ambos tienen archivos <code>tests/testthat/helper.R</code> bastante extensos que definen muchos ayudantes de prueba personalizados. Aquí hay dos ayudantes de uso muy simples que verifican que el proyecto actualmente activo (generalmente un proyecto de prueba efímero) tenga un archivo o carpeta específica:</p>
 <div class="cell">
-<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">expect_proj_file</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">...</span><span class="op">)</span> <span class="fu"><a href="https://testthat.r-lib.org/reference/logical-expectations.html">expect_true</a></span><span class="op">(</span><span class="fu">file_exists</span><span class="op">(</span><span class="fu">proj_path</span><span class="op">(</span><span class="va">...</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="va">expect_proj_dir</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">...</span><span class="op">)</span> <span class="fu"><a href="https://testthat.r-lib.org/reference/logical-expectations.html">expect_true</a></span><span class="op">(</span><span class="fu">dir_exists</span><span class="op">(</span><span class="fu">proj_path</span><span class="op">(</span><span class="va">...</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">expect_proj_file</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">...</span><span class="op">)</span> <span class="fu"><a href="https://testthat.r-lib.org/reference/logical-expectations.html">expect_true</a></span><span class="op">(</span><span class="fu">file_exists</span><span class="op">(</span><span class="fu">proj_path</span><span class="op">(</span><span class="va">...</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">expect_proj_dir</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">...</span><span class="op">)</span> <span class="fu"><a href="https://testthat.r-lib.org/reference/logical-expectations.html">expect_true</a></span><span class="op">(</span><span class="fu">dir_exists</span><span class="op">(</span><span class="fu">proj_path</span><span class="op">(</span><span class="va">...</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Un archivo auxiliar también es una buena ubicación para el código de configuración necesario para sus efectos secundarios. Este es un caso en el que <code>tests/testthat/helper.R</code> es claramente más apropiado que un archivo debajo de <code>R/</code>. Por ejemplo, en un paquete de envoltura de API, <code>helper.R</code> es un buen lugar para (intentar) autenticarse con las credenciales de prueba <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>.</p>
 </section><section id="testthat-archivos-de-configuración" class="level3" data-number="14.3.4"><h3 data-number="14.3.4" class="anchored" data-anchor-id="testthat-archivos-de-configuración">
@@ -864,16 +867,16 @@ Tip
 <p>Si alguna parte de su configuración debe revertirse después de la ejecución de la prueba, también debe incluir el código de desmontaje necesario en <code>setup.R</code><a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>. Recomendamos mantener el código de desmontaje junto con el código de configuración, en <code>setup.R</code>, porque esto hace que sea más fácil garantizar que permanezcan sincronizados. El entorno artificial <code><a href="https://testthat.r-lib.org/reference/teardown_env.html">teardown_env()</a></code> existe como un identificador mágico para usar en <code><a href="https://withr.r-lib.org/reference/defer.html">withr::defer()</a></code> y <code>withr::local_*()</code> / <code>withr::with_*()</code>.</p>
 <p>Aquí hay un ejemplo de <code>setup.R</code> del paquete reprex, donde desactivamos la funcionalidad de vista previa HTML y del portapapeles durante las pruebas:</p>
 <div class="cell">
-<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">op</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/options.html">options</a></span><span class="op">(</span>reprex.clipboard <span class="op">=</span> <span class="cn">FALSE</span>, reprex.html_preview <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">op</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/options.html">options</a></span><span class="op">(</span>reprex.clipboard <span class="op">=</span> <span class="cn">FALSE</span>, reprex.html_preview <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu">withr</span><span class="fu">::</span><span class="fu"><a href="https://withr.r-lib.org/reference/defer.html">defer</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/options.html">options</a></span><span class="op">(</span><span class="va">op</span><span class="op">)</span>, <span class="fu"><a href="https://testthat.r-lib.org/reference/teardown_env.html">teardown_env</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="fu">withr</span><span class="fu">::</span><span class="fu"><a href="https://withr.r-lib.org/reference/defer.html">defer</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/options.html">options</a></span><span class="op">(</span><span class="va">op</span><span class="op">)</span>, <span class="fu"><a href="https://testthat.r-lib.org/reference/teardown_env.html">teardown_env</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Dado que aquí solo estamos modificando opciones, podemos ser aún más concisos y usar la función prediseñada <code><a href="https://withr.r-lib.org/reference/with_options.html">withr::local_options()</a></code> y pasar <code><a href="https://testthat.r-lib.org/reference/teardown_env.html">teardown_env()</a></code> como <code>.local_envir</code>:</p>
 <div class="cell">
-<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">withr</span><span class="fu">::</span><span class="fu"><a href="https://withr.r-lib.org/reference/with_options.html">local_options</a></span><span class="op">(</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">withr</span><span class="fu">::</span><span class="fu"><a href="https://withr.r-lib.org/reference/with_options.html">local_options</a></span><span class="op">(</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>reprex.clipboard <span class="op">=</span> <span class="cn">FALSE</span>, reprex.html_preview <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>,</span>
 <span>  .local_envir <span class="op">=</span> <span class="fu"><a href="https://testthat.r-lib.org/reference/teardown_env.html">teardown_env</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="op">)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="op">)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section><section id="archivos-ignorados-por-testthat" class="level3" data-number="14.3.5"><h3 data-number="14.3.5" class="anchored" data-anchor-id="archivos-ignorados-por-testthat">
 <span class="header-section-number">14.3.5</span> Archivos ignorados por testthat</h3>
@@ -907,10 +910,10 @@ Tip
     └── testthat.R</code></pre>
 <p>Luego, en sus pruebas, utilice <code><a href="https://testthat.r-lib.org/reference/test_path.html">testthat::test_path()</a></code> para crear una ruta de archivo sólida para dichos archivos.</p>
 <div class="cell">
-<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://testthat.r-lib.org/reference/test_that.html">test_that</a></span><span class="op">(</span><span class="st">"foofy() does this"</span>, <span class="op">{</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://testthat.r-lib.org/reference/test_that.html">test_that</a></span><span class="op">(</span><span class="st">"foofy() does this"</span>, <span class="op">{</span></span>
 <span>  <span class="va">useful_thing</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/readRDS.html">readRDS</a></span><span class="op">(</span><span class="fu"><a href="https://testthat.r-lib.org/reference/test_path.html">test_path</a></span><span class="op">(</span><span class="st">"fixtures"</span>, <span class="st">"useful_thing1.rds"</span><span class="op">)</span><span class="op">)</span></span>
 <span>  <span class="co"># ...</span></span>
-<span><span class="op">}</span><span class="op">)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="op">}</span><span class="op">)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><code><a href="https://testthat.r-lib.org/reference/test_path.html">testthat::test_path()</a></code> es extremadamente útil, porque produce la ruta correcta en los dos modos importantes de ejecución de pruebas:</p>
 <ul>
@@ -923,13 +926,13 @@ Tip
 <p>La mayoría de los desarrolladores de paquetes no quieren escuchar esto porque suena como una molestia. Pero no es tan complicado una vez que te familiarizas con algunas técnicas y desarrollas algunos hábitos nuevos. Un alto nivel de disciplina en el sistema de archivos también elimina varios errores de prueba y hará que su vida con CRAN funcione mejor.</p>
 <p>Esta prueba es de roxygen2 y demuestra todo lo que recomendamos:</p>
 <div class="cell">
-<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://testthat.r-lib.org/reference/test_that.html">test_that</a></span><span class="op">(</span><span class="st">"can read from file name with utf-8 path"</span>, <span class="op">{</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://testthat.r-lib.org/reference/test_that.html">test_that</a></span><span class="op">(</span><span class="st">"can read from file name with utf-8 path"</span>, <span class="op">{</span></span>
 <span>  <span class="va">path</span> <span class="op">&lt;-</span> <span class="fu">withr</span><span class="fu">::</span><span class="fu"><a href="https://withr.r-lib.org/reference/with_tempfile.html">local_tempfile</a></span><span class="op">(</span></span>
 <span>    pattern <span class="op">=</span> <span class="st">"Universit\u00e0-"</span>,</span>
 <span>    lines <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"#' @include foo.R"</span>, <span class="cn">NULL</span><span class="op">)</span></span>
 <span>  <span class="op">)</span></span>
 <span>  <span class="fu"><a href="https://testthat.r-lib.org/reference/equality-expectations.html">expect_equal</a></span><span class="op">(</span><span class="fu">find_includes</span><span class="op">(</span><span class="va">path</span><span class="op">)</span>, <span class="st">"foo.R"</span><span class="op">)</span></span>
-<span><span class="op">}</span><span class="op">)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="op">}</span><span class="op">)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><code><a href="https://withr.r-lib.org/reference/with_tempfile.html">withr::local_tempfile()</a></code> crea un archivo dentro del directorio temporal de la sesión cuya vida útil está vinculada al entorno “local”, en este caso, el entorno de ejecución de una prueba individual. Es un contenedor alrededor de <code><a href="https://rdrr.io/r/base/tempfile.html">base::tempfile()</a></code> y pasa, por ejemplo, el argumento <code>pattern</code>, por lo que tienes cierto control sobre el nombre del archivo. Opcionalmente, puede proporcionar “líneas” para completar el archivo en el momento de la creación o puede escribir en el archivo de todas las formas habituales en los pasos posteriores. Finalmente, sin ningún esfuerzo especial por tu parte, el archivo temporal se eliminará automáticamente al finalizar la prueba.</p>
 <p>A veces necesitas aún más control sobre el nombre del archivo. En ese caso, puede usar <code><a href="https://withr.r-lib.org/reference/with_tempfile.html">withr::local_tempdir()</a></code> para crear un directorio temporal que se elimina automáticamente y escribir archivos con nombres intencionales dentro de este directorio.</p>
@@ -945,15 +948,15 @@ Tip
   // Chapter name
   const currentChapterFile = window.location.pathname.split('/').pop().replace('.html', '');
 
-  //Deffining urls
+  //Defining urls
   const originalURL = "https://github.com/hadley/r-pkgs/";
-  const translationURL = "https://github.com/davidrsch/r-pkgses";
+  const translationURL = "https://github.com/davidrsch/rpkgs-es";
 
-  //Deffining texts
+  //Defining texts
   const edit_text = "Editar esta página";
   const issue_text = "Informar de un problema"
 
-  //Deffining git_i
+  //Defining git_i
   const git_i = '<div><i class="bi bi-github"></i></div>';
 
   // Adding TOC if not exist
@@ -1058,13 +1061,14 @@ Tip
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy

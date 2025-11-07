@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.33">
+<meta name="generator" content="quarto-1.8.25">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="author" content="Hadley Wickham y Jenny Bryan">
 <meta name="description" content="Aprenda a crear un paquete, la unidad fundamental de contenido compartible, reutilizable, y código R reproducible.">
@@ -67,14 +67,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="./logo.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-cecd649be66239f4a3c9dceaf651ba2d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+<link href="site_libs/bootstrap/bootstrap-6a8d939bdf32084eecd9f414bffd5650.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
@@ -88,7 +89,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   ],
   "show-item-context": false,
   "language": {
-    "search-no-results-text": "Sin resultados",
+    "search-no-results-text": "No se han encontrado resultados",
     "search-matching-documents-text": "documentos encontrados",
     "search-copy-link-title": "Copiar el enlace en la búsqueda",
     "search-hide-matches-text": "Ocultar resultados adicionales",
@@ -118,7 +119,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </div>
   </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="./index.html" class="sidebar-logo-link">
+      </a>
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Paquetes de R</a> 
         <div class="sidebar-tools-main">
@@ -131,7 +134,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             </a>
           </li>
           <li>
-            <a class="dropdown-item sidebar-tools-main-item" href="https://github.com/davidrsch/r-pkgses">
+            <a class="dropdown-item sidebar-tools-main-item" href="https://github.com/davidrsch/rpkgs-es">
             Traducción
             </a>
           </li>
@@ -440,7 +443,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>El trabajo del archivo <code>DESCRIPTION</code> es almacenar metadatos importantes sobre su paquete. Cuando comience a escribir paquetes por primera vez, utilizará principalmente estos metadatos para registrar qué paquetes se necesitan para ejecutar su paquete. Sin embargo, a medida que pasa el tiempo, otros aspectos del archivo de metadatos le resultarán útiles, como revelar qué hace su paquete (a través del <code>Título</code>(<code>Title</code>) y la <code>Descripción</code>,<code>Description</code>) y con quién contactar (¡usted!) si hay algún problema. .</p>
 <p>Cada paquete debe tener una <code>DESCRIPTION</code>. De hecho, es la característica que define un paquete (RStudio y devtools consideran que cualquier directorio que contenga <code>DESCRIPTION</code> es un paquete)<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. Para comenzar, <code>usethis::create_package("mypackage")</code> agrega automáticamente un archivo básico <code>DESCRIPTION</code>. Esto le permitirá comenzar a escribir el paquete sin tener que preocuparse por los metadatos hasta que sea necesario. Esta descripción mínima variará un poco dependiendo de su configuración, pero debería verse así:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Package</span><span class="kw">:</span><span class="at"> mypackage</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Package</span><span class="kw">:</span><span class="at"> mypackage</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">Title</span><span class="kw">:</span><span class="at"> What the Package Does (One Line, Title Case)</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">Version</span><span class="kw">:</span><span class="at"> </span><span class="fl">0.0.0.9000</span></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">Authors@R</span><span class="kw">:</span><span class="at"> </span></span>
@@ -451,13 +454,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="at">    license</span></span>
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">Encoding</span><span class="kw">:</span><span class="at"> UTF-8</span></span>
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="fu">Roxygen</span><span class="kw">:</span><span class="at"> list(markdown = TRUE)</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="fu">RoxygenNote</span><span class="kw">:</span><span class="at"> </span><span class="fl">7.3.1</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="fu">RoxygenNote</span><span class="kw">:</span><span class="at"> </span><span class="fl">7.3.1</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Si crea muchos paquetes, puede personalizar el contenido predeterminado de los nuevos archivos <code>DESCRIPTION</code> configurando la opción global <code>usethis.description</code> en una lista con nombre. Puede preconfigurar su nombre preferido, correo electrónico, licencia, etc. Consulte el <a href="https://usethis.r-lib.org/articles/articles/usethis-setup.html">artículo sobre cómo usar esta configuración</a> para obtener más detalles.</p>
 <p><code>DESCRIPTION</code> utiliza un formato de archivo simple llamado DCF, el formato de control de Debian. Puede ver la mayor parte de la estructura en los ejemplos de este capítulo. Cada línea consta de un nombre de <strong>campo</strong> y un valor, separados por dos puntos. Cuando los valores abarcan varias líneas, es necesario sangrarlos:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Description</span><span class="kw">:</span><span class="at"> La descripción de un paquete suele abarcar varias líneas.</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Description</span><span class="kw">:</span><span class="at"> La descripción de un paquete suele abarcar varias líneas.</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="at">    La segunda línea y las siguientes deben tener sangría, generalmente con cuatro</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="at">    espacios.</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="at">    espacios.</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Si alguna vez necesita trabajar con un archivo <code>DESCRIPTION</code> mediante programación, eche un vistazo al [paquete desc] (https://desc.r-lib.org/), que utiliza este archivo en gran medida de forma oculta.</p>
 <p>Este capítulo le muestra cómo utilizar los campos más importantes de <code>DESCRIPTION</code>.</p>
 </section><section id="sec-description-title-and-description" class="level2" data-number="9.2"><h2 data-number="9.2" class="anchored" data-anchor-id="sec-description-title-and-description">
@@ -470,11 +473,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <code>Description</code> Es más detallado que el título. Puede utilizar varias oraciones, pero está limitado a un párrafo. Si su descripción abarca varias líneas (¡y debería hacerlo!), cada línea no debe tener más de 80 caracteres de ancho. Sangra las líneas siguientes con 4 espacios.</li>
 </ul>
 <p>Los campos <code>Title</code> y <code>Description</code> para el paquete ggplot2 son:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Title</span><span class="kw">:</span><span class="at"> Create Elegant Data Visualisations Using the Grammar of Graphics</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Title</span><span class="kw">:</span><span class="at"> Create Elegant Data Visualisations Using the Grammar of Graphics</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">Description</span><span class="kw">:</span><span class="at"> A system for 'declaratively' creating graphics,</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="at">    based on "The Grammar of Graphics". You provide the data, tell 'ggplot2'</span></span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="at">    how to map variables to aesthetics, what graphical primitives to use,</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="at">    and it takes care of the details.</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="at">    and it takes care of the details.</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Un buen título y descripción son importantes, especialmente si planea liberar su paquete a CRAN, porque aparecen en la página de inicio de CRAN del paquete como se muestra en <a href="#fig-cran-package-page" class="quarto-xref">Figura&nbsp;<span>9.1</span></a>:</p>
 <!-- Sara says: be sure there is a blank high res screenshot because prod will add text to the screenshot in the O'Reilly style. That blank screenshot is here as images/cran-package-ggplot2-clean.png. -->
 <div class="cell">
@@ -495,7 +498,7 @@ Figura&nbsp;9.1: Cómo aparecen el título y la descripción en la página CRAN 
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Envío a CRAN
+<span class="screen-reader-only">Advertencia</span>Envío a CRAN
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -513,12 +516,12 @@ Envío a CRAN
 </section><section id="sec-description-authors-at-r" class="level2" data-number="9.3"><h2 data-number="9.3" class="anchored" data-anchor-id="sec-description-authors-at-r">
 <span class="header-section-number">9.3</span> Autor: ¿quién eres?</h2>
 <p>Utilice el campo <code>Authors@R</code> para identificar al autor del paquete y a quién contactar si algo sale mal. Este campo es inusual porque contiene código R ejecutable en lugar de texto sin formato. He aquí un ejemplo:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Authors@R</span><span class="kw">:</span><span class="at"> person("Hadley", "Wickham", email = "hadley@posit.co",</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="at">  role = c("aut", "cre"))</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Authors@R</span><span class="kw">:</span><span class="at"> person("Hadley", "Wickham", email = "hadley@posit.co",</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="at">  role = c("aut", "cre"))</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell">
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/person.html">person</a></span><span class="op">(</span><span class="st">"Hadley"</span>, <span class="st">"Wickham"</span>, email <span class="op">=</span> <span class="st">"hadley@posit.co"</span>, </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/person.html">person</a></span><span class="op">(</span><span class="st">"Hadley"</span>, <span class="st">"Wickham"</span>, email <span class="op">=</span> <span class="st">"hadley@posit.co"</span>, </span>
 <span>  role <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"aut"</span>, <span class="st">"cre"</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "Hadley Wickham &lt;hadley@posit.co&gt; [aut, cre]"</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; [1] "Hadley Wickham &lt;hadley@posit.co&gt; [aut, cre]"</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Este comando dice que Hadley Wickham es tanto el mantenedor (<code>cre</code>) como el autor (<code>aut</code>) y que su dirección de correo electrónico es <code>hadley@posit.co</code>. La función <code><a href="https://rdrr.io/r/utils/person.html">person()</a></code> tiene cuatro entradas principales:</p>
 <ul>
@@ -537,29 +540,29 @@ Envío a CRAN
 <li>
 <p>El argumento opcional <code>comment</code> se ha vuelto más relevante, ya que <code><a href="https://rdrr.io/r/utils/person.html">person()</a></code> y las páginas de inicio de CRAN han adquirido algunas características interesantes en torno al <a href="https://orcid.org">identificador ORCID</a>. A continuación se muestra un ejemplo de dicho uso (tenga en cuenta el URI generado automáticamente):</p>
 <div class="cell">
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/person.html">person</a></span><span class="op">(</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/person.html">person</a></span><span class="op">(</span></span>
 <span>  <span class="st">"Jennifer"</span>, <span class="st">"Bryan"</span>,</span>
 <span>  email <span class="op">=</span> <span class="st">"jenny@posit.co"</span>,</span>
 <span>  role <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"aut"</span>, <span class="st">"cre"</span><span class="op">)</span>,</span>
 <span>  comment <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>ORCID <span class="op">=</span> <span class="st">"0000-0002-6983-2759"</span><span class="op">)</span></span>
 <span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "Jennifer Bryan &lt;jenny@posit.co&gt; [aut, cre] (&lt;https://orcid.org/0000-0002-6983-2759&gt;)"</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; [1] "Jennifer Bryan &lt;jenny@posit.co&gt; [aut, cre] (&lt;https://orcid.org/0000-0002-6983-2759&gt;)"</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </li>
 </ul>
 <p>Puede enumerar varios autores con <code><a href="https://rdrr.io/r/base/c.html">c()</a></code>:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Authors@R</span><span class="kw">:</span><span class="at"> c(</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Authors@R</span><span class="kw">:</span><span class="at"> c(</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="at">    person("Hadley", "Wickham", email = "hadley@posit.co", role = "cre"),</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="at">    person("Jennifer", "Bryan", email = "jenny@posit.co", role = "aut"),</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="at">    person("Posit Software, PBC", role = c("cph", "fnd")))</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="at">    person("Posit Software, PBC", role = c("cph", "fnd")))</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Cada paquete debe tener al menos un autor (<code>aut</code>) y un mantenedor (<code>cre</code>) (pueden ser la misma persona). El mantenedor (<code>cre</code>) debe tener una dirección de correo electrónico. Estos campos se utilizan para generar la cita básica para el paquete (por ejemplo, <code>citation("pkgname")</code>). Solo las personas que figuran como autores se incluirán en la cita generada automáticamente (<a href="misc.html#sec-misc-inst-citation" class="quarto-xref"><span>Sección 8.2.1</span></a>). Hay algunos detalles adicionales si incluye código que otras personas han escrito, sobre los cuales puede obtener información en <a href="license.html#sec-code-you-bundle" class="quarto-xref"><span>Sección 12.4</span></a>.</p>
 <p>Un enfoque más antiguo, aún válido, es tener campos separados <code>Maintainer</code> y <code>Author</code> en <code>DESCRIPTION</code>. Sin embargo, recomendamos encarecidamente el enfoque más moderno de <code>Authors@R</code> y la función <code><a href="https://rdrr.io/r/utils/person.html">person()</a></code>, porque ofrece metadatos más ricos para diversos usos posteriores..</p>
 </section><section id="url-y-bugreports" class="level2" data-number="9.4"><h2 data-number="9.4" class="anchored" data-anchor-id="url-y-bugreports">
 <span class="header-section-number">9.4</span> <code>URL</code> y <code>BugReports</code>
 </h2>
 <p>Además de la dirección de correo electrónico del mantenedor, es una buena idea enumerar otros lugares donde las personas pueden obtener más información sobre su paquete. El campo <code>URL</code> se usa comúnmente para anunciar el sitio web del paquete (<a href="website.html" class="quarto-xref"><span>Capítulo 19</span></a>) y para vincular a un repositorio de código fuente público, donde se lleva a cabo el desarrollo. Varias URL están separadas por una coma. <code>BugReports</code> es la URL donde se deben enviar los informes de errores, por ejemplo, como problemas de GitHub. Por ejemplo, devtools tiene:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">URL</span><span class="kw">:</span><span class="at"> https://devtools.r-lib.org/, https://github.com/r-lib/devtools</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">BugReports</span><span class="kw">:</span><span class="at"> https://github.com/r-lib/devtools/issues</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">URL</span><span class="kw">:</span><span class="at"> https://devtools.r-lib.org/, https://github.com/r-lib/devtools</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">BugReports</span><span class="kw">:</span><span class="at"> https://github.com/r-lib/devtools/issues</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Si usa <code><a href="https://usethis.r-lib.org/reference/use_github.html">usethis::use_github()</a></code> para conectar su paquete local a un repositorio remoto de GitHub, automáticamente completará <code>URL</code> y <code>BugReports</code>. Si un paquete ya está conectado a un repositorio remoto de GitHub, se puede llamar a <code><a href="https://usethis.r-lib.org/reference/use_github_links.html">usethis::use_github_links()</a></code> para simplemente agregar los enlaces relevantes a <code>DESCRIPTION</code>.</p>
 </section><section id="el-campo-license" class="level2" data-number="9.5"><h2 data-number="9.5" class="anchored" data-anchor-id="el-campo-license">
 <span class="header-section-number">9.5</span> El campo <code>License</code>
@@ -568,39 +571,39 @@ Envío a CRAN
 </section><section id="sec-description-imports-suggests" class="level2" data-number="9.6"><h2 data-number="9.6" class="anchored" data-anchor-id="sec-description-imports-suggests">
 <span class="header-section-number">9.6</span> <code>Imports</code>, <code>Suggests</code>, y amigos</h2>
 <p>Dos de los campos más importantes y comunmente usados de <code>DESCRIPTION</code> son <code>Imports</code> y <code>Suggests</code>, que enumera otros paquetes de los que depende su paquete. Los usuarios necesitan los paquetes enumerados en <code>Imports</code> en tiempo de ejecución y se instalarán (o potencialmente actualizarán) cuando los usuarios instalen su paquete a través de <code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages()</a></code>. Las siguientes líneas indican que su paquete necesita absolutamente tanto dplyr como tidyr para funcionar.</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Imports</span><span class="kw">:</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Imports</span><span class="kw">:</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="at">    dplyr,</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="at">    tidyr</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="at">    tidyr</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Los paquetes enumerados en <code>Suggests</code> son necesarios para tareas de desarrollo o pueden desbloquear funciones opcionales para sus usuarios. Las líneas siguientes indican que, si bien su paquete puede aprovechar ggplot2 y testthat, no son absolutamente necesarios:</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Suggests</span><span class="kw">:</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Suggests</span><span class="kw">:</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="at">    ggplot2,</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="at">    testthat</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="at">    testthat</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Tanto <code>Imports</code> como <code>Suggests</code> toman una lista de nombres de paquetes separados por comas. Recomendamos poner un paquete en cada línea y mantenerlos en orden alfabético. Un orden no aleatorio facilita que los humanos analicen este campo y aprecien los cambios.</p>
 <p>La forma más sencilla de agregar un paquete a <code>Imports</code> o <code>Suggests</code> es con <code><a href="https://usethis.r-lib.org/reference/use_package.html">usethis::use_package()</a></code>. Si las dependencias ya están en orden alfabético, <code>use_package()</code> las mantendrá así. En general, puede ser bueno ejecutar <code><a href="https://usethis.r-lib.org/reference/tidyverse.html">usethis::use_tidy_description()</a></code> regularmente, que ordena y formatea los campos <code>DESCRIPTION</code> de acuerdo con un estándar fijo.</p>
 <p>Si agrega paquetes a <code>DESCRIPTION</code> con <code><a href="https://usethis.r-lib.org/reference/use_package.html">usethis::use_package()</a></code>, también le recordará la forma recomendada de llamarlos (explicada más en <a href="dependencies-in-practice.html" class="quarto-xref"><span>Capítulo 11</span></a>).</p>
 <div class="cell">
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">usethis</span><span class="fu">::</span><span class="fu"><a href="https://usethis.r-lib.org/reference/use_package.html">use_package</a></span><span class="op">(</span><span class="st">"dplyr"</span><span class="op">)</span> <span class="co"># El valor predeterminado es "Imports"</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">usethis</span><span class="fu">::</span><span class="fu"><a href="https://usethis.r-lib.org/reference/use_package.html">use_package</a></span><span class="op">(</span><span class="st">"dplyr"</span><span class="op">)</span> <span class="co"># El valor predeterminado es "Imports"</span></span>
 <span><span class="co">#&gt; ✔ Adding 'dplyr' to Imports field in DESCRIPTION</span></span>
 <span><span class="co">#&gt; • Refer to functions with `dplyr::fun()`</span></span>
 <span></span>
 <span><span class="fu">usethis</span><span class="fu">::</span><span class="fu"><a href="https://usethis.r-lib.org/reference/use_package.html">use_package</a></span><span class="op">(</span><span class="st">"ggplot2"</span>, <span class="st">"Suggests"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; ✔ Adding 'ggplot2' to Suggests field in DESCRIPTION</span></span>
 <span><span class="co">#&gt; • Use `requireNamespace("ggplot2", quietly = TRUE)` to test if package is installed</span></span>
-<span><span class="co">#&gt; • Then directly refer to functions with `ggplot2::fun()`</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; • Then directly refer to functions with `ggplot2::fun()`</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <section id="sec-description-imports-suggests-minium-version" class="level3" data-number="9.6.1"><h3 data-number="9.6.1" class="anchored" data-anchor-id="sec-description-imports-suggests-minium-version">
 <span class="header-section-number">9.6.1</span> Versiones mínimas</h3>
 <p>Si necesita una versión específica de un paquete, especifíquela entre paréntesis después del nombre del paquete:</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Imports</span><span class="kw">:</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Imports</span><span class="kw">:</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="at">    dplyr (&gt;= 1.0.0),</span></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="at">    tidyr (&gt;= 1.1.0)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="at">    tidyr (&gt;= 1.1.0)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <p>La conveniente función <code><a href="https://usethis.r-lib.org/reference/use_package.html">usethis::use_package()</a></code> también le ayuda a establecer una versión mínima:</p>
 <div class="cell">
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># versión exacta</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># versión exacta</span></span>
 <span><span class="fu">usethis</span><span class="fu">::</span><span class="fu"><a href="https://usethis.r-lib.org/reference/use_package.html">use_package</a></span><span class="op">(</span><span class="st">"dplyr"</span>, min_version <span class="op">=</span> <span class="st">"1.0.0"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># versión mínima = versión actualmente instalada</span></span>
-<span><span class="fu">usethis</span><span class="fu">::</span><span class="fu"><a href="https://usethis.r-lib.org/reference/use_package.html">use_package</a></span><span class="op">(</span><span class="st">"dplyr"</span>, min_version <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="fu">usethis</span><span class="fu">::</span><span class="fu"><a href="https://usethis.r-lib.org/reference/use_package.html">use_package</a></span><span class="op">(</span><span class="st">"dplyr"</span>, min_version <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Siempre querrás especificar una versión mínima (<code>dplyr (&gt;= 1.0.0)</code>) en lugar de una versión exacta (<code>dplyr (== 1.0.0)</code>). Dado que R no puede tener varias versiones del mismo paquete cargadas al mismo tiempo, especificar una dependencia exacta aumenta drásticamente la posibilidad de que haya versiones en conflicto <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>.</p>
 <p>El control de versiones es más importante si va a liberar su paquete para que otros lo utilicen. Por lo general, la gente no tiene exactamente las mismas versiones de paquetes instaladas que usted. Si alguien tiene un paquete anterior que no tiene una función que su paquete necesita, recibirá un mensaje de error inútil si su paquete no anuncia la versión mínima que necesita. Sin embargo, si indica una versión mínima, obtendrán automáticamente una actualización cuando instalen su paquete.</p>
@@ -646,9 +649,9 @@ Envío a CRAN
 <li><p><code>VignetteBuilder</code> incluye cualquier paquete que su paquete necesite como motor de viñeta. Nuestro flujo de trabajo de viñeta recomendado se describe en <a href="vignettes.html#sec-vignettes-workflow-writing" class="quarto-xref"><span>Sección 17.1</span></a>, que enumerará el paquete knitr en <code>VignetteBuilder</code>.</p></li>
 <li>
 <p><code>SystemRequirements</code> es donde describe las dependencias externas a R. Este es un campo de texto sin formato y, por ejemplo, en realidad no instala ni verifica nada, por lo que es posible que deba incluir detalles de instalación adicionales en su archivo README (<a href="other-markdown.html#sec-readme" class="quarto-xref"><span>Sección 18.1</span></a>). El uso más común es en el contexto de un paquete con código compilado, donde se usa <code>SystemRequirements</code> para declarar el estándar C++, la necesidad de crear GNU o alguna otra dependencia externa. Ejemplos:</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">SystemRequirements</span><span class="kw">:</span><span class="at"> C++17</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">SystemRequirements</span><span class="kw">:</span><span class="at"> C++17</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">SystemRequirements</span><span class="kw">:</span><span class="at"> GNU make</span></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="fu">SystemRequirements</span><span class="kw">:</span><span class="at"> TensorFlow (https://www.tensorflow.org/)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="fu">SystemRequirements</span><span class="kw">:</span><span class="at"> TensorFlow (https://www.tensorflow.org/)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </li>
 </ul>
 <p>No recomendamos el uso explícito del campo <code>Date</code>, ya que es muy fácil olvidarse de actualizarlo si administra la fecha manualmente. Este campo se completará en el curso natural de agrupar el paquete, p.&nbsp;al enviar a CRAN, y le recomendamos que deje que eso suceda.</p>
@@ -658,8 +661,8 @@ Envío a CRAN
 <p>También existe cierta flexibilidad para crear sus propios campos para agregar metadatos adicionales. En el sentido más estricto, la única restricción es que no debes reutilizar los nombres de campos oficiales utilizados por R. También debe limitarse a palabras válidas en inglés, para que el corrector ortográfico no marque los nombres de los campos.</p>
 <p>En la práctica, si planea enviar a CRAN, le recomendamos que cualquier nombre de campo personalizado comience con <code>Config/</code>. Revisaremos esto más adelante cuando expliquemos cómo se usa <code>Config/Needs/website</code> para registrar paquetes adicionales necesarios para crear el sitio web de un paquete (<a href="dependencies-in-practice.html#sec-dependencies-nonstandard" class="quarto-xref"><span>Sección 11.7</span></a>).</p>
 <p>Podrías notar que <code>create_package()</code> escribe dos campos más que aún no hemos discutido, relacionados con el uso del paquete roxygen2 para documentación:</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Roxygen</span><span class="kw">:</span><span class="at"> list(markdown = TRUE)</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">RoxygenNote</span><span class="kw">:</span><span class="at"> </span><span class="fl">7.2.1</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Roxygen</span><span class="kw">:</span><span class="at"> list(markdown = TRUE)</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">RoxygenNote</span><span class="kw">:</span><span class="at"> </span><span class="fl">7.2.1</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Aprenderá más sobre estos en <a href="man.html" class="quarto-xref"><span>Capítulo 16</span></a>. El uso de estos nombres de campos específicos es básicamente un accidente de la historia y, si se volviera a hacer hoy, seguirían el patrón <code>Config/*</code> recomendado anteriormente.</p>
 
 
@@ -674,15 +677,15 @@ Envío a CRAN
   // Chapter name
   const currentChapterFile = window.location.pathname.split('/').pop().replace('.html', '');
 
-  //Deffining urls
+  //Defining urls
   const originalURL = "https://github.com/hadley/r-pkgs/";
-  const translationURL = "https://github.com/davidrsch/r-pkgses";
+  const translationURL = "https://github.com/davidrsch/rpkgs-es";
 
-  //Deffining texts
+  //Defining texts
   const edit_text = "Editar esta página";
   const issue_text = "Informar de un problema"
 
-  //Deffining git_i
+  //Defining git_i
   const git_i = '<div><i class="bi bi-github"></i></div>';
 
   // Adding TOC if not exist
@@ -787,13 +790,14 @@ Envío a CRAN
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy

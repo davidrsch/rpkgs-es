@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.33">
+<meta name="generator" content="quarto-1.8.25">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="author" content="Hadley Wickham y Jenny Bryan">
 <meta name="description" content="Aprenda a crear un paquete, la unidad fundamental de contenido compartible, reutilizable, y código R reproducible.">
@@ -67,14 +67,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="./logo.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-cecd649be66239f4a3c9dceaf651ba2d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+<link href="site_libs/bootstrap/bootstrap-6a8d939bdf32084eecd9f414bffd5650.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
@@ -88,7 +89,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   ],
   "show-item-context": false,
   "language": {
-    "search-no-results-text": "Sin resultados",
+    "search-no-results-text": "No se han encontrado resultados",
     "search-matching-documents-text": "documentos encontrados",
     "search-copy-link-title": "Copiar el enlace en la búsqueda",
     "search-hide-matches-text": "Ocultar resultados adicionales",
@@ -118,7 +119,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </div>
   </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="./index.html" class="sidebar-logo-link">
+      </a>
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Paquetes de R</a> 
         <div class="sidebar-tools-main">
@@ -131,7 +134,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             </a>
           </li>
           <li>
-            <a class="dropdown-item sidebar-tools-main-item" href="https://github.com/davidrsch/r-pkgses">
+            <a class="dropdown-item sidebar-tools-main-item" href="https://github.com/davidrsch/rpkgs-es">
             Traducción
             </a>
           </li>
@@ -470,7 +473,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="header-section-number">22.1</span> Decidir el tipo de lanzamiento</h2>
 <p>Cuando llame a <code>use_release_issue()</code>, se le preguntará qué tipo de lanzamiento desea realizar.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">use_release_issue</span>()</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">use_release_issue</span>()</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>✔ Setting active project to <span class="st">'/Users/jenny/rrr/usethis'</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>Current version is <span class="dv">2</span>.<span class="dv">1</span>.<span class="dv">6</span>.<span class="fl">9000.</span></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>What should the release version be? (<span class="dv">0</span> to exit) </span>
@@ -479,7 +482,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span><span class="sc">:</span> minor <span class="sc">-</span><span class="ot">-&gt;</span> <span class="dv">2</span>.<span class="fl">2.0</span></span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span><span class="sc">:</span> patch <span class="sc">-</span><span class="ot">-&gt;</span> <span class="dv">2</span>.<span class="fl">1.7</span></span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>Selection<span class="sc">:</span> </span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>Selection<span class="sc">:</span> </span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>La pregunta inmediata parece bastante mecánica: ¿qué componente del número de versión desea incrementar? Pero recuerde que analizamos las diferencias sustanciales en los tipos de lanzamiento en <a href="lifecycle.html#sec-lifecycle-release-type" class="quarto-xref"><span>Sección 21.5</span></a>.</p>
 <p>En nuestro flujo de trabajo, este número de versión planificada se registra en la edición de GitHub que contiene la lista de verificación de lanzamiento, pero en realidad no incrementamos la versión en <code>DESCRIPTION</code> hasta más adelante en el proceso (<a href="#sec-release-process" class="quarto-xref"><span>Sección 22.7</span></a>). Sin embargo, es importante declarar el tipo de versión por adelantado, porque el proceso (y, por lo tanto, la lista de verificación) se ve diferente, por ejemplo, para una versión de parche versus una versión principal.</p>
@@ -588,11 +591,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Todas nuestras herramientas de dependencia inversa se concentran en el paquete revdepcheck (<a href="https://revdepcheck.r-lib.org/" class="uri">https://revdepcheck.r-lib.org/</a>). Tenga en cuenta que, al menos en el momento de escribir este artículo, el paquete revdepcheck no está en CRAN. Puedes instalarlo desde Github a través de <code>devtools::install_github("r-lib/revdepcheck")</code> o <code>pak::pak("r-lib/revdepcheck")</code>.</p>
 <p>Haga esto cuando esté listo para realizar comprobaciones de revdep por primera vez:</p>
 <div class="cell">
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">usethis</span><span class="fu">::</span><span class="fu"><a href="https://usethis.r-lib.org/reference/use_revdep.html">use_revdep</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">usethis</span><span class="fu">::</span><span class="fu"><a href="https://usethis.r-lib.org/reference/use_revdep.html">use_revdep</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Esto realiza una configuración única en los archivos <code>.gitignore</code> y <code>.Rbuildignore</code> de su paquete. La comprobación de Revdep creará algunas carpetas bastante grandes debajo de <code>revdep/</code>, por lo que definitivamente querrás configurar estos archivos ignorados. También verá este recordatorio para realizar verificaciones de revdep de esta manera, como sugiere el elemento de la lista de verificación:</p>
 <div class="cell">
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">revdepcheck</span><span class="fu">::</span><span class="fu">revdep_check</span><span class="op">(</span>num_workers <span class="op">=</span> <span class="fl">4</span><span class="op">)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">revdepcheck</span><span class="fu">::</span><span class="fu">revdep_check</span><span class="op">(</span>num_workers <span class="op">=</span> <span class="fl">4</span><span class="op">)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Esto ejecuta <code>⁠R CMD check⁠</code> en todas sus dependencias inversas, con nuestra recomendación de utilizar 4 trabajadores paralelos para acelerar las cosas. La salida se parece a esto:</p>
 <pre><code>&gt; revdepcheck::revdep_check(num_workers = 4)
@@ -627,7 +630,7 @@ Writing CRAN report to 'revdep/cran.md'</code></pre>
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-equipo tidyverse
+<span class="screen-reader-only">Nota</span>equipo tidyverse
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -672,7 +675,7 @@ equipo tidyverse
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-equipo tidyverse
+<span class="screen-reader-only">Nota</span>equipo tidyverse
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -687,7 +690,7 @@ equipo tidyverse
 <p>Usamos el archivo <code>cran-comments.md</code> para registrar comentarios sobre un envío, principalmente solo los resultados de <code>R CMD check</code> y controles revdep. Si está realizando un cambio específico a solicitud de CRAN, posiblemente dentro de una fecha límite, también tendría sentido mencionarlo. Nos gusta realizar un seguimiento de este archivo en Git, para poder ver cómo cambia con el tiempo. También debería aparecer en <code>.Rbuildignore</code>, ya que no debería aparecer en su paquete. Cuando esté listo para enviar, <code><a href="https://devtools.r-lib.org/reference/submit_cran.html">devtools::submit_cran()</a></code> (<a href="#sec-release-process" class="quarto-xref"><span>Sección 22.7</span></a>) incorpora el contenido de <code>cran-comments.md</code> cuando carga su envío.</p>
 <p>El público objetivo de estos comentarios es el personal de CRAN, aunque no hay garantía de que lean los comentarios (o cuando en el proceso de envío los lean). Por ejemplo, si su paquete rompe otros paquetes, probablemente recibirá un correo electrónico automático al respecto, incluso si lo ha explicado en los comentarios. A veces, un humano de CRAN lee los comentarios, queda satisfecho y acepta su paquete de todos modos, sin ninguna otra acción por su parte. En otras ocasiones, su paquete puede quedarse atascado en la cola hasta que copie <code>cran-comments.md</code> y lo pegue en un intercambio de correo electrónico para avanzar. En cualquier caso, vale la pena mantener estos comentarios en su propio archivo controlado por versión.</p>
 <p>Aquí hay un <code>cran-comments.md</code> bastante típico de una versión reciente de forcats. Tenga en cuenta que los resultados de la <code>R CMD check</code> son limpios, es decir, no hay nada que deba explicarse o justificarse, y hay un resumen conciso del proceso revdep.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode md code-with-copy"><code class="sourceCode markdown"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">## R CMD check results</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode md code-with-copy"><code class="sourceCode markdown"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">## R CMD check results</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>0 errors | 0 warnings | 0 notes</span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
@@ -706,13 +709,13 @@ equipo tidyverse
 <span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>genekitr     (NA)</span>
 <span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>OlinkAnalyze (NA)</span>
-<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>SCpubr       (NA)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>SCpubr       (NA)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Este diseño está diseñado para que sea fácil de leer y fácil de comparar con los resultados de la <code>R CMD check</code> vistos por los mantenedores de CRAN. Incluye dos secciones:</p>
 <ol type="1">
 <li>
 <p>Verificar resultados: Siempre afirmamos que no hubo errores ni advertencias (¡y nos aseguramos de que sea cierto!). Idealmente también podemos decir que no hubo notas. Pero si no, las <code>NOTES</code> se presentan en una lista con viñetas. Para cada <code>NOTA</code>, incluimos el mensaje de <code>R CMD check</code> y una breve descripción de por qué creemos que está bien.</p>
 <p>A continuación se explica cómo se explica una <code>NOTA</code> para el paquete de datos nycflights13:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode md code-with-copy"><code class="sourceCode markdown"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">## R CMD check results</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode md code-with-copy"><code class="sourceCode markdown"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">## R CMD check results</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>0 errors | 0 warnings | 1 note</span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
@@ -721,7 +724,7 @@ equipo tidyverse
 <span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  sub-directories of 1Mb or more:</span>
 <span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    data   6.9Mb</span>
 <span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>  This is a data package that will be rarely updated.</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>  This is a data package that will be rarely updated.</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </li>
 <li><p>Dependencias inversas: si hay revdeps, aquí es donde pegamos el contenido de <code>revdep/cran.md</code> (<a href="#sec-release-revdep-checks" class="quarto-xref"><span>Sección 22.5</span></a>). Si no hay revdeps, le recomendamos que mantenga esta sección, pero diga algo como: “Actualmente no hay dependencias posteriores para este paquete”.</p></li>
 </ol></section><section id="sec-release-process" class="level2" data-number="22.7"><h2 data-number="22.7" class="anchored" data-anchor-id="sec-release-process">
@@ -756,13 +759,13 @@ equipo tidyverse
 <li><p>Aumente la versión de parche de su paquete. Sí, esto significa que puede haber lagunas en los números de versión publicada. Esto no es gran cosa.</p></li>
 <li>
 <p>Agregue una sección “Resubmission” en la parte superior de <code>cran-comments.md</code>. Esto debería identificar claramente que el paquete es un reenvío y enumerar los cambios que realizó.</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode md code-with-copy"><code class="sourceCode markdown"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">## Resubmission</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode md code-with-copy"><code class="sourceCode markdown"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">## Resubmission</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>This is a resubmission. In this version I have:</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Converted the DESCRIPTION title to title case.</span>
 <span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>More clearly identified the copyright holders in the DESCRIPTION</span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  and LICENSE files.</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  and LICENSE files.</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </li>
 <li><p>Si es necesario, actualice las secciones de resultados de verificación y revisión.</p></li>
 <li><p>Ejecute <code><a href="https://devtools.r-lib.org/reference/submit_cran.html">devtools::submit_cran()</a></code> para volver a enviar el paquete.</p></li>
@@ -800,14 +803,14 @@ Figura&nbsp;22.1: Enlace a los resultados de la verificación CRAN.
 <p>Una vez que los binarios de su paquete estén creados y hayan pasado las comprobaciones de los distintos tipos de CRAN, es hora de la parte divertida: dar a conocer su paquete. Esto adopta diferentes formas, según el tipo de liberación. Si este es su lanzamiento inicial (o, al menos, el primer lanzamiento para el que realmente desea atraer usuarios), es especialmente importante correr la voz. Nadie utilizará su nuevo y útil paquete si no sabe que existe. Hay varios lugares para anunciar su paquete, como Twitter, Mastodon, LinkedIn, comunidades de Slack, etc. Asegúrese de utilizar etiquetas relevantes, como el hashtag #rstats. Si tienes un blog, es una gran idea escribir una publicación sobre tu lanzamiento.</p>
 <p>Al presentar un paquete, la sensación debería ser bastante similar a escribir su <code>README</code> o una viñeta de “Introducción”. Asegúrese de describir lo que hace el paquete, para que las personas que no lo hayan usado antes puedan entender por qué debería importarles. Para los paquetes existentes, tendemos a escribir publicaciones de blog para versiones menores y principales, pero no para una versión de parche. En todos los casos, encontramos que estas publicaciones de blog son más efectivas cuando incluyen muchos ejemplos, es decir, “muestre, no cuente”. Para actualizaciones de paquetes, recuerde que la existencia de un archivo completo <code>NEWS</code> lo libera de la necesidad de enumerar hasta el último cambio en la publicación de su blog. En su lugar, puede centrarse en los cambios más importantes y vincular a las notas de la versión completas, para aquellos que quieran conocer los detalles sangrientos.</p>
 <p>Si escribe un blog sobre su paquete, es bueno capturarlo como otra documentación más en su sitio web de pkgdown. Un sitio típico de pkgdown tiene un elemento de “News” en la barra de navegación superior, que enlaza con un “Changelog” que se crea a partir de <code>NEWS.md</code>. Este menú desplegable es un lugar común para insertar enlaces a cualquier publicación de blog sobre el paquete. Puedes lograr esto teniendo YAML como este en tu archivo de configuración <code>_pkgdown.yml</code>:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">news</span><span class="kw">:</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">news</span><span class="kw">:</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">releases</span><span class="kw">:</span></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">text</span><span class="kw">:</span><span class="at"> </span><span class="st">"Renaming the default branch (usethis &gt;= 2.1.2)"</span></span>
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">href</span><span class="kw">:</span><span class="at"> https://www.tidyverse.org/blog/2021/10/renaming-default-branch/</span></span>
 <span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">text</span><span class="kw">:</span><span class="at"> </span><span class="st">"usethis 2.0.0"</span></span>
 <span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">href</span><span class="kw">:</span><span class="at"> https://www.tidyverse.org/blog/2020/12/usethis-2-0-0/</span></span>
 <span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">text</span><span class="kw">:</span><span class="at"> </span><span class="st">"usethis 1.6.0"</span></span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">href</span><span class="kw">:</span><span class="at"> https://www.tidyverse.org/blog/2020/04/usethis-1-6-0/</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">href</span><span class="kw">:</span><span class="at"> https://www.tidyverse.org/blog/2020/04/usethis-1-6-0/</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <p>¡Felicidades! ¡Has lanzado tu primer paquete a CRAN y has llegado al final del libro!</p>
 
 
@@ -820,15 +823,15 @@ Figura&nbsp;22.1: Enlace a los resultados de la verificación CRAN.
   // Chapter name
   const currentChapterFile = window.location.pathname.split('/').pop().replace('.html', '');
 
-  //Deffining urls
+  //Defining urls
   const originalURL = "https://github.com/hadley/r-pkgs/";
-  const translationURL = "https://github.com/davidrsch/r-pkgses";
+  const translationURL = "https://github.com/davidrsch/rpkgs-es";
 
-  //Deffining texts
+  //Defining texts
   const edit_text = "Editar esta página";
   const issue_text = "Informar de un problema"
 
-  //Deffining git_i
+  //Defining git_i
   const git_i = '<div><i class="bi bi-github"></i></div>';
 
   // Adding TOC if not exist
@@ -933,13 +936,14 @@ Figura&nbsp;22.1: Enlace a los resultados de la verificación CRAN.
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy

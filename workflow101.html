@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.33">
+<meta name="generator" content="quarto-1.8.25">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="author" content="Hadley Wickham y Jenny Bryan">
 <meta name="description" content="Aprenda a crear un paquete, la unidad fundamental de contenido compartible, reutilizable, y código R reproducible.">
@@ -87,14 +87,15 @@ div.csl-indent {
 <link href="./logo.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-cecd649be66239f4a3c9dceaf651ba2d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+<link href="site_libs/bootstrap/bootstrap-6a8d939bdf32084eecd9f414bffd5650.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
@@ -108,7 +109,7 @@ div.csl-indent {
   ],
   "show-item-context": false,
   "language": {
-    "search-no-results-text": "Sin resultados",
+    "search-no-results-text": "No se han encontrado resultados",
     "search-matching-documents-text": "documentos encontrados",
     "search-copy-link-title": "Copiar el enlace en la búsqueda",
     "search-hide-matches-text": "Ocultar resultados adicionales",
@@ -138,7 +139,9 @@ div.csl-indent {
     </div>
   </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="./index.html" class="sidebar-logo-link">
+      </a>
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Paquetes de R</a> 
         <div class="sidebar-tools-main">
@@ -151,7 +154,7 @@ div.csl-indent {
             </a>
           </li>
           <li>
-            <a class="dropdown-item sidebar-tools-main-item" href="https://github.com/davidrsch/r-pkgses">
+            <a class="dropdown-item sidebar-tools-main-item" href="https://github.com/davidrsch/rpkgs-es">
             Traducción
             </a>
           </li>
@@ -551,7 +554,7 @@ div.csl-indent {
 <span class="header-section-number">4.1.2.3</span> Utilice el paquete available</h4>
 <p>Es imposible cumplir con todas las sugerencias anteriores simultáneamente, por lo que deberá hacer algunas concesiones. El <a href="https://cran.r-project.org/package=available">paquete available</a> tiene una función llamada <code>available()</code> que le ayuda a evaluar el nombre de un paquete potencial desde muchos ángulos:</p>
 <div class="cell">
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/r-lib/available">available</a></span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/r-lib/available">available</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu">available</span><span class="op">(</span><span class="st">"doofus"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Urban Dictionary can contain potentially offensive results,</span></span>
@@ -565,7 +568,7 @@ div.csl-indent {
 <span><span class="co">#&gt; Abbreviations: http://www.abbreviations.com/doofus</span></span>
 <span><span class="co">#&gt; Wikipedia: https://en.wikipedia.org/wiki/doofus</span></span>
 <span><span class="co">#&gt; Wiktionary: https://en.wiktionary.org/wiki/doofus</span></span>
-<span><span class="co">#&gt; Sentiment:???</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; Sentiment:???</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><code>available::available()</code> hace lo siguiente:</p>
 <ul>
@@ -606,7 +609,7 @@ Advertencia
 <span class="header-section-number">4.1.4</span> ¿Dónde deberías crear el paquete, <code>create_package()</code>?</h3>
 <p>El argumento principal y único requerido para <code>create_package()</code> es la <code>ruta</code>, <code>path</code> donde vivirá su nuevo paquete:</p>
 <div class="cell">
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">create_package</span><span class="op">(</span><span class="st">"ruta/al/paquete/nombrepqt"</span><span class="op">)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">create_package</span><span class="op">(</span><span class="st">"ruta/al/paquete/nombrepqt"</span><span class="op">)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Recuerde que aquí es donde reside su paquete en su forma <strong>fuente</strong> (<a href="structure.html#sec-source-package" class="quarto-xref"><span>Sección 3.2</span></a>), no en su forma <strong>instalada</strong> (<a href="structure.html#sec-installed-package" class="quarto-xref"><span>Sección 3.5</span></a>). Los paquetes instalados se encuentran en una <strong>biblioteca</strong> y analizamos las configuraciones convencionales para bibliotecas en <a href="structure.html#sec-library" class="quarto-xref"><span>Sección 3.7</span></a>.</p>
 <p>¿Dónde debería guardar los paquetes fuente? El principio fundamental es que esta ubicación debe ser distinta de donde se encuentran los paquetes instalados. En ausencia de consideraciones externas, un usuario típico debería designar un directorio dentro de su directorio de inicio para los paquetes R (fuente). Discutimos esto con colegas y la fuente de muchos paquetes de tidyverse se encuentra dentro de directorios como <code>~/rrr/</code>, <code>~/documents/tidyverse/</code>, <code>~/r/packages/</code> o <code>~/pkg/</code>. Algunos de nosotros usamos un directorio para esto, otros dividen los paquetes fuente entre unos pocos directorios según su función de desarrollo (colaborador o no), organización de GitHub (tidyverse o r-lib), etapa de desarrollo (activa o no), etc.</p>
@@ -620,7 +623,7 @@ Advertencia
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-RStudio
+<span class="screen-reader-only">Tip</span>RStudio
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -661,7 +664,7 @@ Figura&nbsp;4.1: Referencia rápida de métodos abreviados de teclado en RStudio
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-RStudio
+<span class="screen-reader-only">Tip</span>RStudio
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -675,7 +678,7 @@ RStudio
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-RStudio
+<span class="screen-reader-only">Tip</span>RStudio
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -752,11 +755,11 @@ Figura&nbsp;4.3: Menú de proyectos en RStudio.
 </ul>
 <p>Si las cosas parecen raras, llame a <code>proj_sitrep()</code> para obtener un “informe de situación”. Éste identificará situaciones peculiares y propondrá formas de volver a un estado más feliz.</p>
 <div class="cell">
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Por lo general, estos deberían ser los mismos (o no estar configurados).</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Por lo general, estos deberían ser los mismos (o no estar configurados).</span></span>
 <span><span class="fu">proj_sitrep</span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; *   directorio de trabajo: '/Users/jenny/rrr/readxl'</span></span>
 <span><span class="co">#&gt; * active_usethis_proj: '/Users/jenny/rrr/readxl'</span></span>
-<span><span class="co">#&gt; * active_rstudio_proj: '/Users/jenny/rrr/readxl'</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; * active_rstudio_proj: '/Users/jenny/rrr/readxl'</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section></section><section id="directorio-de-trabajo-y-disciplina-de-ruta-de-archivo" class="level2" data-number="4.3"><h2 data-number="4.3" class="anchored" data-anchor-id="directorio-de-trabajo-y-disciplina-de-ruta-de-archivo">
 <span class="header-section-number">4.3</span> Directorio de trabajo y disciplina de ruta de archivo</h2>
@@ -774,12 +777,12 @@ Figura&nbsp;4.3: Menú de proyectos en RStudio.
 </h2>
 <p>La función <code>load_all()</code> es posiblemente la parte más importante del flujo de trabajo de devtools.</p>
 <div class="cell">
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># con devtools adjuntado y</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># con devtools adjuntado y</span></span>
 <span><span class="co"># el directorio de trabajo configurado en el nivel superior de su paquete fuente ...</span></span>
 <span></span>
 <span><span class="fu">load_all</span><span class="op">(</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># ... ahora experimenta con las funciones de tu paquete.</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co"># ... ahora experimenta con las funciones de tu paquete.</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><code>load_all()</code> es el paso clave en este ciclo de desarrollo de paquetes de “hacer espuma, enjuagar y repetir”:</p>
 <ol type="1">
@@ -837,7 +840,7 @@ Figura&nbsp;4.4: devtools::load_all() vs.&nbsp;library().
 <p>Base R proporciona varias herramientas de línea de comandos y “R CMD check” es el método oficial para comprobar que un paquete R es válido. Es esencial pasar la verificación <code>R CMD check</code> si planea enviar su paquete a CRAN, pero <strong>recomendamos encarecidamente</strong> cumplir con este estándar incluso si no tiene intención de publicar su paquete en CRAN. <code>R CMD check</code> detecta muchos problemas comunes que de otro modo descubrirías por las malas.</p>
 <p>Nuestra forma recomendada de ejecutar <code>R CMD check</code> es en la consola R a través de devtools:</p>
 <div class="cell">
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org/reference/check.html">check</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org/reference/check.html">check</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Recomendamos esto porque le permite ejecutar <code>R CMD check</code> desde R, lo que reduce drásticamente la fricción y aumenta la probabilidad de que <code>check()</code> sea temprano y con frecuencia. Este énfasis en la fluidez y la retroalimentación rápida es exactamente la misma motivación que se da para <code>load_all()</code>. En el caso de <code>check()</code>, realmente está ejecutando <code>R CMD check</code> por usted. No se trata sólo de una simulación de alta fidelidad, como es el caso de <code>load_all()</code>.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
@@ -846,7 +849,7 @@ Figura&nbsp;4.4: devtools::load_all() vs.&nbsp;library().
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-RStudio
+<span class="screen-reader-only">Tip</span>RStudio
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -880,10 +883,10 @@ RStudio
 <span class="header-section-number">4.5.2</span> Antecedentes sobre <code>R CMD check</code>
 </h3>
 <p>A medida que acumula experiencia en el desarrollo de paquetes, es posible que desee acceder <code>R CMD check</code> directamente en algún momento. Recuerde que <code>R CMD check</code> es algo que debe ejecutar en la terminal, no en la consola R. Puedes ver su documentación así:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">R</span> CMD check <span class="at">--help</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">R</span> CMD check <span class="at">--help</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <p><code>R CMD check</code> se puede ejecutar en un directorio que contiene un paquete R en formato fuente (<a href="structure.html#sec-source-package" class="quarto-xref"><span>Sección 3.2</span></a>) o, preferiblemente, en un empaquetado (<a href="structure.html#sec-bundled-package" class="quarto-xref"><span>Sección 3.3</span></a>):</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">R</span> CMD build somepackage</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="ex">R</span> CMD check somepackage_0.0.0.9000.tar.gz  </span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">R</span> CMD build somepackage</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="ex">R</span> CMD check somepackage_0.0.0.9000.tar.gz  </span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Para obtener más información, consulte la sección <a href="https://cran.r-project.org/doc/manuals/R-exts.html#Checking-packages">Comprobación de paquetes</a> de <a href="https://cran.r-project.org/doc/manuals/R-exts.html">Escribir extensiones R</a>.</p>
 
 
@@ -903,15 +906,15 @@ Silge, Julia, John C. Nash, y Spencer Graves. 2018. <span>«<span>Navigating the
   // Chapter name
   const currentChapterFile = window.location.pathname.split('/').pop().replace('.html', '');
 
-  //Deffining urls
+  //Defining urls
   const originalURL = "https://github.com/hadley/r-pkgs/";
-  const translationURL = "https://github.com/davidrsch/r-pkgses";
+  const translationURL = "https://github.com/davidrsch/rpkgs-es";
 
-  //Deffining texts
+  //Defining texts
   const edit_text = "Editar esta página";
   const issue_text = "Informar de un problema"
 
-  //Deffining git_i
+  //Defining git_i
   const git_i = '<div><i class="bi bi-github"></i></div>';
 
   // Adding TOC if not exist
@@ -1016,13 +1019,14 @@ Silge, Julia, John C. Nash, y Spencer Graves. 2018. <span>«<span>Navigating the
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.33">
+<meta name="generator" content="quarto-1.8.25">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="author" content="Hadley Wickham y Jenny Bryan">
 <meta name="description" content="Aprenda a crear un paquete, la unidad fundamental de contenido compartible, reutilizable, y código R reproducible.">
@@ -67,14 +67,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="./logo.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-cecd649be66239f4a3c9dceaf651ba2d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+<link href="site_libs/bootstrap/bootstrap-6a8d939bdf32084eecd9f414bffd5650.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
@@ -88,7 +89,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   ],
   "show-item-context": false,
   "language": {
-    "search-no-results-text": "Sin resultados",
+    "search-no-results-text": "No se han encontrado resultados",
     "search-matching-documents-text": "documentos encontrados",
     "search-copy-link-title": "Copiar el enlace en la búsqueda",
     "search-hide-matches-text": "Ocultar resultados adicionales",
@@ -118,7 +119,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </div>
   </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="./index.html" class="sidebar-logo-link">
+      </a>
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Paquetes de R</a> 
         <div class="sidebar-tools-main">
@@ -131,7 +134,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             </a>
           </li>
           <li>
-            <a class="dropdown-item sidebar-tools-main-item" href="https://github.com/davidrsch/r-pkgses">
+            <a class="dropdown-item sidebar-tools-main-item" href="https://github.com/davidrsch/rpkgs-es">
             Traducción
             </a>
           </li>
@@ -462,8 +465,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="header-section-number">7.1</span> Datos exportados</h2>
 <p>La ubicación más común para los datos del paquete es (¡sorpresa!) <code>data/</code>. Recomendamos que cada archivo en este directorio sea un archivo <code>.rda</code> creado por <code><a href="https://rdrr.io/r/base/save.html">save()</a></code> que contenga un único objeto R, con el mismo nombre que el archivo. La forma más sencilla de lograrlo es utilizar <code><a href="https://usethis.r-lib.org/reference/use_data.html">usethis::use_data()</a></code>.</p>
 <div class="cell">
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">my_pkg_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fl">1000</span><span class="op">)</span></span>
-<span><span class="fu">usethis</span><span class="fu">::</span><span class="fu"><a href="https://usethis.r-lib.org/reference/use_data.html">use_data</a></span><span class="op">(</span><span class="va">my_pkg_data</span><span class="op">)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">my_pkg_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fl">1000</span><span class="op">)</span></span>
+<span><span class="fu">usethis</span><span class="fu">::</span><span class="fu"><a href="https://usethis.r-lib.org/reference/use_data.html">use_data</a></span><span class="op">(</span><span class="va">my_pkg_data</span><span class="op">)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Imaginemos que estamos trabajando en un paquete llamado “pkg”. El fragmento anterior crea <code>data/my_pkg_data.rda</code> dentro del código fuente del paquete pkg y agrega <code>LazyData: true</code> en su <code>DESCRIPCIÓN</code>. Esto hace que el objeto R <code>my_pkg_data</code> esté disponible para los usuarios de pkg a través de <code>pkg::my_pkg_data</code> o, después de adjuntar pkg con <code><a href="https://rdrr.io/r/base/library.html">library(pkg)</a></code>, como <code>my_pkg_data</code>.</p>
 <p>El fragmento anterior es algo que el mantenedor ejecuta una vez (o cada vez que necesita actualizar <code>my_pkg_data</code>). Este es el código de flujo de trabajo y <strong>no</strong> debería aparecer en el directorio <code>R/</code> del paquete fuente. (Hablaremos sobre un lugar adecuado para guardar este código a continuación). Para conjuntos de datos más grandes, es posible que desees experimentar con la configuración de compresión, que está bajo el control del argumento “comprimir”. El valor predeterminado es “bzip2”, pero a veces “gzip” o “xz” pueden crear archivos más pequeños.</p>
@@ -477,15 +480,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <p>Si la <code>DESCRIPTION</code> contiene <code>LazyData: true</code>, los conjuntos de datos se cargarán de forma diferida. Esto significa que no ocuparán memoria hasta que los uses. El siguiente ejemplo muestra el uso de la memoria antes y después de cargar el paquete nycflights13. Puede ver que el uso de la memoria no cambia significativamente hasta que inspecciona el conjunto de datos de <code>flights</code> almacenados dentro del paquete.</p>
 <div class="cell">
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">lobstr</span><span class="fu">::</span><span class="fu"><a href="https://lobstr.r-lib.org/reference/mem_used.html">mem_used</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; 74.66 MB</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">lobstr</span><span class="fu">::</span><span class="fu"><a href="https://lobstr.r-lib.org/reference/mem_used.html">mem_used</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; 74.67 MB</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/hadley/nycflights13">nycflights13</a></span><span class="op">)</span></span>
 <span><span class="fu">lobstr</span><span class="fu">::</span><span class="fu"><a href="https://lobstr.r-lib.org/reference/mem_used.html">mem_used</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; 76.39 MB</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/invisible.html">invisible</a></span><span class="op">(</span><span class="va">flights</span><span class="op">)</span></span>
 <span><span class="fu">lobstr</span><span class="fu">::</span><span class="fu"><a href="https://lobstr.r-lib.org/reference/mem_used.html">mem_used</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; 117.09 MB</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; 117.09 MB</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Le recomendamos que incluya <code>LazyData: true</code> en su <code>DESCRIPTION</code> si envía archivos <code>.rda</code> debajo de <code>data/</code>. Si utiliza <code>use_data()</code> para crear dichos conjuntos de datos, automáticamente realizará esta modificación en <code>DESCRIPTION</code> por usted.</p>
 <div class="callout callout-style-default callout-warning callout-titled">
@@ -516,9 +519,9 @@ Advertencia
 <p>A menudo, los datos que incluye en <code>data/</code> son una versión limpia de datos sin procesar que ha recopilado de otro lugar. Recomendamos encarecidamente tomarse el tiempo para incluir el código utilizado para hacer esto en la versión fuente de su paquete. Esto le facilita actualizar o reproducir su versión de los datos. Este script de creación de datos también es un lugar natural para dejar comentarios sobre propiedades importantes de los datos, es decir, qué características son importantes para el uso posterior en la documentación del paquete.</p>
 <p>Le sugerimos que mantenga este código en uno o más archivos <code>.R</code> debajo de <code>data-raw/</code>. No lo desea en la versión incluida de su paquete, por lo que esta carpeta debe aparecer en <code>.Rbuildignore</code>. usethis tiene una función conveniente que se puede llamar cuando adopta por primera vez la práctica <code>data-raw/</code> o cuando agrega un archivo <code>.R</code> adicional a la carpeta:</p>
 <div class="cell">
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">usethis</span><span class="fu">::</span><span class="fu"><a href="https://usethis.r-lib.org/reference/use_data.html">use_data_raw</a></span><span class="op">(</span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">usethis</span><span class="fu">::</span><span class="fu"><a href="https://usethis.r-lib.org/reference/use_data.html">use_data_raw</a></span><span class="op">(</span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu">usethis</span><span class="fu">::</span><span class="fu"><a href="https://usethis.r-lib.org/reference/use_data.html">use_data_raw</a></span><span class="op">(</span><span class="st">"my_pkg_data"</span><span class="op">)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="fu">usethis</span><span class="fu">::</span><span class="fu"><a href="https://usethis.r-lib.org/reference/use_data.html">use_data_raw</a></span><span class="op">(</span><span class="st">"my_pkg_data"</span><span class="op">)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><code>use_data_raw()</code> crea la carpeta <code>data-raw/</code> y la enumera en <code>.Rbuildignore</code>. Un script típico en <code>data-raw/</code> incluye código para preparar un conjunto de datos y termina con una llamada a <code>use_data()</code>.</p>
 <p>Todos estos paquetes de datos utilizan el enfoque recomendado aquí para <code>data-raw/</code>:</p>
@@ -533,7 +536,7 @@ Advertencia
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-ggplot2: Un cuento con moraleja
+<span class="screen-reader-only">Tip</span>ggplot2: Un cuento con moraleja
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -546,7 +549,7 @@ ggplot2: Un cuento con moraleja
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Envío a CRAN
+<span class="screen-reader-only">Advertencia</span>Envío a CRAN
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -559,7 +562,7 @@ Envío a CRAN
 <span class="header-section-number">7.1.2</span> Documentar conjuntos de datos</h3>
 <p>Los objetos en <code>data/</code> siempre se exportan efectivamente (utilizan un mecanismo ligeramente diferente al de <code>NAMESPACE</code> pero los detalles no son importantes). Esto significa que deben estar documentados. Documentar datos es como documentar una función con algunas diferencias menores. En lugar de documentar los datos directamente, documenta el nombre del conjunto de datos y lo guarda en <code>R/</code>. Por ejemplo, el bloque roxygen2 utilizado para documentar los datos <code>quién</code>(<code>who</code>) en tidyr se guarda en <code>R/data.R</code> y se parece a esto:</p>
 <div class="cell">
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">#' Datos sobre tuberculosis de la Organización Mundial de la Salud</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">#' Datos sobre tuberculosis de la Organización Mundial de la Salud</span></span>
 <span><span class="co">#'</span></span>
 <span><span class="co">#' Un subconjunto de datos de un Informe de la Tuberculosis Global de la </span></span>
 <span><span class="co">#' Organización Mundial de la Salud ...</span></span>
@@ -573,7 +576,7 @@ Envío a CRAN
 <span><span class="co">#'   ...</span></span>
 <span><span class="co">#' }</span></span>
 <span><span class="co">#' @source &lt;https://www.who.int/teams/global-tuberculosis-programme/data&gt;</span></span>
-<span><span class="st">"who"</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="st">"who"</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Hay dos etiquetas roxygen que son especialmente importantes para documentar conjuntos de datos:</p>
 <ul>
@@ -592,7 +595,7 @@ Envío a CRAN
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Envío a CRAN
+<span class="screen-reader-only">Advertencia</span>Envío a CRAN
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -616,10 +619,10 @@ Envío a CRAN
 </ul>
 <!-- Another example I noted: readr + data-raw/date-symbols.R + date_symbols --><p>La forma más sencilla de crear <code>R/sysdata.rda</code> es utilizar <code>usethis::use_data(internal = TRUE)</code>:</p>
 <div class="cell">
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">internal_this</span> <span class="op">&lt;-</span> <span class="va">...</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">internal_this</span> <span class="op">&lt;-</span> <span class="va">...</span></span>
 <span><span class="va">internal_that</span> <span class="op">&lt;-</span> <span class="va">...</span></span>
 <span></span>
-<span><span class="fu">usethis</span><span class="fu">::</span><span class="fu"><a href="https://usethis.r-lib.org/reference/use_data.html">use_data</a></span><span class="op">(</span><span class="va">internal_this</span>, <span class="va">internal_that</span>, internal <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="fu">usethis</span><span class="fu">::</span><span class="fu"><a href="https://usethis.r-lib.org/reference/use_data.html">use_data</a></span><span class="op">(</span><span class="va">internal_this</span>, <span class="va">internal_that</span>, internal <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>A diferencia de <code>data/</code>, donde se utiliza un archivo <code>.rda</code> por objeto de datos exportado, se almacenan todos los objetos de datos internos juntos en un único archivo. <code>R/sysdata.rda</code>.</p>
 <p>Imaginemos que estamos trabajando en un paquete llamado “pkg”. El fragmento anterior crea <code>R/sysdata.rda</code> dentro del código fuente del paquete pkg. Esto hace que los objetos <code>internal_this</code> e <code>internal_that</code> estén disponibles para su uso dentro de las funciones definidas debajo de <code>R/</code> y en las pruebas. Durante el desarrollo interactivo, <code>internal_this</code> e <code>internal_that</code> están disponibles después de una llamada a <code><a href="https://devtools.r-lib.org/reference/load_all.html">devtools::load_all()</a></code>, como una función interna.</p>
@@ -657,24 +660,24 @@ Envío a CRAN
 <span class="header-section-number">7.3.1</span> Rutas de archivos</h3>
 <p>La ruta a un archivo de paquete que se encuentra debajo de <code>extdata/</code> depende claramente del entorno local, es decir, depende de dónde se encuentran los paquetes instalados en esa máquina. La función base <code><a href="https://rdrr.io/r/base/system.file.html">system.file()</a></code> puede informar la ruta completa a los archivos distribuidos con un paquete R. También puede resultar útil <em>enumerar</em> los archivos distribuidos con un paquete R.</p>
 <div class="cell">
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span><span class="op">(</span><span class="st">"extdata"</span>, package <span class="op">=</span> <span class="st">"readxl"</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/base/list.files.html">list.files</a></span><span class="op">(</span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span><span class="op">(</span><span class="st">"extdata"</span>, package <span class="op">=</span> <span class="st">"readxl"</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/base/list.files.html">list.files</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt;  [1] "clippy.xls"    "clippy.xlsx"   "datasets.xls"  "datasets.xlsx"</span></span>
 <span><span class="co">#&gt;  [5] "deaths.xls"    "deaths.xlsx"   "geometry.xls"  "geometry.xlsx"</span></span>
 <span><span class="co">#&gt;  [9] "type-me.xls"   "type-me.xlsx"</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span><span class="op">(</span><span class="st">"extdata"</span>, <span class="st">"clippy.xlsx"</span>, package <span class="op">=</span> <span class="st">"readxl"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "/home/runner/work/r-pkgses/r-pkgses/renv/library/linux-ubuntu-noble/R-4.4/x86_64-pc-linux-gnu/readxl/extdata/clippy.xlsx"</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; [1] "/home/runner/work/rpkgs-es/rpkgs-es/renv/library/linux-ubuntu-noble/R-4.4/x86_64-pc-linux-gnu/readxl/extdata/clippy.xlsx"</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Estas rutas de archivos presentan otro dilema en el flujo de trabajo: cuando estás desarrollando tu paquete, interactúas con él en su formato fuente, pero tus usuarios interactúan con él como un paquete instalado. Afortunadamente, devtools proporciona una corrección para <code><a href="https://rdrr.io/r/base/system.file.html">base::system.file()</a></code> que se activa mediante <code>load_all()</code>. Esto realiza llamadas interactivas a <code><a href="https://rdrr.io/r/base/system.file.html">system.file()</a></code> desde el entorno global y las llamadas desde dentro del espacio de nombres del paquete “simplemente funcionan”.</p>
 <p>Tenga en cuenta que, de forma predeterminada, <code><a href="https://rdrr.io/r/base/system.file.html">system.file()</a></code> devuelve la cadena vacía, no un error, para un archivo que no existe.</p>
 <div class="cell">
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span><span class="op">(</span><span class="st">"extdata"</span>, <span class="st">"I_do_not_exist.csv"</span>, package <span class="op">=</span> <span class="st">"readr"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] ""</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span><span class="op">(</span><span class="st">"extdata"</span>, <span class="st">"I_do_not_exist.csv"</span>, package <span class="op">=</span> <span class="st">"readr"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] ""</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Si desea forzar un error en este caso, especifique <code>mustWork = TRUE</code>:</p>
 <div class="cell">
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span><span class="op">(</span><span class="st">"extdata"</span>, <span class="st">"I_do_not_exist.csv"</span>, package <span class="op">=</span> <span class="st">"readr"</span>, mustWork <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Error in system.file("extdata", "I_do_not_exist.csv", package = "readr", : no file found</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span><span class="op">(</span><span class="st">"extdata"</span>, <span class="st">"I_do_not_exist.csv"</span>, package <span class="op">=</span> <span class="st">"readr"</span>, mustWork <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Error in system.file("extdata", "I_do_not_exist.csv", package = "readr", : no file found</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>El <a href="https://fs.r-lib.org">paquete fs</a> ofrece <code><a href="https://fs.r-lib.org/reference/path_package.html">fs::path_package()</a></code>. Esto es esencialmente <code><a href="https://rdrr.io/r/base/system.file.html">base::system.file()</a></code> con algunas características adicionales que consideramos ventajosas, siempre que sea razonable depender de fs:</p>
 <ul>
@@ -683,16 +686,16 @@ Envío a CRAN
 <li>Durante el desarrollo, funciona para llamadas interactivas, llamadas desde dentro del espacio de nombres del paquete cargado e incluso para llamadas que se originan en dependencias.</li>
 </ul>
 <div class="cell">
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">fs</span><span class="fu">::</span><span class="fu"><a href="https://fs.r-lib.org/reference/path_package.html">path_package</a></span><span class="op">(</span><span class="st">"extdata"</span>, package <span class="op">=</span> <span class="st">"idonotexist"</span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">fs</span><span class="fu">::</span><span class="fu"><a href="https://fs.r-lib.org/reference/path_package.html">path_package</a></span><span class="op">(</span><span class="st">"extdata"</span>, package <span class="op">=</span> <span class="st">"idonotexist"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Error: Can't find package `idonotexist` in library locations:</span></span>
-<span><span class="co">#&gt;   - '/home/runner/work/r-pkgses/r-pkgses/renv/library/linux-ubuntu-noble/R-4.4/x86_64-pc-linux-gnu'</span></span>
+<span><span class="co">#&gt;   - '/home/runner/work/rpkgs-es/rpkgs-es/renv/library/linux-ubuntu-noble/R-4.4/x86_64-pc-linux-gnu'</span></span>
 <span><span class="co">#&gt;   - '/home/runner/.cache/R/renv/sandbox/linux-ubuntu-noble/R-4.4/x86_64-pc-linux-gnu/3df92652'</span></span>
 <span></span>
 <span><span class="fu">fs</span><span class="fu">::</span><span class="fu"><a href="https://fs.r-lib.org/reference/path_package.html">path_package</a></span><span class="op">(</span><span class="st">"extdata"</span>, <span class="st">"I_do_not_exist.csv"</span>, package <span class="op">=</span> <span class="st">"readr"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Error: File(s) '/home/runner/work/r-pkgses/r-pkgses/renv/library/linux-ubuntu-noble/R-4.4/x86_64-pc-linux-gnu/readr/extdata/I_do_not_exist.csv' do not exist</span></span>
+<span><span class="co">#&gt; Error: File(s) '/home/runner/work/rpkgs-es/rpkgs-es/renv/library/linux-ubuntu-noble/R-4.4/x86_64-pc-linux-gnu/readr/extdata/I_do_not_exist.csv' do not exist</span></span>
 <span></span>
 <span><span class="fu">fs</span><span class="fu">::</span><span class="fu"><a href="https://fs.r-lib.org/reference/path_package.html">path_package</a></span><span class="op">(</span><span class="st">"extdata"</span>, <span class="st">"chickens.csv"</span>, package <span class="op">=</span> <span class="st">"readr"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; /home/runner/work/r-pkgses/r-pkgses/renv/library/linux-ubuntu-noble/R-4.4/x86_64-pc-linux-gnu/readr/extdata/chickens.csv</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; /home/runner/work/rpkgs-es/rpkgs-es/renv/library/linux-ubuntu-noble/R-4.4/x86_64-pc-linux-gnu/readr/extdata/chickens.csv</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <!--
 
@@ -715,22 +718,22 @@ A common theme you've now encountered in multiple places is that devtools and re
 <span class="header-section-number">7.3.2</span> <code>pkg_example()</code> ayudantes de camino</h3>
 <p>Nos gusta ofrecer funciones convenientes que faciliten el acceso a los archivos de ejemplo. Estos son simplemente envoltorios fáciles de usar alrededor de <code><a href="https://rdrr.io/r/base/system.file.html">system.file()</a></code> o <code><a href="https://fs.r-lib.org/reference/path_package.html">fs::path_package()</a></code>, pero pueden tener características adicionales, como la capacidad de enumerar los archivos de ejemplo. Aquí está la definición y algunos usos de <code><a href="https://readxl.tidyverse.org/reference/readxl_example.html">readxl::readxl_example()</a></code>:</p>
 <div class="cell">
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">readxl_example</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">path</span> <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span> <span class="op">{</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">readxl_example</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">path</span> <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NULL.html">is.null</a></span><span class="op">(</span><span class="va">path</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
 <span>    <span class="fu"><a href="https://rdrr.io/r/base/list.files.html">dir</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span><span class="op">(</span><span class="st">"extdata"</span>, package <span class="op">=</span> <span class="st">"readxl"</span><span class="op">)</span><span class="op">)</span></span>
 <span>  <span class="op">}</span> <span class="kw">else</span> <span class="op">{</span></span>
 <span>    <span class="fu"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span><span class="op">(</span><span class="st">"extdata"</span>, <span class="va">path</span>, package <span class="op">=</span> <span class="st">"readxl"</span>, mustWork <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span>  <span class="op">}</span></span>
-<span><span class="op">}</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="op">}</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell">
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">readxl</span><span class="fu">::</span><span class="fu"><a href="https://readxl.tidyverse.org/reference/readxl_example.html">readxl_example</a></span><span class="op">(</span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">readxl</span><span class="fu">::</span><span class="fu"><a href="https://readxl.tidyverse.org/reference/readxl_example.html">readxl_example</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt;  [1] "clippy.xls"    "clippy.xlsx"   "datasets.xls"  "datasets.xlsx"</span></span>
 <span><span class="co">#&gt;  [5] "deaths.xls"    "deaths.xlsx"   "geometry.xls"  "geometry.xlsx"</span></span>
 <span><span class="co">#&gt;  [9] "type-me.xls"   "type-me.xlsx"</span></span>
 <span></span>
 <span><span class="fu">readxl</span><span class="fu">::</span><span class="fu"><a href="https://readxl.tidyverse.org/reference/readxl_example.html">readxl_example</a></span><span class="op">(</span><span class="st">"clippy.xlsx"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "/home/runner/work/_temp/renv/cache/v5/linux-ubuntu-noble/R-4.4/x86_64-pc-linux-gnu/readxl/1.4.3/8cf9c239b96df1bbb133b74aef77ad0a/readxl/extdata/clippy.xlsx"</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; [1] "/home/runner/work/_temp/renv/cache/v5/linux-ubuntu-noble/R-4.4/x86_64-pc-linux-gnu/readxl/1.4.3/8cf9c239b96df1bbb133b74aef77ad0a/readxl/extdata/clippy.xlsx"</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section></section><section id="sec-data-state" class="level2" data-number="7.4"><h2 data-number="7.4" class="anchored" data-anchor-id="sec-data-state">
 <span class="header-section-number">7.4</span> Estado interno</h2>
@@ -742,7 +745,7 @@ A common theme you've now encountered in multiple places is that devtools and re
 <p>Una excelente manera de administrar dichos datos es utilizar un <em>entorno</em>.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> Este entorno debe crearse en el momento de la compilación, pero puede completarlo con valores después de que se haya cargado el paquete y actualizar esos valores en el transcurso de una sesión de R. Esto funciona porque los entornos tienen una semántica de referencia (mientras que los objetos R más comunes, como vectores atómicos, listas o marcos de datos, tienen una semántica de valores).</p>
 <p>Considere un paquete que pueda almacenar las letras o números favoritos del usuario. Podrías comenzar con un código como este en el archivo siguiente <code>R/</code>:</p>
 <div class="cell">
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">favorite_letters</span> <span class="op">&lt;-</span> <span class="va">letters</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">favorite_letters</span> <span class="op">&lt;-</span> <span class="va">letters</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span></span>
 <span></span>
 <span><span class="co">#' Reportar mis letras favoritas</span></span>
 <span><span class="co">#' @export</span></span>
@@ -756,21 +759,21 @@ A common theme you've now encountered in multiple places is that devtools and re
 <span>  <span class="va">old</span> <span class="op">&lt;-</span> <span class="va">favorite_letters</span></span>
 <span>  <span class="va">favorite_letters</span> <span class="op">&lt;&lt;-</span> <span class="va">l</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/invisible.html">invisible</a></span><span class="op">(</span><span class="va">old</span><span class="op">)</span></span>
-<span><span class="op">}</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="op">}</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><code>favorite_letters</code> se inicializa en (“a”, “b”, “c”) cuando se crea el paquete. Luego, el usuario puede inspeccionar <code>favorite_letters</code> con <code>mfl()</code>, momento en el cual probablemente querrá registrar <em>sus</em> letras favoritas con <code>set_mfl()</code>. Tenga en cuenta que hemos utilizado el operador de superasignación <code>&lt;&lt;-</code> en <code>set_mfl()</code> con la esperanza de que llegue al entorno del paquete y modifique el objeto de datos interno <code>favorite_letters</code>. Pero una llamada a <code>set_mfl()</code> falla así:<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
 <div class="cell">
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">mfl</span><span class="op">(</span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">mfl</span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "a" "b" "c"</span></span>
 <span></span>
 <span><span class="fu">set_mfl</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"j"</span>, <span class="st">"f"</span>, <span class="st">"b"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Error in set_mfl() : </span></span>
-<span><span class="co">#&gt;   cannot change value of locked binding for 'favorite_letters'</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt;   cannot change value of locked binding for 'favorite_letters'</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Debido a que <code>favorite_letters</code> es un vector de caracteres normal, la modificación requiere hacer una copia y volver a vincular el nombre <code>favorite_letters</code> a este nuevo valor. Y eso es lo que no está permitido: no se puede cambiar el enlace de los objetos en el espacio de nombres del paquete (bueno, al menos no sin esforzarse más). Definir <code>favorite_letters</code> de esta manera solo funciona si nunca necesitarás modificarlo.</p>
 <p>Sin embargo, si mantenemos el estado dentro de un entorno de paquete interno, <strong>podemos</strong> modificar los objetos contenidos en el entorno (e incluso agregar objetos completamente nuevos). Aquí hay una implementación alternativa que utiliza un entorno interno llamado “el”.</p>
 <div class="cell">
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">the</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/environment.html">new.env</a></span><span class="op">(</span>parent <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/environment.html">emptyenv</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">the</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/environment.html">new.env</a></span><span class="op">(</span>parent <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/environment.html">emptyenv</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">the</span><span class="op">$</span><span class="va">favorite_letters</span> <span class="op">&lt;-</span> <span class="va">letters</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span></span>
 <span></span>
 <span><span class="co">#' Reportar mis letras favoritas</span></span>
@@ -785,17 +788,17 @@ A common theme you've now encountered in multiple places is that devtools and re
 <span>  <span class="va">old</span> <span class="op">&lt;-</span> <span class="va">the</span><span class="op">$</span><span class="va">favorite_letters</span></span>
 <span>  <span class="va">the</span><span class="op">$</span><span class="va">favorite_letters</span> <span class="op">&lt;-</span> <span class="va">l</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/invisible.html">invisible</a></span><span class="op">(</span><span class="va">old</span><span class="op">)</span></span>
-<span><span class="op">}</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="op">}</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Ahora un usuario <em>puede</em> registrar sus letras favoritas:</p>
 <div class="cell">
-<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">mfl2</span><span class="op">(</span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">mfl2</span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "a" "b" "c"</span></span>
 <span></span>
 <span><span class="fu">set_mfl2</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"j"</span>, <span class="st">"f"</span>, <span class="st">"b"</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu">mfl2</span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "j" "f" "b"</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; [1] "j" "f" "b"</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Tenga en cuenta que este nuevo valor para <code>the$favorite_letters</code> persiste solo durante el resto de la sesión actual de R (o hasta que el usuario llame a <code>set_mfl2()</code> nuevamente). Más precisamente, el estado alterado persiste sólo hasta la próxima vez que se carga el paquete (incluso a través de <code>load_all()</code>). En el momento de la carga, el entorno <code>the</code> se restablece a un entorno que contiene exactamente un objeto, llamado <code>favorite_letters</code>, con valor (“a”, “b”, “c”). Es como la película El día de la marmota. (Discutiremos datos más persistentes específicos de paquetes y usuarios en la siguiente sección).</p>
 <p>Jim Hester presentó a nuestro grupo la ingeniosa idea de utilizar “el” como nombre de un entorno de paquete interno. Esto le permite referirse a los objetos internos de una manera muy natural, como <code>the$token</code>, que significa “<em>the</em> token”. También es importante especificar <code>parent = vacíoenv()</code> al definir un entorno interno, ya que generalmente no desea que el entorno herede de ningún otro entorno (no vacío).</p>
@@ -821,7 +824,7 @@ A common theme you've now encountered in multiple places is that devtools and re
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Envío a CRAN
+<span class="screen-reader-only">Advertencia</span>Envío a CRAN
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -834,12 +837,12 @@ Envío a CRAN
 </div>
 <p>La función principal que debe utilizar para derivar ubicaciones aceptables para los datos del usuario es <code><a href="https://rdrr.io/r/tools/userdir.html">tools::R_user_dir()</a></code><a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>. Aquí hay algunos ejemplos de las rutas de archivos generadas.:</p>
 <div class="cell">
-<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">tools</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/tools/userdir.html">R_user_dir</a></span><span class="op">(</span><span class="st">"pkg"</span>, which <span class="op">=</span> <span class="st">"data"</span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">tools</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/tools/userdir.html">R_user_dir</a></span><span class="op">(</span><span class="st">"pkg"</span>, which <span class="op">=</span> <span class="st">"data"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "/home/runner/.local/share/R/pkg"</span></span>
 <span><span class="fu">tools</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/tools/userdir.html">R_user_dir</a></span><span class="op">(</span><span class="st">"pkg"</span>, which <span class="op">=</span> <span class="st">"config"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "/home/runner/.config/R/pkg"</span></span>
 <span><span class="fu">tools</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/tools/userdir.html">R_user_dir</a></span><span class="op">(</span><span class="st">"pkg"</span>, which <span class="op">=</span> <span class="st">"cache"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "/home/runner/.cache/R/pkg"</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; [1] "/home/runner/.cache/R/pkg"</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Una última cosa que debe considerar con respecto a los datos persistentes es: ¿estos datos <em>realmente</em> necesitan persistir? ¿<em>Realmente</em> necesitas ser el responsable de almacenarlo?</p>
 <p>Si los datos son potencialmente confidenciales, como las credenciales del usuario, se recomienda obtener el consentimiento del usuario para almacenarlos, es decir, requerir consentimiento interactivo al iniciar el caché. Considere también que el sistema operativo del usuario o las herramientas de línea de comandos podrían proporcionar un medio de almacenamiento seguro superior a cualquier solución de bricolaje que pueda implementar. Los paquetes <a href="https://cran.r-project.org/package=keyring">keyring</a>, <a href="https://gitcreds.r-lib.org">gitcreds</a>, y <a href="https://docs.ropensci.org/credentials/">credentials</a> son ejemplos de paquetes que aprovechan herramientas proporcionadas externamente. Antes de embarcarse en cualquier solución creativa para almacenar secretos, considere que probablemente sea mejor invertir su esfuerzo en integrarlo con una herramienta establecida.</p>
@@ -855,15 +858,15 @@ Envío a CRAN
   // Chapter name
   const currentChapterFile = window.location.pathname.split('/').pop().replace('.html', '');
 
-  //Deffining urls
+  //Defining urls
   const originalURL = "https://github.com/hadley/r-pkgs/";
-  const translationURL = "https://github.com/davidrsch/r-pkgses";
+  const translationURL = "https://github.com/davidrsch/rpkgs-es";
 
-  //Deffining texts
+  //Defining texts
   const edit_text = "Editar esta página";
   const issue_text = "Informar de un problema"
 
-  //Deffining git_i
+  //Defining git_i
   const git_i = '<div><i class="bi bi-github"></i></div>';
 
   // Adding TOC if not exist
@@ -968,13 +971,14 @@ Envío a CRAN
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy

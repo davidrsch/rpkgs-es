@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.33">
+<meta name="generator" content="quarto-1.8.25">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="author" content="Hadley Wickham y Jenny Bryan">
 <meta name="description" content="Aprenda a crear un paquete, la unidad fundamental de contenido compartible, reutilizable, y código R reproducible.">
@@ -67,14 +67,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="./logo.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-cecd649be66239f4a3c9dceaf651ba2d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+<link href="site_libs/bootstrap/bootstrap-6a8d939bdf32084eecd9f414bffd5650.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
@@ -88,7 +89,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   ],
   "show-item-context": false,
   "language": {
-    "search-no-results-text": "Sin resultados",
+    "search-no-results-text": "No se han encontrado resultados",
     "search-matching-documents-text": "documentos encontrados",
     "search-copy-link-title": "Copiar el enlace en la búsqueda",
     "search-hide-matches-text": "Ocultar resultados adicionales",
@@ -118,7 +119,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </div>
   </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="./index.html" class="sidebar-logo-link">
+      </a>
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Paquetes de R</a> 
         <div class="sidebar-tools-main">
@@ -131,7 +134,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             </a>
           </li>
           <li>
-            <a class="dropdown-item sidebar-tools-main-item" href="https://github.com/davidrsch/r-pkgses">
+            <a class="dropdown-item sidebar-tools-main-item" href="https://github.com/davidrsch/rpkgs-es">
             Traducción
             </a>
           </li>
@@ -474,7 +477,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>En el raro caso de que necesites crear un paquete empaquetado a partir de un paquete que estás desarrollando localmente, usa <code><a href="https://devtools.r-lib.org/reference/build.html">devtools::build()</a></code>. En el fondo, esto llama a <code><a href="https://pkgbuild.r-lib.org/reference/build.html">pkgbuild::build()</a></code> y, en última instancia, a <code>R CMD build</code>, que se describe con más detalle en la sección <a href="https://cran.r-project.org/doc/manuals/R-exts.html#Building-package-tarballs">Creación de paquetes empaquetados</a> de <a href="https://cran.r-project.org/doc/manuals/R-exts.html">Escribir extensiones de R</a>.</p>
 <p>Esto debería indicarle que un paquete de paquetes o “tarball fuente” no es simplemente el resultado de crear un archivo tar de los archivos fuente y luego comprimirlos con gzip. Por convención, en el mundo R, se llevan a cabo algunas operaciones más al crear el archivo <code>.tar.gz</code> y es por eso que hemos elegido referirnos a esta forma como un paquete <strong>empaquetado</strong>, en este libro.</p>
 <p>Cada paquete CRAN está disponible en forma de empaquetada, a través del campo “Fuente del paquete” de su página de inicio. Continuando con nuestros ejemplos anteriores, puede descargar los empaquetados <code>forcats_0.4.0.tar.gz</code> y <code>readxl_1.3.1.tar.gz</code> (o cualesquiera que sean las versiones actuales). Podrías descomprimir dicho empaquetado en el shell (no en la consola R) de esta manera:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tar</span> xvf forcats_0.4.0.tar.gz</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tar</span> xvf forcats_0.4.0.tar.gz</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Si descomprimes un empaquetado, verás que se ve casi igual que un paquete fuente. <a href="#fig-package-files" class="quarto-xref">Figura&nbsp;<span>3.1</span></a> muestra los archivos presentes en las formas fuente, empaquetada y binaria de un paquete ficticio llamado zzzpackage. Hemos elaborado deliberadamente este ejemplo para incluir la mayoría de las partes del paquete que se tratan en este libro. No todos los paquetes incluirán todos los archivos que se ven aquí, ni este diagrama incluye todos los archivos posibles que puedan aparecer en un paquete.</p>
 <div class="cell">
 <div class="cell-output-display">
@@ -572,7 +575,7 @@ Figura&nbsp;3.2: Muchos métodos para convertir entre estados de paquetes.
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-RStudio
+<span class="screen-reader-only">Tip</span>RStudio
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -584,7 +587,7 @@ RStudio
 <p>El paquete pak (<a href="https://pak.r-lib.org/" class="uri">https://pak.r-lib.org/</a>) es relativamente nuevo (en el momento de escribir este capítulo) y proporciona una alternativa prometedora a <code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages()</a></code>, así como a otras funciones más especializadas como <code><a href="https://remotes.r-lib.org/reference/install_github.html">devtools::install_github()</a></code>. Es demasiado pronto para hacer una recomendación general sobre el uso de pak para todas sus necesidades de instalación de paquetes, pero ciertamente lo estamos usando cada vez más en nuestros flujos de trabajo personales. Una de las características emblemáticas de pak es que resuelve muy bien el problema de la “DLL bloqueada” descrito anteriormente, es decir, actualizar un paquete con código compilado en Windows. A medida que profundice en el desarrollo de paquetes, se encontrará realizando un conjunto completamente nuevo de tareas, como instalar una dependencia desde una rama en desarrollo o examinar los árboles de dependencia de paquetes. pak proporciona un completo conjunto de herramientas para esta y muchas otras tareas relacionadas. Predecimos que pak pronto se convertirá en nuestra recomendación oficial sobre cómo instalar paquetes (y más).</p>
 <p>Sin embargo, mientras tanto, describimos el <em>status quo</em>. devtools ha ofrecido durante mucho tiempo una familia de funciones <code>install_*()</code> para abordar algunas necesidades más allá del alcance de <code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages()</a></code> o para facilitar el acceso a las capacidades existentes. En realidad, estas funciones se mantienen en el [paquete de controles remotos] (https://remotes.r-lib.org) y devtools las reexporta. (Teniendo en cuenta lo que dijimos anteriormente, es probable que los controles remotos sean esencialmente reemplazados a favor del pak, pero aún no hemos llegado a ese punto).</p>
 <div class="cell">
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://remotes.r-lib.org">remotes</a></span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://remotes.r-lib.org">remotes</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">funs</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html">as.character</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/utils/ls_str.html">lsf.str</a></span><span class="op">(</span><span class="st">"package:remotes"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/grep.html">grep</a></span><span class="op">(</span><span class="st">"^install_.+"</span>, <span class="va">funs</span>, value <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
@@ -592,7 +595,7 @@ RStudio
 <span><span class="co">#&gt;  [4] "install_deps"      "install_dev"       "install_git"      </span></span>
 <span><span class="co">#&gt;  [7] "install_github"    "install_gitlab"    "install_local"    </span></span>
 <span><span class="co">#&gt; [10] "install_remote"    "install_svn"       "install_url"      </span></span>
-<span><span class="co">#&gt; [13] "install_version"</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; [13] "install_version"</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><code><a href="https://remotes.r-lib.org/reference/install_github.html">install_github()</a></code> es la más útil de estas funciones y también aparece en <a href="#fig-installation" class="quarto-xref">Figura&nbsp;<span>3.2</span></a>. Es el ejemplo emblemático de una familia de funciones que pueden descargar un paquete desde una ubicación remota que no sea CRAN y hacer lo que sea necesario para instalarlo y sus dependencias. El resto de las funciones de devtools/remotes <code>install_*()</code> están destinadas a hacer que las cosas que son técnicamente posibles con herramientas básicas sean un poco más fáciles o explícitas, como <code><a href="https://remotes.r-lib.org/reference/install_version.html">install_version()</a></code> que instala una versión específica de un paquete CRAN.</p>
 <p>De manera análoga a <code>.Rbuildignore</code>, descrito en la sección <a href="#sec-rbuildignore" class="quarto-xref"><span>Sección 3.3.1</span></a>, <code>.Rinstignore</code> le permite mantener los archivos presentes en un paquete fuera del paquete instalado. Sin embargo, a diferencia de <code>.Rbuildignore</code>, esto es bastante oscuro y rara vez es necesario.</p>
@@ -600,11 +603,11 @@ RStudio
 <span class="header-section-number">3.6</span> Paquete en memoria</h2>
 <p>Finalmente llegamos a un comando familiar para todos los que usan R:</p>
 <div class="cell">
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://usethis.r-lib.org">usethis</a></span><span class="op">)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://usethis.r-lib.org">usethis</a></span><span class="op">)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Suponiendo que usethis esté instalado, esta llamada hace que sus funciones estén disponibles para su uso, es decir, ahora podemos hacer:</p>
 <div class="cell">
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://usethis.r-lib.org/reference/create_package.html">create_package</a></span><span class="op">(</span><span class="st">"/path/to/my/coolpackage"</span><span class="op">)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://usethis.r-lib.org/reference/create_package.html">create_package</a></span><span class="op">(</span><span class="st">"/path/to/my/coolpackage"</span><span class="op">)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>El paquete usethis se ha cargado en la memoria y, de hecho, también se ha adjuntado a la ruta de búsqueda. La distinción entre cargar y adjuntar paquetes no es importante cuando escribes scripts, pero es muy importante cuando escribes paquetes. Aprenderá más sobre la diferencia y por qué es importante en <a href="dependencies-mindset-background.html#sec-dependencies-attach-vs-load" class="quarto-xref"><span>Sección 10.4</span></a>.</p>
 <p><code><a href="https://rdrr.io/r/base/library.html">library()</a></code> no es una buena manera de modificar y probar iterativamente un paquete que está desarrollando, porque solo funciona para un paquete instalado. En <a href="workflow101.html#sec-workflow101-load-all" class="quarto-xref"><span>Sección 4.4</span></a>, aprenderá cómo <code><a href="https://devtools.r-lib.org/reference/load_all.html">devtools::load_all()</a></code> acelera el desarrollo al permitirle cargar un paquete fuente directamente en la memoria.</p>
@@ -618,7 +621,7 @@ RStudio
 <p>La distinción entre los dos es importante y útil a medida que participa en el desarrollo de paquetes.</p>
 <p>Puede tener varias bibliotecas en su computadora. De hecho, muchos de ustedes ya lo hacen, especialmente si están en Windows. Puede usar <code><a href="https://rdrr.io/r/base/libPaths.html">.libPaths()</a></code> para ver qué bibliotecas están actualmente activas. Así es como podría verse esto en Windows:</p>
 <div class="cell">
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># en Windows</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># en Windows</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/libPaths.html">.libPaths</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "C:/Users/jenny/AppData/Local/R/win-library/4.2"</span></span>
 <span><span class="co">#&gt; [2] "C:/Program Files/R/R-4.2.2/library"</span></span>
@@ -637,11 +640,11 @@ RStudio
 <span><span class="co">#&gt; [17] "mgcv"         "nlme"         "nnet"         "parallel"    </span></span>
 <span><span class="co">#&gt; [21] "rpart"        "spatial"      "splines"      "stats"       </span></span>
 <span><span class="co">#&gt; [25] "stats4"       "survival"     "tcltk"        "tools"       </span></span>
-<span><span class="co">#&gt; [29] "translations" "utils"</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; [29] "translations" "utils"</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Aquí hay un aspecto similar en macOS (pero los resultados pueden variar):</p>
 <div class="cell">
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># en macOS</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># en macOS</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/libPaths.html">.libPaths</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "/Users/jenny/Library/R/arm64/4.2/library"</span></span>
 <span><span class="co">#&gt; [2] "/Library/Frameworks/R.framework/Versions/4.2-arm64/Resources/library"</span></span>
@@ -660,7 +663,7 @@ RStudio
 <span><span class="co">#&gt; [17] "mgcv"         "nlme"         "nnet"         "parallel"    </span></span>
 <span><span class="co">#&gt; [21] "rpart"        "spatial"      "splines"      "stats"       </span></span>
 <span><span class="co">#&gt; [25] "stats4"       "survival"     "tcltk"        "tools"       </span></span>
-<span><span class="co">#&gt; [29] "translations" "utils"</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; [29] "translations" "utils"</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>En ambos casos vemos dos bibliotecas activas, consultadas en este orden:</p>
 <ol type="1">
@@ -691,15 +694,15 @@ RStudio
   // Chapter name
   const currentChapterFile = window.location.pathname.split('/').pop().replace('.html', '');
 
-  //Deffining urls
+  //Defining urls
   const originalURL = "https://github.com/hadley/r-pkgs/";
-  const translationURL = "https://github.com/davidrsch/r-pkgses";
+  const translationURL = "https://github.com/davidrsch/rpkgs-es";
 
-  //Deffining texts
+  //Defining texts
   const edit_text = "Editar esta página";
   const issue_text = "Informar de un problema"
 
-  //Deffining git_i
+  //Defining git_i
   const git_i = '<div><i class="bi bi-github"></i></div>';
 
   // Adding TOC if not exist
@@ -804,13 +807,14 @@ RStudio
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy

@@ -49,7 +49,7 @@ Si la `DESCRIPTION` contiene `LazyData: true`, los conjuntos de datos se cargar�
 [source,r,cell-code]
 ----
 lobstr::mem_used()
-#> 74.60 MB
+#> 74.61 MB
 library(nycflights13)
 lobstr::mem_used()
 #> 76.33 MB
@@ -244,7 +244,7 @@ system.file("extdata", package = "readxl") |> list.files()
 #>  [9] "type-me.xls"   "type-me.xlsx"
 
 system.file("extdata", "clippy.xlsx", package = "readxl")
-#> [1] "/home/runner/work/r-pkgses/r-pkgses/renv/library/linux-ubuntu-noble/R-4.4/x86_64-pc-linux-gnu/readxl/extdata/clippy.xlsx"
+#> [1] "/home/runner/work/rpkgs-es/rpkgs-es/renv/library/linux-ubuntu-noble/R-4.4/x86_64-pc-linux-gnu/readxl/extdata/clippy.xlsx"
 ----
 
 Estas rutas de archivos presentan otro dilema en el flujo de trabajo: cuando estás desarrollando tu paquete, interactúas con él en su formato fuente, pero tus usuarios interactúan con él como un paquete instalado. Afortunadamente, devtools proporciona una corrección para `base::system.file()` que se activa mediante `load++_++all()`. Esto realiza llamadas interactivas a `system.file()` desde el entorno global y las llamadas desde dentro del espacio de nombres del paquete "`simplemente funcionan`".
@@ -275,14 +275,14 @@ El https://fs.r-lib.org[paquete fs] ofrece `fs::path++_++package()`. Esto es ese
 ----
 fs::path_package("extdata", package = "idonotexist")
 #> Error: Can't find package `idonotexist` in library locations:
-#>   - '/home/runner/work/r-pkgses/r-pkgses/renv/library/linux-ubuntu-noble/R-4.4/x86_64-pc-linux-gnu'
+#>   - '/home/runner/work/rpkgs-es/rpkgs-es/renv/library/linux-ubuntu-noble/R-4.4/x86_64-pc-linux-gnu'
 #>   - '/home/runner/.cache/R/renv/sandbox/linux-ubuntu-noble/R-4.4/x86_64-pc-linux-gnu/3df92652'
 
 fs::path_package("extdata", "I_do_not_exist.csv", package = "readr")
-#> Error: File(s) '/home/runner/work/r-pkgses/r-pkgses/renv/library/linux-ubuntu-noble/R-4.4/x86_64-pc-linux-gnu/readr/extdata/I_do_not_exist.csv' do not exist
+#> Error: File(s) '/home/runner/work/rpkgs-es/rpkgs-es/renv/library/linux-ubuntu-noble/R-4.4/x86_64-pc-linux-gnu/readr/extdata/I_do_not_exist.csv' do not exist
 
 fs::path_package("extdata", "chickens.csv", package = "readr")
-#> /home/runner/work/r-pkgses/r-pkgses/renv/library/linux-ubuntu-noble/R-4.4/x86_64-pc-linux-gnu/readr/extdata/chickens.csv
+#> /home/runner/work/rpkgs-es/rpkgs-es/renv/library/linux-ubuntu-noble/R-4.4/x86_64-pc-linux-gnu/readr/extdata/chickens.csv
 ----
 
 [[sec-data-example-path-helper]]

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.33">
+<meta name="generator" content="quarto-1.8.25">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="author" content="Hadley Wickham y Jenny Bryan">
 <meta name="description" content="Aprenda a crear un paquete, la unidad fundamental de contenido compartible, reutilizable, y código R reproducible.">
@@ -67,14 +67,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="./logo.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-cecd649be66239f4a3c9dceaf651ba2d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+<link href="site_libs/bootstrap/bootstrap-6a8d939bdf32084eecd9f414bffd5650.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
@@ -88,7 +89,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   ],
   "show-item-context": false,
   "language": {
-    "search-no-results-text": "Sin resultados",
+    "search-no-results-text": "No se han encontrado resultados",
     "search-matching-documents-text": "documentos encontrados",
     "search-copy-link-title": "Copiar el enlace en la búsqueda",
     "search-hide-matches-text": "Ocultar resultados adicionales",
@@ -118,7 +119,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </div>
   </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="./index.html" class="sidebar-logo-link">
+      </a>
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Paquetes de R</a> 
         <div class="sidebar-tools-main">
@@ -131,7 +134,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             </a>
           </li>
           <li>
-            <a class="dropdown-item sidebar-tools-main-item" href="https://github.com/davidrsch/r-pkgses">
+            <a class="dropdown-item sidebar-tools-main-item" href="https://github.com/davidrsch/rpkgs-es">
             Traducción
             </a>
           </li>
@@ -501,7 +504,7 @@ Tip
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-RStudio
+<span class="screen-reader-only">Tip</span>RStudio
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -553,7 +556,7 @@ Figura&nbsp;6.1: Vaya a Archivo/Función en RStudio.
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-RStudio
+<span class="screen-reader-only">Tip</span>RStudio
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -599,7 +602,7 @@ Advertencia
 </h3>
 <p>El paquete shinybootstrap2 alguna vez tuvo este código a continuación <code>R/</code>:</p>
 <div class="cell">
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">dataTableDependency</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">dataTableDependency</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span></span>
 <span>  <span class="fu">htmlDependency</span><span class="op">(</span></span>
 <span>    <span class="st">"datatables"</span>, <span class="st">"1.10.2"</span>,</span>
 <span>    <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>file <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span><span class="op">(</span><span class="st">"www/datatables"</span>, package <span class="op">=</span> <span class="st">"shinybootstrap2"</span><span class="op">)</span><span class="op">)</span>,</span>
@@ -611,7 +614,7 @@ Advertencia
 <span>    stylesheet <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"css/dataTables.bootstrap.css"</span>, <span class="st">"css/dataTables.extra.css"</span><span class="op">)</span>,</span>
 <span>    script <span class="op">=</span> <span class="st">"js/dataTables.bootstrap.js"</span></span>
 <span>  <span class="op">)</span></span>
-<span><span class="op">)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="op">)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Entonces, <code>dataTableDependency</code> era un objeto de lista definido en el código del paquete de nivel superior y su valor se construyó a partir de rutas obtenidas a través de <code><a href="https://rdrr.io/r/base/system.file.html">system.file()</a></code>. Como se describe en <a href="https://github.com/rstudio/htmltools/issues/22">un problema de GitHub</a>,</p>
 <blockquote class="blockquote">
@@ -622,7 +625,7 @@ Advertencia
 <span class="header-section-number">6.4.2</span> Ejemplo: Colores disponibles</h3>
 <p>El paquete crayon tiene una función, <code><a href="https://rdrr.io/pkg/crayon/man/show_ansi_colors.html">crayon::show_ansi_colors()</a></code>, que muestra una tabla de colores ANSI en la pantalla, básicamente para mostrar qué tipo de estilo es posible. En una versión anterior, la función se parecía a esta:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>show_ansi_colors <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">colors =</span> <span class="fu">num_colors</span>()) {</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>show_ansi_colors <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">colors =</span> <span class="fu">num_colors</span>()) {</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (colors <span class="sc">&lt;</span> <span class="dv">8</span>) {</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">cat</span>(<span class="st">"Los colores no son compatibles"</span>)</span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (colors <span class="sc">&lt;</span> <span class="dv">256</span>) {</span>
@@ -636,13 +639,13 @@ Advertencia
 <span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>ansi_colors_8 <span class="ot">&lt;-</span> <span class="co"># código para generar un vector que cubre los colores básicos del terminal</span></span>
 <span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>ansi_colors_256 <span class="ot">&lt;-</span> <span class="co"># código para generar un vector que cubre 256 colores</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>ansi_colors_256 <span class="ot">&lt;-</span> <span class="co"># código para generar un vector que cubre 256 colores</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>donde <code>ansi_colors_8</code> y <code>ansi_colors_256</code> eran vectores de caracteres que exploraban un determinado conjunto de colores, presumiblemente diseñados mediante escapes ANSI.</p>
 <p>El problema era que esos objetos se formaban y almacenaban en caché cuando se compilaba el paquete binario. Dado que esto sucede a menudo en un servidor sin cabeza, es probable que esto suceda en condiciones en las que los colores del terminal podrían no estar habilitados o incluso disponibles. Los usuarios del paquete instalado aún podrían llamar a <code>show_ansi_colors()</code> y <code>num_colors()</code> detectaría la cantidad de colores admitidos por su sistema (256 en la mayoría de las computadoras modernas). Pero entonces un objeto sin color se imprimiría en la pantalla (el problema original de GitHub es <a href="https://github.com/r-lib/crayon/issues/37">r-lib/crayon#37</a>).</p>
 <p>La solución fue calcular los objetos de visualización con una función en tiempo de ejecución (en confirmación <a href="https://github.com/r-lib/crayon/commit/e2b368ac27331d82154f85299f18efbc36227caa">e2b368a</a>:</p>
 <div class="cell">
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">show_ansi_colors</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">colors</span> <span class="op">=</span> <span class="fu">num_colors</span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">show_ansi_colors</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">colors</span> <span class="op">=</span> <span class="fu">num_colors</span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="kw">if</span> <span class="op">(</span><span class="va">colors</span> <span class="op">&lt;</span> <span class="fl">8</span><span class="op">)</span> <span class="op">{</span></span>
 <span>    <span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"Colors are not supported"</span><span class="op">)</span></span>
 <span>  <span class="op">}</span> <span class="kw">else</span> <span class="kw">if</span> <span class="op">(</span><span class="va">colors</span> <span class="op">&lt;</span> <span class="fl">256</span><span class="op">)</span> <span class="op">{</span></span>
@@ -660,7 +663,7 @@ Advertencia
 <span>  </span>
 <span><span class="va">ansi_colors_256</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="co"># código para generar un vector que cubre 256 colores</span></span>
-<span><span class="op">}</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="op">}</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Literalmente, se usa el mismo código, simplemente se inserta en el cuerpo de una función sin argumentos (similar al ejemplo de shinybootstrap2). Cada referencia a, por ejemplo, el objeto <code>ansi_colors_8</code> se reemplaza por una llamada a la función <code>ansi_colors_8()</code>.</p>
 <p>La conclusión principal es que las funciones que evalúan o exponen las capacidades de su paquete en el sistema de un usuario deben ejecutarse completamente en el sistema de su usuario. Es bastante fácil confiar accidentalmente en resultados que se almacenaron en caché en el momento de la compilación, muy posiblemente en una máquina diferente.</p>
@@ -668,11 +671,11 @@ Advertencia
 <span class="header-section-number">6.4.3</span> Ejemplo: asignar un alias a una función</h3>
 <p>Un último ejemplo muestra que, incluso si tiene cuidado de definir solo funciones debajo de <code>R/</code>, todavía hay algunas sutilezas a considerar. Imagine que desea que la función <code>foo()</code> en su paquete sea básicamente un alias para la función <code>blah()</code> de algún otro paquete, p.e. paqueteB. Quizás tengas la tentación de hacer esto:</p>
 <div class="cell">
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">foo</span> <span class="op">&lt;-</span> <span class="fu">pkgB</span><span class="fu">::</span><span class="va">blah</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">foo</span> <span class="op">&lt;-</span> <span class="fu">pkgB</span><span class="fu">::</span><span class="va">blah</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Sin embargo, esto hará que <code>foo()</code> en su paquete refleje la definición de <code>pkgB::blah()</code> en la versión presente en la máquina donde se compila el paquete binario (a menudo CRAN), en ese momento. Si se descubre un error en <code>pkgB::blah()</code> y posteriormente se corrige, su paquete seguirá usando la versión anterior con errores, hasta que su paquete sea reconstruido (a menudo mediante CRAN) y sus usuarios actualicen, lo cual está completamente fuera de su alcance. Este enfoque alternativo lo protege de esto:</p>
 <div class="cell">
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">foo</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">...</span><span class="op">)</span> <span class="fu">pkgB</span><span class="fu">::</span><span class="fu">blah</span><span class="op">(</span><span class="va">...</span><span class="op">)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">foo</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">...</span><span class="op">)</span> <span class="fu">pkgB</span><span class="fu">::</span><span class="fu">blah</span><span class="op">(</span><span class="va">...</span><span class="op">)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Ahora, cuando su usuario llama a <code>foo()</code>, efectivamente está llamando a <code>pkgB::blah()</code>, en la versión instalada en <em>su</em> máquina en ese mismo momento.</p>
 <p>Un ejemplo real de esto afectó a una versión anterior de knitr, relacionado con cómo el gancho “evaluar” predeterminado se estaba configurando en <code><a href="https://rdrr.io/pkg/evaluate/man/evaluate.html">evaluate::evaluate()</a></code> (el problema original es <a href="https://github%20.com/yihui/knitr/issues/1441">yihui/knitr#1441</a>, resuelto en commit <a href="https://github.com/yihui/knitr/commit/d6b53e0f15a8afd1de4987a86931ba54f886278d">d6b53e0</a>).</p>
@@ -698,7 +701,7 @@ Advertencia
 <!-- TODO: maybe tell one or more of the scary stories in <https://github.com/hadley/r-pkgs/issues/447> --><p>Si debe usarlos, asegúrese de limpiarlo usted mismo. A continuación mostramos cómo hacer esto usando funciones del paquete withr y en base R.</p>
 <p>La otra cara de esta moneda es que debes evitar confiar en el panorama del usuario, que podría ser diferente al tuyo. Por ejemplo, las funciones que dependen de la clasificación de cadenas son peligrosas, porque el orden de clasificación depende de la configuración regional del sistema. A continuación vemos que las configuraciones regionales que uno puede encontrar en la práctica (C, inglés, francés, etc.) difieren en la forma en que clasifican las cadenas que no son ASCII o las letras mayúsculas versus minúsculas.</p>
 <div class="cell">
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"bernard"</span>, <span class="st">"bérénice"</span>, <span class="st">"béatrice"</span>, <span class="st">"boris"</span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"bernard"</span>, <span class="st">"bérénice"</span>, <span class="st">"béatrice"</span>, <span class="st">"boris"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu">withr</span><span class="fu">::</span><span class="fu"><a href="https://withr.r-lib.org/reference/with_locale.html">with_locale</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>LC_COLLATE <span class="op">=</span> <span class="st">"fr_FR"</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/sort.html">sort</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Warning in (function (category = "LC_ALL", locale = "") : OS</span></span>
@@ -714,7 +717,7 @@ Advertencia
 <span><span class="co">#&gt; reports request to set locale to "en_CA" cannot be honored</span></span>
 <span><span class="co">#&gt; [1] "a" "A" "A" "b" "b" "B"</span></span>
 <span><span class="fu">withr</span><span class="fu">::</span><span class="fu"><a href="https://withr.r-lib.org/reference/with_locale.html">with_locale</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>LC_COLLATE <span class="op">=</span> <span class="st">"C"</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/sort.html">sort</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "A" "A" "B" "a" "b" "b"</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; [1] "A" "A" "B" "a" "b" "b"</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Si escribe sus funciones como si todos los usuarios tuvieran la misma configuración regional del sistema que usted, su código podría fallar.</p>
 <section id="administrar-estado-con-withr" class="level3" data-number="6.5.1"><h3 data-number="6.5.1" class="anchored" data-anchor-id="administrar-estado-con-withr">
@@ -723,12 +726,12 @@ Advertencia
 <p>Generalmente administramos el estado usando el <a href="https://withr.r-lib.org">paquete withr</a>, que proporciona un kit de herramientas flexible similar a <code><a href="https://rdrr.io/r/base/on.exit.html">on.exit()</a></code> (<code><a href="https://rdrr.io/r/base/on.exit.html">on.exit()</a></code> en sí está cubierto en la siguiente sección). <code><a href="https://withr.r-lib.org/reference/defer.html">withr::defer()</a></code> se puede utilizar como reemplazo directo de <code><a href="https://rdrr.io/r/base/on.exit.html">on.exit()</a></code>. ¿Por qué nos gusta tanto? En primer lugar, ofrece muchas funciones de conveniencia prediseñadas para cambios de estado que surgen con frecuencia. También apreciamos el comportamiento de pila predeterminado de withr (LIFO = último en entrar, primero en salir), su usabilidad en sesiones interactivas y su argumento <code>envir</code> (en uso más avanzado).</p>
 <p>El patrón general es capturar el estado original, programar su eventual restauración “al salir” y luego realizar el cambio de estado. Algunos definidores, como <code><a href="https://rdrr.io/r/base/options.html">options()</a></code> o <code><a href="https://rdrr.io/r/graphics/par.html">par()</a></code>, devuelven el valor anterior cuando proporcionas un valor nuevo, lo que lleva a un uso similar al siguiente:</p>
 <div class="cell">
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">f</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, <span class="va">z</span><span class="op">)</span> <span class="op">{</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">f</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, <span class="va">z</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">...</span>                        <span class="co"># width option "as found"</span></span>
 <span>  <span class="va">old</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/options.html">options</a></span><span class="op">(</span>width <span class="op">=</span> <span class="fl">20</span><span class="op">)</span> <span class="co"># width option is 20</span></span>
 <span>  <span class="fu">defer</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/options.html">options</a></span><span class="op">(</span><span class="va">old</span><span class="op">)</span><span class="op">)</span>        <span class="co"># width option is 20</span></span>
 <span>  <span class="va">...</span>                        <span class="co"># width option is 20</span></span>
-<span><span class="op">}</span>                            <span class="co"># original width option restored</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="op">}</span>                            <span class="co"># original width option restored</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Ciertos cambios de estado, como la modificación de las opciones de sesión, surgen con tanta frecuencia que ofrece ayudas prediseñadas. <a href="#tbl-withr-greatest-hits" class="quarto-xref">Tabla&nbsp;<span>6.2</span></a> muestra algunos de los asistentes de cambio de estado que probablemente le resulten útiles:</p>
 <div id="tbl-withr-greatest-hits" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -779,24 +782,24 @@ Tabla&nbsp;6.2: Establecer un parámetro de gráficos withr.
 <li>
 <p><code>with_*()</code> Las funciones son mejores para ejecutar pequeños fragmentos de código con un estado modificado temporalmente. (Estas funciones están inspiradas en cómo funciona <code><a href="https://rdrr.io/r/base/with.html">base::with()</a></code>).</p>
 <div class="cell">
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">f</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">sig_digits</span><span class="op">)</span> <span class="op">{</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">f</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">sig_digits</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="co"># imagina mucho código aquí</span></span>
 <span>  <span class="fu">withr</span><span class="fu">::</span><span class="fu"><a href="https://withr.r-lib.org/reference/with_options.html">with_options</a></span><span class="op">(</span></span>
 <span>    <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>digits <span class="op">=</span> <span class="va">sig_digits</span><span class="op">)</span>,</span>
 <span>    <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
 <span>  <span class="op">)</span></span>
 <span>  <span class="co"># ... y mucho más código aquí</span></span>
-<span><span class="op">}</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="op">}</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </li>
 <li>
 <p><code>local_*()</code> Las funciones son mejores para modificar el estado “desde ahora hasta que la función salga”.</p>
 <div class="cell">
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">g</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">sig_digits</span><span class="op">)</span> <span class="op">{</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">g</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">sig_digits</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="fu">withr</span><span class="fu">::</span><span class="fu"><a href="https://withr.r-lib.org/reference/with_options.html">local_options</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>digits <span class="op">=</span> <span class="va">sig_digits</span><span class="op">)</span><span class="op">)</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
 <span>  <span class="co"># imagina mucho código aquí</span></span>
-<span><span class="op">}</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="op">}</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </li>
 </ul>
@@ -807,22 +810,22 @@ Tabla&nbsp;6.2: Establecer un parámetro de gráficos withr.
 </h3>
 <p>Así es como se ve el patrón general “guardar, programar restauración, cambiar” cuando se usa <code><a href="https://rdrr.io/r/base/on.exit.html">base::on.exit()</a></code>.</p>
 <div class="cell">
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">f</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, <span class="va">z</span><span class="op">)</span> <span class="op">{</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">f</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, <span class="va">z</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">...</span></span>
 <span>  <span class="va">old</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/options.html">options</a></span><span class="op">(</span>mfrow <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">2</span><span class="op">)</span>, pty <span class="op">=</span> <span class="st">"s"</span><span class="op">)</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/on.exit.html">on.exit</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/options.html">options</a></span><span class="op">(</span><span class="va">old</span><span class="op">)</span>, add <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span>  <span class="va">...</span></span>
-<span><span class="op">}</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="op">}</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Otros cambios de estado no están disponibles con ese tipo de configurador y debe implementarlos usted mismo.</p>
 <div class="cell">
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">g</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">a</span>, <span class="va">b</span>, <span class="va">c</span><span class="op">)</span> <span class="op">{</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">g</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">a</span>, <span class="va">b</span>, <span class="va">c</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">...</span></span>
 <span>  <span class="va">scratch_file</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html">tempfile</a></span><span class="op">(</span><span class="op">)</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/on.exit.html">on.exit</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/unlink.html">unlink</a></span><span class="op">(</span><span class="va">scratch_file</span><span class="op">)</span>, add <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/files.html">file.create</a></span><span class="op">(</span><span class="va">scratch_file</span><span class="op">)</span></span>
 <span>  <span class="va">...</span></span>
-<span><span class="op">}</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="op">}</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Tenga en cuenta que especificamos <code>on.exit(..., add = TRUE)</code>, porque casi siempre desea este comportamiento, es decir, <em>agregar</em> a la lista de tareas de limpieza diferidas en lugar de <em>reemplazarlas</em> por completo. Esto (y el valor predeterminado de <code>después</code>) están relacionados con nuestra preferencia por <code><a href="https://withr.r-lib.org/reference/defer.html">withr::defer()</a></code>, cuando estamos dispuestos a depender de withr. Estas cuestiones se exploran en una <a href="https://withr.r-lib.org/articles/changing-and-restoring-state.html">viñeta withr</a>.</p>
 </section><section id="aislar-los-efectos-secundarios" class="level3" data-number="6.5.3"><h3 data-number="6.5.3" class="anchored" data-anchor-id="aislar-los-efectos-secundarios">
@@ -836,7 +839,7 @@ Tabla&nbsp;6.2: Establecer un parámetro de gráficos withr.
 <li>
 <p>Para configurar opciones personalizadas para su paquete con <code>opciones()</code>. Para evitar conflictos con otros paquetes, asegúrese de anteponer los nombres de las opciones al nombre de su paquete. También tenga cuidado de no anular las opciones que el usuario ya haya configurado. Aquí hay una versión (altamente redactada) de la función <code>.onLoad()</code> de dplyr que establece una opción que controla los informes de progreso:</p>
 <div class="cell">
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">.onLoad</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">libname</span>, <span class="va">pkgname</span><span class="op">)</span> <span class="op">{</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">.onLoad</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">libname</span>, <span class="va">pkgname</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">op</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/options.html">options</a></span><span class="op">(</span><span class="op">)</span></span>
 <span>  <span class="va">op.dplyr</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span></span>
 <span>    dplyr.show_progress <span class="op">=</span> <span class="cn">TRUE</span></span>
@@ -845,7 +848,7 @@ Tabla&nbsp;6.2: Establecer un parámetro de gráficos withr.
 <span>  <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/any.html">any</a></span><span class="op">(</span><span class="va">toset</span><span class="op">)</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/options.html">options</a></span><span class="op">(</span><span class="va">op.dplyr</span><span class="op">[</span><span class="va">toset</span><span class="op">]</span><span class="op">)</span></span>
 <span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/invisible.html">invisible</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="op">}</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="op">}</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Esto permite que las funciones en dplyr usen <code>getOption("dplyr.show_progress")</code> para determinar si se muestran barras de progreso, basándose en el hecho de que ya se ha establecido un valor predeterminado sensato.</p>
 </li>
@@ -854,9 +857,9 @@ Tabla&nbsp;6.2: Establecer un parámetro de gráficos withr.
 <li>Para mostrar un mensaje informativo cuando se adjunta el paquete. Esto podría aclarar las condiciones de uso o mostrar las capacidades del paquete según las condiciones actuales del sistema. Los mensajes de inicio son un lugar donde debes usar <code>.onAttach()</code> en lugar de <code>.onLoad()</code>. Para mostrar mensajes de inicio, utilice siempre <code><a href="https://rdrr.io/r/base/message.html">packageStartupMessage()</a></code>, y no <code><a href="https://rdrr.io/r/base/message.html">message()</a></code>. (Esto permite que <code><a href="https://rdrr.io/r/base/message.html">suppressPackageStartupMessages()</a></code> suprima selectivamente los mensajes de inicio del paquete).</li>
 </ul>
 <div class="cell">
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">.onAttach</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">libname</span>, <span class="va">pkgname</span><span class="op">)</span> <span class="op">{</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">.onAttach</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">libname</span>, <span class="va">pkgname</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/message.html">packageStartupMessage</a></span><span class="op">(</span><span class="st">"Welcome to my package"</span><span class="op">)</span></span>
-<span><span class="op">}</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="op">}</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Como puede ver en los ejemplos, <code>.onLoad()</code> y <code>.onAttach()</code> se llaman con dos argumentos: <code>libname</code> y <code>pkgname</code>. Rara vez se usan (son un vestigio de los días en que necesitabas usar <code><a href="https://rdrr.io/r/base/library.dynam.html">library.dynam()</a></code> para cargar código compilado). Proporcionan la ruta donde está instalado el paquete (la “biblioteca”) y el nombre del paquete.</p>
 <p>Si usa <code>.onLoad()</code>, considere usar <code>.onUnload()</code> para limpiar cualquier efecto secundario. Por convención, <code>.onLoad()</code> y sus amigos generalmente se guardan en un archivo llamado <code>R/zzz.R</code>. (Tenga en cuenta que <code>.First.lib()</code> y <code>.Last.lib()</code> son versiones antiguas de <code>.onLoad()</code> y <code>.onUnload()</code> y ya no deben usarse).</p>
@@ -890,19 +893,19 @@ Tabla&nbsp;6.2: Establecer un parámetro de gráficos withr.
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Envío a CRAN
+<span class="screen-reader-only">Advertencia</span>Envío a CRAN
 </div>
 </div>
 <div class="callout-body-container callout-body">
 <p>Si planea enviar su paquete a CRAN, debe usar solo caracteres ASCII en sus archivos <code>.R</code>. En la práctica, esto significa que está limitado a los dígitos del 0 al 9, las letras minúsculas de la “a” a la “z”, las letras mayúsculas de la “A” a la “Z” y la puntuación común.</p>
 <p>Pero a veces es necesario insertar una pequeña cantidad de datos de caracteres que incluyen, por ejemplo, una letra griega (µ), un carácter acentuado (ü) o un símbolo (30°). Puede utilizar cualquier carácter Unicode siempre que lo especifique en el formato especial de escape Unicode <code>"\u1234"</code>. La forma más sencilla de encontrar el punto de código correcto es utilizar <code><a href="https://rdrr.io/pkg/stringi/man/stri_escape_unicode.html">stringi::stri_escape_unicode()</a></code>:</p>
 <div class="cell">
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="st">"Esto es un punto •"</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="st">"Esto es un punto •"</span></span>
 <span><span class="va">y</span> <span class="op">&lt;-</span> <span class="st">"Esto es un punto \u2022"</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/identical.html">identical</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] TRUE</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="fu">stringi</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/stringi/man/stri_escape_unicode.html">stri_escape_unicode</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Esto es un punto \u2022</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; Esto es un punto \u2022</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>A veces tienes el problema opuesto. No tienes <em>intencionalmente</em> ningún carácter que no sea ASCII en tu código R, pero las comprobaciones automáticas revelan que sí los tienes.</p>
 <pre><code>W  checking R files for non-ASCII characters ...
@@ -913,8 +916,8 @@ Envío a CRAN
    Use \uxxxx escapes for other characters.</code></pre>
 <p>Los infractores más comunes son las comillas simples y dobles “rizadas” o “inteligentes” que se cuelan al copiar y pegar. Las funciones <code><a href="https://rdrr.io/r/tools/showNonASCII.html">tools::showNonASCII()</a></code> y <code>tools::showNonASCIIfile(file)</code> le ayudan a encontrar los archivos y líneas infractores.</p>
 <div class="cell">
-<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">tools</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/tools/showNonASCII.html">showNonASCIIfile</a></span><span class="op">(</span><span class="st">"R/foo.R"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; 666: #' If you&lt;e2&gt;&lt;80&gt;&lt;99&gt;ve copy/pasted quotes, watch out!</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">tools</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/tools/showNonASCII.html">showNonASCIIfile</a></span><span class="op">(</span><span class="st">"R/foo.R"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; 666: #' If you&lt;e2&gt;&lt;80&gt;&lt;99&gt;ve copy/pasted quotes, watch out!</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -930,15 +933,15 @@ Envío a CRAN
   // Chapter name
   const currentChapterFile = window.location.pathname.split('/').pop().replace('.html', '');
 
-  //Deffining urls
+  //Defining urls
   const originalURL = "https://github.com/hadley/r-pkgs/";
-  const translationURL = "https://github.com/davidrsch/r-pkgses";
+  const translationURL = "https://github.com/davidrsch/rpkgs-es";
 
-  //Deffining texts
+  //Defining texts
   const edit_text = "Editar esta página";
   const issue_text = "Informar de un problema"
 
-  //Deffining git_i
+  //Defining git_i
   const git_i = '<div><i class="bi bi-github"></i></div>';
 
   // Adding TOC if not exist
@@ -1043,13 +1046,14 @@ Envío a CRAN
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy

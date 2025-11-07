@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.33">
+<meta name="generator" content="quarto-1.8.25">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="author" content="Hadley Wickham y Jenny Bryan">
 <meta name="description" content="Aprenda a crear un paquete, la unidad fundamental de contenido compartible, reutilizable, y código R reproducible.">
@@ -67,14 +67,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="./logo.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-cecd649be66239f4a3c9dceaf651ba2d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+<link href="site_libs/bootstrap/bootstrap-6a8d939bdf32084eecd9f414bffd5650.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
@@ -88,7 +89,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   ],
   "show-item-context": false,
   "language": {
-    "search-no-results-text": "Sin resultados",
+    "search-no-results-text": "No se han encontrado resultados",
     "search-matching-documents-text": "documentos encontrados",
     "search-copy-link-title": "Copiar el enlace en la búsqueda",
     "search-hide-matches-text": "Ocultar resultados adicionales",
@@ -118,7 +119,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </div>
   </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="./index.html" class="sidebar-logo-link">
+      </a>
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Paquetes de R</a> 
         <div class="sidebar-tools-main">
@@ -131,7 +134,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             </a>
           </li>
           <li>
-            <a class="dropdown-item sidebar-tools-main-item" href="https://github.com/davidrsch/r-pkgses">
+            <a class="dropdown-item sidebar-tools-main-item" href="https://github.com/davidrsch/rpkgs-es">
             Traducción
             </a>
           </li>
@@ -464,8 +467,8 @@ Evan,seaside,31</code></pre>
 </div>
 <p><code>data-cleaning.R</code> comienza leyendo <code>swim.csv</code> en un data frame o marco de datos:</p>
 <div class="cell">
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">infile</span> <span class="op">&lt;-</span> <span class="st">"swim.csv"</span></span>
-<span><span class="op">(</span><span class="va">dat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span><span class="op">(</span><span class="va">infile</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">infile</span> <span class="op">&lt;-</span> <span class="st">"swim.csv"</span></span>
+<span><span class="op">(</span><span class="va">dat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span><span class="op">(</span><span class="va">infile</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell">
 <pre><code>#&gt;   name    where temp
@@ -477,36 +480,36 @@ Evan,seaside,31</code></pre>
 </div>
 <p>Luego clasifican cada observación en inglés americano (“EE.UU.”) o británico (“Reino Unido”), según la palabra elegida para describir el lugar arenoso donde se unen el océano y la tierra. La columna <code>where</code> se utiliza para construir la nueva columna <code>english</code>.</p>
 <div class="cell">
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">dat</span><span class="op">$</span><span class="va">english</span><span class="op">[</span><span class="va">dat</span><span class="op">$</span><span class="va">where</span> <span class="op">==</span> <span class="st">"beach"</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="st">"US"</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">dat</span><span class="op">$</span><span class="va">english</span><span class="op">[</span><span class="va">dat</span><span class="op">$</span><span class="va">where</span> <span class="op">==</span> <span class="st">"beach"</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="st">"US"</span></span>
 <span><span class="va">dat</span><span class="op">$</span><span class="va">english</span><span class="op">[</span><span class="va">dat</span><span class="op">$</span><span class="va">where</span> <span class="op">==</span> <span class="st">"coast"</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="st">"US"</span></span>
 <span><span class="va">dat</span><span class="op">$</span><span class="va">english</span><span class="op">[</span><span class="va">dat</span><span class="op">$</span><span class="va">where</span> <span class="op">==</span> <span class="st">"seashore"</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="st">"UK"</span></span>
-<span><span class="va">dat</span><span class="op">$</span><span class="va">english</span><span class="op">[</span><span class="va">dat</span><span class="op">$</span><span class="va">where</span> <span class="op">==</span> <span class="st">"seaside"</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="st">"UK"</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="va">dat</span><span class="op">$</span><span class="va">english</span><span class="op">[</span><span class="va">dat</span><span class="op">$</span><span class="va">where</span> <span class="op">==</span> <span class="st">"seaside"</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="st">"UK"</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Lamentablemente, las temperaturas a menudo se informan en una combinación de grados Fahrenheit y Celsius. A falta de mejor información, suponen que los estadounidenses informan las temperaturas en grados Fahrenheit y, por lo tanto, esas observaciones se convierten a grados Celsius.</p>
 <div class="cell">
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">dat</span><span class="op">$</span><span class="va">temp</span><span class="op">[</span><span class="va">dat</span><span class="op">$</span><span class="va">english</span> <span class="op">==</span> <span class="st">"US"</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="va">dat</span><span class="op">$</span><span class="va">temp</span><span class="op">[</span><span class="va">dat</span><span class="op">$</span><span class="va">english</span> <span class="op">==</span> <span class="st">"US"</span><span class="op">]</span> <span class="op">-</span> <span class="fl">32</span><span class="op">)</span> <span class="op">*</span> <span class="fl">5</span><span class="op">/</span><span class="fl">9</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">dat</span><span class="op">$</span><span class="va">temp</span><span class="op">[</span><span class="va">dat</span><span class="op">$</span><span class="va">english</span> <span class="op">==</span> <span class="st">"US"</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="va">dat</span><span class="op">$</span><span class="va">temp</span><span class="op">[</span><span class="va">dat</span><span class="op">$</span><span class="va">english</span> <span class="op">==</span> <span class="st">"US"</span><span class="op">]</span> <span class="op">-</span> <span class="fl">32</span><span class="op">)</span> <span class="op">*</span> <span class="fl">5</span><span class="op">/</span><span class="fl">9</span></span>
 <span><span class="va">dat</span></span>
 <span><span class="co">#&gt;   name    where temp english</span></span>
 <span><span class="co">#&gt; 1 Adam    beach 35.0      US</span></span>
 <span><span class="co">#&gt; 2 Bess    coast 32.8      US</span></span>
 <span><span class="co">#&gt; 3 Cora seashore 28.0      UK</span></span>
 <span><span class="co">#&gt; 4 Dale    beach 29.4      US</span></span>
-<span><span class="co">#&gt; 5 Evan  seaside 31.0      UK</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; 5 Evan  seaside 31.0      UK</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Finalmente, estos datos limpios (¿más limpios?) se vuelven a escribir en un archivo CSV. Les gusta capturar una marca de tiempo en el nombre del archivo cuando hacen esto.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>.</p>
 <div class="cell">
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">now</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.time</a></span><span class="op">(</span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">now</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.time</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="va">timestamp</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/format.html">format</a></span><span class="op">(</span><span class="va">now</span>, <span class="st">"%Y-%B-%d_%H-%M-%S"</span><span class="op">)</span></span>
 <span><span class="op">(</span><span class="va">outfile</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="va">timestamp</span>, <span class="st">"_"</span>, <span class="fu"><a href="https://rdrr.io/r/base/grep.html">sub</a></span><span class="op">(</span><span class="st">"(.*)([.]csv$)"</span>, <span class="st">"\\1_clean\\2"</span>, <span class="va">infile</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "2025-August-23_05-59-49_swim_clean.csv"</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/write.table.html">write.csv</a></span><span class="op">(</span><span class="va">dat</span>, file <span class="op">=</span> <span class="va">outfile</span>, quote <span class="op">=</span> <span class="cn">FALSE</span>, row.names <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; [1] "2025-November-07_20-19-26_swim_clean.csv"</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/write.table.html">write.csv</a></span><span class="op">(</span><span class="va">dat</span>, file <span class="op">=</span> <span class="va">outfile</span>, quote <span class="op">=</span> <span class="cn">FALSE</span>, row.names <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Aquí está <code>data-cleaning.R</code> en su totalidad:</p>
 <!--
 Any edits to the code shown above must be manually transferred to this file.
 -->
 <div class="cell">
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">infile</span> <span class="op">&lt;-</span> <span class="st">"swim.csv"</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">infile</span> <span class="op">&lt;-</span> <span class="st">"swim.csv"</span></span>
 <span><span class="op">(</span><span class="va">dat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span><span class="op">(</span><span class="va">infile</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">dat</span><span class="op">$</span><span class="va">english</span><span class="op">[</span><span class="va">dat</span><span class="op">$</span><span class="va">where</span> <span class="op">==</span> <span class="st">"beach"</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="st">"US"</span></span>
@@ -520,7 +523,7 @@ Any edits to the code shown above must be manually transferred to this file.
 <span><span class="va">now</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.time</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="va">timestamp</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/format.html">format</a></span><span class="op">(</span><span class="va">now</span>, <span class="st">"%Y-%B-%d_%H-%M-%S"</span><span class="op">)</span></span>
 <span><span class="op">(</span><span class="va">outfile</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="va">timestamp</span>, <span class="st">"_"</span>, <span class="fu"><a href="https://rdrr.io/r/base/grep.html">sub</a></span><span class="op">(</span><span class="st">"(.*)([.]csv$)"</span>, <span class="st">"\\1_clean\\2"</span>, <span class="va">infile</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/write.table.html">write.csv</a></span><span class="op">(</span><span class="va">dat</span>, file <span class="op">=</span> <span class="va">outfile</span>, quote <span class="op">=</span> <span class="cn">FALSE</span>, row.names <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/write.table.html">write.csv</a></span><span class="op">(</span><span class="va">dat</span>, file <span class="op">=</span> <span class="va">outfile</span>, quote <span class="op">=</span> <span class="cn">FALSE</span>, row.names <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Incluso si sus tareas analíticas típicas son bastante diferentes, es de esperar que vea algunos patrones familiares aquí. Es fácil imaginar que este grupo realiza un preprocesamiento muy similar de muchos archivos de datos similares a lo largo del tiempo. Sus análisis pueden ser más eficientes y consistentes si ponen a su disposición estas maniobras de datos estándar como funciones en un paquete, en lugar de incorporar los mismos datos y lógica en docenas o cientos de scripts de ingesta de datos.</p>
 </section><section id="bravo-un-mejor-código-que-funciona" class="level2" data-number="5.2"><h2 data-number="5.2" class="anchored" data-anchor-id="bravo-un-mejor-código-que-funciona">
@@ -529,7 +532,7 @@ Any edits to the code shown above must be manually transferred to this file.
 <p>Este también es un buen momento para introducir el uso de algunos paquetes complementarios, por varias razones. En primer lugar, utilizaríamos el tidyverse para este tipo de manipulación de datos. En segundo lugar, muchas personas utilizan paquetes complementarios en sus scripts, por lo que es bueno ver cómo se manejan los paquetes complementarios dentro de un paquete.</p>
 <p>Aquí está la versión nueva y mejorada del script.</p>
 <div class="cell">
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">infile</span> <span class="op">&lt;-</span> <span class="st">"swim.csv"</span></span>
 <span><span class="va">dat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="va">infile</span>, col_types <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/cols.html">cols</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"c"</span>, where <span class="op">=</span> <span class="st">"c"</span>, temp <span class="op">=</span> <span class="st">"d"</span><span class="op">)</span><span class="op">)</span></span>
@@ -556,7 +559,7 @@ Any edits to the code shown above must be manually transferred to this file.
 <span><span class="va">outfile_path</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">infile</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/utils/savehistory.html">timestamp</a></span><span class="op">(</span><span class="va">now</span><span class="op">)</span>, <span class="st">"_"</span>, <span class="fu"><a href="https://rdrr.io/r/base/grep.html">sub</a></span><span class="op">(</span><span class="st">"(.*)([.]csv$)"</span>, <span class="st">"\\1_clean\\2"</span>, <span class="va">infile</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="op">}</span></span>
-<span><span class="fu"><a href="https://readr.tidyverse.org/reference/write_delim.html">write_csv</a></span><span class="op">(</span><span class="va">dat</span>, <span class="fu">outfile_path</span><span class="op">(</span><span class="va">infile</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="fu"><a href="https://readr.tidyverse.org/reference/write_delim.html">write_csv</a></span><span class="op">(</span><span class="va">dat</span>, <span class="fu">outfile_path</span><span class="op">(</span><span class="va">infile</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Los cambios clave a tener en cuenta son:</p>
 <ul>
@@ -579,7 +582,7 @@ seaside,UK</code></pre>
 </div>
 <p>Aquí está el contenido de <code>cleaning-helpers.R</code>:</p>
 <div class="cell">
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">localize_beach</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">dat</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">lookup_table</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span></span>
@@ -599,12 +602,12 @@ seaside,UK</code></pre>
 <span><span class="va">timestamp</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">time</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/format.html">format</a></span><span class="op">(</span><span class="va">time</span>, <span class="st">"%Y-%B-%d_%H-%M-%S"</span><span class="op">)</span></span>
 <span><span class="va">outfile_path</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">infile</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/utils/savehistory.html">timestamp</a></span><span class="op">(</span><span class="va">now</span><span class="op">)</span>, <span class="st">"_"</span>, <span class="fu"><a href="https://rdrr.io/r/base/grep.html">sub</a></span><span class="op">(</span><span class="st">"(.*)([.]csv$)"</span>, <span class="st">"\\1_clean\\2"</span>, <span class="va">infile</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="op">}</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="op">}</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Hemos agregado algunas funciones auxiliares de alto nivel, <code>localize_beach()</code> y <code>celsify_temp()</code>, A los ayudantes preexistentes (<code>f_to_c()</code>, <code><a href="https://rdrr.io/r/utils/savehistory.html">timestamp()</a></code>, y <code>outfile_path()</code>).</p>
 <p>Aquí está la próxima versión del script de limpieza de datos, ahora que hemos eliminado las funciones auxiliares (y la tabla de búsqueda).</p>
 <div class="cell">
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/source.html">source</a></span><span class="op">(</span><span class="st">"cleaning-helpers.R"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">infile</span> <span class="op">&lt;-</span> <span class="st">"swim.csv"</span></span>
@@ -614,7 +617,7 @@ seaside,UK</code></pre>
 <span>    <span class="fu">localize_beach</span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>    <span class="fu">celsify_temp</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu"><a href="https://readr.tidyverse.org/reference/write_delim.html">write_csv</a></span><span class="op">(</span><span class="va">dat</span>, <span class="fu">outfile_path</span><span class="op">(</span><span class="va">infile</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="fu"><a href="https://readr.tidyverse.org/reference/write_delim.html">write_csv</a></span><span class="op">(</span><span class="va">dat</span>, <span class="fu">outfile_path</span><span class="op">(</span><span class="va">infile</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Observe que el código es cada vez más corto y, con suerte, más fácil de leer y modificar, porque el desorden repetitivo y complicado se ha eliminado de la vista. Si es realmente más fácil trabajar con el código es subjetivo y depende de qué tan natural se sienta la “interfaz” para las personas que realmente preprocesan los datos de natación. Este tipo de decisiones de diseño son objeto de un proyecto separado: <a href="https://design.tidyverse.org/">design.tidyverse.org</a>.</p>
 <p>Supongamos que el grupo está de acuerdo en que nuestras decisiones de diseño son prometedoras, es decir, parece que estamos mejorando las cosas, no empeorando. Claro, el código existente no es perfecto, pero esta es una etapa de desarrollo típica en la que intentas descubrir cuáles deberían ser las funciones auxiliares y cómo deberían funcionar.</p>
@@ -646,7 +649,7 @@ seaside,UK</code></pre>
 </ul>
 <p>Aquí está la próxima versión del script de limpieza de datos que espera que se ejecute después de instalar exitosamente este paquete (al que llamamos “delta”).</p>
 <div class="cell">
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">delta</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">infile</span> <span class="op">&lt;-</span> <span class="st">"swim.csv"</span></span>
@@ -656,19 +659,19 @@ seaside,UK</code></pre>
 <span>  <span class="fu">localize_beach</span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu">celsify_temp</span><span class="op">(</span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu"><a href="https://readr.tidyverse.org/reference/write_delim.html">write_csv</a></span><span class="op">(</span><span class="va">dat</span>, <span class="fu">outfile_path</span><span class="op">(</span><span class="va">infile</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="fu"><a href="https://readr.tidyverse.org/reference/write_delim.html">write_csv</a></span><span class="op">(</span><span class="va">dat</span>, <span class="fu">outfile_path</span><span class="op">(</span><span class="va">infile</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>El único cambio con respecto a nuestro código anterior es que</p>
 <div class="cell">
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/source.html">source</a></span><span class="op">(</span><span class="st">"cleaning-helpers.R"</span><span class="op">)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/source.html">source</a></span><span class="op">(</span><span class="st">"cleaning-helpers.R"</span><span class="op">)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>ha sido reemplazado por</p>
 <div class="cell">
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">delta</span><span class="op">)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">delta</span><span class="op">)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Esto es lo que realmente sucede si instala el paquete delta e intenta ejecutar el script de limpieza de datos:</p>
 <div class="cell">
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">delta</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">infile</span> <span class="op">&lt;-</span> <span class="st">"swim.csv"</span></span>
@@ -680,22 +683,22 @@ seaside,UK</code></pre>
 <span><span class="co">#&gt; Error in localize_beach(.) : could not find function "localize_beach"</span></span>
 <span></span>
 <span><span class="fu"><a href="https://readr.tidyverse.org/reference/write_delim.html">write_csv</a></span><span class="op">(</span><span class="va">dat</span>, <span class="fu">outfile_path</span><span class="op">(</span><span class="va">infile</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Error in outfile_path(infile) : could not find function "outfile_path"</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; Error in outfile_path(infile) : could not find function "outfile_path"</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>¡Ninguna de las funciones auxiliares está realmente disponible para su uso, aunque llame a <code><a href="https://rdrr.io/r/base/library.html">library(delta)</a></code>! A diferencia de <code><a href="https://rdrr.io/r/base/source.html">source()</a></code>, al enviar un archivo de funciones auxiliares, adjuntar un paquete no volca sus funciones en el espacio de trabajo global. De forma predeterminada, las funciones de un paquete son sólo para uso interno. Necesita exportar <code>localize_beach()</code>, <code>celsify_temp()</code> y <code>outfile_path()</code> para que sus usuarios puedan llamarlos. En el flujo de trabajo de devtools, logramos esto poniendo <code>@export</code> en el comentario especial de roxygen encima de cada función (la administración del espacio de nombres se trata en <a href="dependencies-in-practice.html#sec-dependencies-NAMESPACE-workflow" class="quarto-xref"><span>Sección 11.3</span></a>), así:</p>
 <div class="cell">
-<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">#' @export</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">#' @export</span></span>
 <span><span class="va">celsify_temp</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">dat</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span><span class="va">dat</span>, temp <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/if_else.html">if_else</a></span><span class="op">(</span><span class="va">english</span> <span class="op">==</span> <span class="st">"US"</span>, <span class="fu">f_to_c</span><span class="op">(</span><span class="va">temp</span><span class="op">)</span>, <span class="va">temp</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="op">}</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="op">}</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Después de agregar la etiqueta <code>@export</code> a <code>localize_beach()</code>, <code>celsify_temp()</code> y <code>outfile_path()</code>, ejecuta <code><a href="https://devtools.r-lib.org/reference/document.html">devtools::document()</a></code> para (re)generar el archivo <code>NAMESPACE</code>, y reinstale el paquete delta. Ahora, cuando vuelves a ejecutar el script de limpieza de datos, ¡funciona!</p>
 <p>Corrección: <em>más o menos</em> funciona <em>a veces</em>. Específicamente, funciona si y sólo si el directorio de trabajo está configurado en el nivel superior del paquete fuente. Desde cualquier otro directorio de trabajo, sigue apareciendo un error:</p>
 <div class="cell">
-<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">dat</span> <span class="op">&lt;-</span> <span class="va">dat</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">dat</span> <span class="op">&lt;-</span> <span class="va">dat</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu">localize_beach</span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu">celsify_temp</span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Error: 'beach-lookup-table.csv' does not exist in current working directory ('/Users/jenny/tmp').</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; Error: 'beach-lookup-table.csv' does not exist in current working directory ('/Users/jenny/tmp').</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>No se puede encontrar la tabla de búsqueda consultada dentro de <code>localize_beach()</code>. Uno no simplemente volca archivos CSV en el código fuente de un paquete R y espera que las cosas “simplemente funcionen”. Arreglaremos esto en nuestra próxima versión del paquete (<a href="data.html" class="quarto-xref"><span>Capítulo 7</span></a> tiene una cobertura completa sobre cómo incluir datos en un paquete).</p>
 <p>Antes de abandonar este experimento inicial, maravillémonos también del hecho de que haya podido instalar, adjuntar y, hasta cierto punto, utilizar un paquete fundamentalmente roto. ¡<code><a href="https://devtools.r-lib.org/reference/load_all.html">devtools::load_all()</a></code> también funciona bien! Este es un recordatorio aleccionador de que debería ejecutar <code>R CMD check</code>, probablemente a través de <code><a href="https://devtools.r-lib.org/reference/check.html">devtools::check()</a></code>, muy a menudo durante el desarrollo. Esto le alertará rápidamente sobre muchos problemas que la simple instalación y uso no revelan.</p>
@@ -712,7 +715,7 @@ seaside,UK</code></pre>
 <p>¿¡¿Qué quieres decir con “no hay ningún paquete llamado ‘tidyverse’”?!? ¡Lo estamos usando, sin problemas, en nuestro script principal! Además, ya hemos instalado y utilizado este paquete, ¿por qué <code>R CMD check</code> no puede encontrarlo?</p>
 <p>Este error es lo que sucede cuando el rigor de “R CMD check” cumple con la primera línea de <code>R/cleaning-helpers.R</code>:</p>
 <div class="cell">
-<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><em>No</em> es así como declaras que tu paquete depende de otro paquete (el tidyverse, en este caso). Así <em>tampoco</em> es cómo haces que las funciones de otro paquete estén disponibles para usar en el tuyo. Las dependencias deben declararse en <code>DESCRIPTION</code> (y eso no es todo). Como no declaramos dependencias, <code>R CMD check</code> nos toma la palabra e intenta instalar nuestro paquete solo con los paquetes base disponibles, lo que significa que esta llamada a <code><a href="https://tidyverse.tidyverse.org">library(tidyverse)</a></code> falla. Una instalación “normal” tiene éxito, simplemente porque tidyverse está disponible en su biblioteca habitual, lo que oculta este error en particular.</p>
 <p>Para revisar, copiar <code>cleaning-helpers.R</code> a <code>R/cleaning-helpers.R</code>, sin modificaciones adicionales, fue problemático en (al menos) las siguientes maneras:</p>
@@ -725,7 +728,7 @@ seaside,UK</code></pre>
 <p>Estamos listos para crear la versión mínima de este paquete que realmente funcione.</p>
 <p>Aquí está la nueva versión de <code>R/cleaning-helpers.R</code><a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>:</p>
 <div class="cell">
-<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">lookup_table</span> <span class="op">&lt;-</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tribble.html">tribble</a></span><span class="op">(</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">lookup_table</span> <span class="op">&lt;-</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tribble.html">tribble</a></span><span class="op">(</span></span>
 <span>      <span class="op">~</span><span class="va">where</span>, <span class="op">~</span><span class="va">english</span>,</span>
 <span>     <span class="st">"beach"</span>,     <span class="st">"US"</span>,</span>
 <span>     <span class="st">"coast"</span>,     <span class="st">"US"</span>,</span>
@@ -751,7 +754,7 @@ seaside,UK</code></pre>
 <span><span class="co">#' @export</span></span>
 <span><span class="va">outfile_path</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">infile</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/utils/savehistory.html">timestamp</a></span><span class="op">(</span><span class="va">now</span><span class="op">)</span>, <span class="st">"_"</span>, <span class="fu"><a href="https://rdrr.io/r/base/grep.html">sub</a></span><span class="op">(</span><span class="st">"(.*)([.]csv$)"</span>, <span class="st">"\\1_clean\\2"</span>, <span class="va">infile</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="op">}</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="op">}</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Hemos vuelto a definir <code>lookup_table</code> con código R, ya que el intento inicial de leerlo desde CSV creó algún tipo de error en la ruta del archivo. Esto está bien para datos pequeños, internos y estáticos, pero recuerde consultar <a href="data.html" class="quarto-xref"><span>Capítulo 7</span></a> para conocer técnicas más generales para almacenar datos en un paquete.</p>
 <p>Todas las llamadas a funciones de tidyverse ahora se han calificado con el nombre del paquete específico que realmente proporciona la función, por ejemplo. <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">dplyr::mutate()</a></code>. Hay otras formas de acceder a funciones en otro paquete, explicadas en <a href="dependencies-in-practice.html#sec-dependencies-in-imports" class="quarto-xref"><span>Sección 11.4</span></a>, pero esta es la opción predeterminada que recomendamos. También es nuestra fuerte recomendación que nadie dependa del metapaquete tidyverse en un paquete<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>. En cambio, es mejor identificar los paquetes específicos que realmente utiliza. En este caso, el paquete sólo utiliza dplyr.</p>
@@ -777,11 +780,11 @@ Undefined global functions or variables:
   english temp</code></pre>
 <p>La nota “sin enlace visible” es una peculiaridad del uso de dplyr y nombres de variables sin comillas dentro de un paquete, donde el uso de nombres de variables simples (<code>english</code> y <code>temp</code>) parece sospechoso. Puede agregar cualquiera de estas líneas a cualquier archivo debajo de <code>R/</code> para eliminar esta nota (como el archivo de documentación a nivel de paquete descrito en <a href="man.html#sec-man-package-doc" class="quarto-xref"><span>Sección 16.7</span></a>):</p>
 <div class="cell">
-<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># opción 1 (entonces también deberías poner utilidades en Importaciones)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># opción 1 (entonces también deberías poner utilidades en Importaciones)</span></span>
 <span><span class="fu">utils</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/utils/globalVariables.html">globalVariables</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"english"</span>, <span class="st">"temp"</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># opción 2</span></span>
-<span><span class="va">english</span> <span class="op">&lt;-</span> <span class="va">temp</span> <span class="op">&lt;-</span> <span class="cn">NULL</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="va">english</span> <span class="op">&lt;-</span> <span class="va">temp</span> <span class="op">&lt;-</span> <span class="cn">NULL</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Estamos viendo que puede resultar complicado programar en torno a un paquete como dplyr, que hace un uso intensivo de evaluación no estándar. Detrás de escena, esa es la técnica que permite a los usuarios finales de dplyr usar nombres de variables simples (sin comillas). Paquetes como dplyr priorizan la experiencia del usuario final típico, a costa de hacer que sea más difícil depender de ellos. Las dos opciones que se muestran arriba para suprimir la nota “sin enlace visible” representan soluciones de nivel básico. Para un tratamiento más sofisticado de estos temas, ver <code><a href="https://dplyr.tidyverse.org/articles/in-packages.html">vignette("in-packages", package = "dplyr")</a></code> y <code><a href="https://dplyr.tidyverse.org/articles/programming.html">vignette("programming", package = "dplyr")</a></code>.</p>
 <p>La advertencia sobre la documentación faltante se debe a que las funciones exportadas no se han documentado adecuadamente. Esta es una preocupación válida y algo que absolutamente debes abordar en un paquete real. Ya has visto cómo crear archivos de ayuda con comentarios de roxygen en <a href="whole-game.html#sec-whole-game-document" class="quarto-xref"><span>Sección 1.12</span></a> y cubrimos este tema a fondo en <a href="man.html" class="quarto-xref"><span>Capítulo 16</span></a>.</p>
@@ -789,27 +792,27 @@ Undefined global functions or variables:
 <span class="header-section-number">5.6</span> Foxtrot: tiempo de construcción versus tiempo de ejecución</h2>
 <p>El paquete echo funciona, lo cual es fantástico, pero los miembros del grupo notan algo extraño en las marcas de tiempo:</p>
 <div class="cell">
-<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.time</a></span><span class="op">(</span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.time</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "2023-03-26 22:48:48 PDT"</span></span>
 <span></span>
 <span><span class="fu">outfile_path</span><span class="op">(</span><span class="st">"INFILE.csv"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "2020-September-03_11-06-33_INFILE_clean.csv"</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; [1] "2020-September-03_11-06-33_INFILE_clean.csv"</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>La fecha y hora en el nombre del archivo con marca de tiempo no refleja la hora informada por el sistema. De hecho, los usuarios afirman que la marca de tiempo nunca parece cambiar en absoluto. ¿Por qué es esto?</p>
 <p>Recuerde cómo formamos la ruta del archivo para los archivos de salida:</p>
 <div class="cell">
-<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">now</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.time</a></span><span class="op">(</span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb25"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">now</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.time</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="va">timestamp</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">time</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/format.html">format</a></span><span class="op">(</span><span class="va">time</span>, <span class="st">"%Y-%B-%d_%H-%M-%S"</span><span class="op">)</span></span>
 <span><span class="va">outfile_path</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">infile</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/utils/savehistory.html">timestamp</a></span><span class="op">(</span><span class="va">now</span><span class="op">)</span>, <span class="st">"_"</span>, <span class="fu"><a href="https://rdrr.io/r/base/grep.html">sub</a></span><span class="op">(</span><span class="st">"(.*)([.]csv$)"</span>, <span class="st">"\\1_clean\\2"</span>, <span class="va">infile</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="op">}</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="op">}</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>El hecho de que capturemos <code>now &lt;- Sys.time()</code> fuera de la definición de <code>outfile_path()</code> probablemente ha estado molestando a algunos lectores por un tiempo. <code>now</code> refleja el instante en el tiempo en el que ejecutamos <code>now &lt;- Sys.time()</code>. En el enfoque inicial, se asignó <code>now</code> cuando <code><a href="https://rdrr.io/r/base/source.html">source()</a></code>d <code>cleaning-helpers.R</code>. Eso no es ideal, pero probablemente fue un error bastante inofensivo, porque el archivo auxiliar sería <code><a href="https://rdrr.io/r/base/source.html">source()</a></code>d poco antes de que escribiéramos el archivo de salida.</p>
 <p>Pero este enfoque es bastante devastador en el contexto de un paquete. <code>now &lt;- Sys.time()</code> es ejecutado <strong>cuando se construye el paquete</strong><a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>. Y nunca más. Es muy fácil asumir que el código de su paquete se vuelve a evaluar cuando se adjunta o utiliza el paquete. Pero no lo es. Sí, el código <em>dentro de sus funciones</em> se ejecuta absolutamente cada vez que se llaman. Pero sus funciones, y cualquier otro objeto creado en el código de nivel superior debajo de <code>R/</code>, se definen exactamente una vez, en el momento de la compilación.</p>
 <p>Al definir <code>now</code> con el código de nivel superior debajo de <code>R/</code>, hemos condenado a nuestro paquete a marcar la hora de todos sus archivos de salida con la misma hora (incorrecta). La solución es asegurarse de que la llamada <code><a href="https://rdrr.io/r/base/Sys.time.html">Sys.time()</a></code> se realice en tiempo de ejecución.</p>
 <p>Veamos nuevamente partes de <code>R/cleaning-helpers.R</code>:</p>
 <div class="cell">
-<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">lookup_table</span> <span class="op">&lt;-</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tribble.html">tribble</a></span><span class="op">(</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb26"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">lookup_table</span> <span class="op">&lt;-</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tribble.html">tribble</a></span><span class="op">(</span></span>
 <span>      <span class="op">~</span><span class="va">where</span>, <span class="op">~</span><span class="va">english</span>,</span>
 <span>     <span class="st">"beach"</span>,     <span class="st">"US"</span>,</span>
 <span>     <span class="st">"coast"</span>,     <span class="st">"US"</span>,</span>
@@ -821,12 +824,12 @@ Undefined global functions or variables:
 <span><span class="va">timestamp</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">time</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/format.html">format</a></span><span class="op">(</span><span class="va">time</span>, <span class="st">"%Y-%B-%d_%H-%M-%S"</span><span class="op">)</span></span>
 <span><span class="va">outfile_path</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">infile</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/utils/savehistory.html">timestamp</a></span><span class="op">(</span><span class="va">now</span><span class="op">)</span>, <span class="st">"_"</span>, <span class="fu"><a href="https://rdrr.io/r/base/grep.html">sub</a></span><span class="op">(</span><span class="st">"(.*)([.]csv$)"</span>, <span class="st">"\\1_clean\\2"</span>, <span class="va">infile</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="op">}</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="op">}</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Hay cuatro asignaciones <code>&lt;-</code> de nivel superior en este extracto. Las definiciones de nivel superior del marco de datos <code>lookup_table</code> y las funciones <code><a href="https://rdrr.io/r/utils/savehistory.html">timestamp()</a></code> y <code>outfile_path()</code> son correctas. Es apropiado que se definan exactamente una vez, en el momento de la construcción. La definición de nivel superior de <code>now</code>, que luego se usa dentro de <code>outfile_path()</code>, es lamentable.</p>
 <p>Aquí hay mejores versiones de <code>outfile_path()</code>:</p>
 <div class="cell">
-<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># siempre marca de tiempo como "now"</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb27"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># siempre marca de tiempo como "now"</span></span>
 <span><span class="va">outfile_path</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">infile</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">ts</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/savehistory.html">timestamp</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="va">ts</span>, <span class="st">"_"</span>, <span class="fu"><a href="https://rdrr.io/r/base/grep.html">sub</a></span><span class="op">(</span><span class="st">"(.*)([.]csv$)"</span>, <span class="st">"\\1_clean\\2"</span>, <span class="va">infile</span><span class="op">)</span><span class="op">)</span></span>
@@ -836,15 +839,15 @@ Undefined global functions or variables:
 <span><span class="va">outfile_path</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">infile</span>, <span class="va">time</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">ts</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/savehistory.html">timestamp</a></span><span class="op">(</span><span class="va">time</span><span class="op">)</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="va">ts</span>, <span class="st">"_"</span>, <span class="fu"><a href="https://rdrr.io/r/base/grep.html">sub</a></span><span class="op">(</span><span class="st">"(.*)([.]csv$)"</span>, <span class="st">"\\1_clean\\2"</span>, <span class="va">infile</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="op">}</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="op">}</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Esto ilustra que es necesario tener una mentalidad diferente al definir objetos dentro de un paquete. La gran mayoría de esos objetos deberían ser funciones y estas funciones generalmente solo deberían usar datos que crean o que se pasan a través de un argumento. Hay algunos tipos de descuido que son bastante inofensivos cuando una función se define inmediatamente antes de su uso, pero que pueden ser más costosos para funciones distribuidas como un paquete.</p>
 </section><section id="sec-package-within-side-effects" class="level2" data-number="5.7"><h2 data-number="5.7" class="anchored" data-anchor-id="sec-package-within-side-effects">
 <span class="header-section-number">5.7</span> Golf: efectos secundarios</h2>
 <p>Las marcas de tiempo ahora reflejan la hora actual, pero el grupo plantea una nueva preocupación. Tal como están las cosas, las marcas de tiempo reflejan quién ha realizado la limpieza de datos y en qué parte del mundo se encuentran. El corazón de la estrategia de marca de tiempo es esta cadena de formato<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a>:</p>
 <div class="cell">
-<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/format.html">format</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.time</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"%Y-%B-%d_%H-%M-%S"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "2025-August-23_05-59-50"</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb28"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/format.html">format</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.time</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"%Y-%B-%d_%H-%M-%S"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "2025-November-07_20-19-26"</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Esto formatea <code><a href="https://rdrr.io/r/base/Sys.time.html">Sys.time()</a></code> de tal manera que incluya el nombre del mes (no el número) y la hora local.<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a>.</p>
 <p><a href="#tbl-timestamps" class="quarto-xref">Tabla&nbsp;<span>5.1</span></a> muestra lo que sucede cuando varios colegas hipotéticos producen una marca de tiempo de este tipo limpiando algunos datos exactamente en el mismo instante.</p>
@@ -908,34 +911,34 @@ Tabla&nbsp;5.1: La marca de tiempo varía según la ubicación y la zona horaria
 <p>Tenga en cuenta que los nombres de los meses varían, al igual que la hora e incluso la fecha. La opción más segura es formar marcas de tiempo con respecto a una ubicación y zona horaria fijas (presumiblemente las opciones no geográficas representadas por “Computer World!” arriba).</p>
 <p>Investiga un poco y descubre que puede forzar una determinada configuración regional a través de <code><a href="https://rdrr.io/r/base/locales.html">Sys.setlocale()</a></code> y forzar una determinada zona horaria configurando la variable de entorno TZ. Específicamente, configuramos el componente LC_TIME de la configuración regional en “C” y la zona horaria en “UTC” (Tiempo universal coordinado). Aquí está tu primer intento de mejorar. <code><a href="https://rdrr.io/r/utils/savehistory.html">timestamp()</a></code>:</p>
 <div class="cell">
-<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">timestamp</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">time</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb29"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">timestamp</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">time</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/locales.html">Sys.setlocale</a></span><span class="op">(</span><span class="st">"LC_TIME"</span>, <span class="st">"C"</span><span class="op">)</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/Sys.setenv.html">Sys.setenv</a></span><span class="op">(</span>TZ <span class="op">=</span> <span class="st">"UTC"</span><span class="op">)</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/format.html">format</a></span><span class="op">(</span><span class="va">time</span>, <span class="st">"%Y-%B-%d_%H-%M-%S"</span><span class="op">)</span></span>
-<span><span class="op">}</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="op">}</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Pero su colega brasileña nota que las fechas y horas se imprimen de manera diferente, antes y después de usar <code>outfile_path()</code> de su paquete:</p>
 <p>Antes:</p>
 <div class="cell">
-<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/format.html">format</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.time</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"%Y-%B-%d_%H-%M-%S"</span><span class="op">)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb30"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/format.html">format</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.time</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"%Y-%B-%d_%H-%M-%S"</span><span class="op">)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell">
 <pre><code>#&gt; Warning in (function (category = "LC_ALL", locale = "") : OS
 #&gt; reports request to set locale to "pt_BR.UTF-8" cannot be honored
-#&gt; [1] "2025-August-23_02-59-50"</code></pre>
+#&gt; [1] "2025-November-07_17-19-26"</code></pre>
 </div>
 <p>Después:</p>
 <div class="cell">
-<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">outfile_path</span><span class="op">(</span><span class="st">"INFILE.csv"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "2025-August-23_05-59-50_INFILE_clean.csv"</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb32"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">outfile_path</span><span class="op">(</span><span class="st">"INFILE.csv"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "2025-November-07_20-19-26_INFILE_clean.csv"</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/format.html">format</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.time</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"%Y-%B-%d_%H-%M-%S"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "2025-August-23_05-59-50"</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; [1] "2025-November-07_20-19-26"</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Observe que el nombre de su mes cambió de portugués a inglés y que la hora claramente se informa en una zona horaria diferente. Las llamadas a <code><a href="https://rdrr.io/r/base/locales.html">Sys.setlocale()</a></code> y <code><a href="https://rdrr.io/r/base/Sys.setenv.html">Sys.setenv()</a></code> dentro de <code><a href="https://rdrr.io/r/utils/savehistory.html">timestamp()</a></code> han realizado cambios persistentes (y muy sorprendentes) en su sesión de R. Este tipo de efecto secundario es muy indeseable y extremadamente difícil de rastrear y depurar, especialmente en entornos más complicados.</p>
 <p>Aquí hay mejores versiones de <code><a href="https://rdrr.io/r/utils/savehistory.html">timestamp()</a></code>:</p>
 <div class="cell">
-<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># use las funciones withr::local_*() para mantener los cambios locales en timestamp()</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb33"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># use las funciones withr::local_*() para mantener los cambios locales en timestamp()</span></span>
 <span><span class="va">timestamp</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">time</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="fu">withr</span><span class="fu">::</span><span class="fu"><a href="https://withr.r-lib.org/reference/with_locale.html">local_locale</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"LC_TIME"</span> <span class="op">=</span> <span class="st">"C"</span><span class="op">)</span><span class="op">)</span></span>
 <span>  <span class="fu">withr</span><span class="fu">::</span><span class="fu"><a href="https://withr.r-lib.org/reference/with_timezone.html">local_timezone</a></span><span class="op">(</span><span class="st">"UTC"</span><span class="op">)</span></span>
@@ -954,7 +957,7 @@ Tabla&nbsp;5.1: La marca de tiempo varía según la ubicación y la zona horaria
 <span>    <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"LC_TIME"</span> <span class="op">=</span> <span class="st">"C"</span><span class="op">)</span>,</span>
 <span>    <span class="fu"><a href="https://rdrr.io/r/base/format.html">format</a></span><span class="op">(</span><span class="va">time</span>, <span class="st">"%Y-%B-%d_%H-%M-%S"</span>, tz <span class="op">=</span> <span class="st">"UTC"</span><span class="op">)</span></span>
 <span>  <span class="op">)</span></span>
-<span><span class="op">}</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="op">}</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Estos muestran varios métodos para limitar el alcance de nuestros cambios a LC_TIME y la zona horaria. Una buena regla general es hacer que el alcance de dichos cambios sea lo más limitado y práctico posible. El argumento <code>tz</code> de <code><a href="https://rdrr.io/r/base/format.html">format()</a></code> es la forma más quirúrgica de tratar con la zona horaria, pero no existe nada similar para LC_TIME. Realizamos la modificación local temporal usando el paquete withr, que proporciona un conjunto de herramientas muy flexible para cambios de estado temporales. Esto (y <code><a href="https://rdrr.io/r/base/on.exit.html">base::on.exit()</a></code>) se analizan con más detalle en <a href="code.html#sec-code-r-landscape" class="quarto-xref"><span>Sección 6.5</span></a>. Tenga en cuenta que si usa withr como lo hacemos arriba, deberá incluirlo en <code>DESCRIPTION</code> en <code>Imports</code> (<a href="dependencies-in-practice.html" class="quarto-xref"><span>Capítulo 11</span></a>, <a href="dependencies-mindset-background.html#sec-dependencies-tidyverse" class="quarto-xref"><span>Sección 10.1.3</span></a>).</p>
 <p>Esto subraya un punto de la sección anterior: es necesario adoptar una mentalidad diferente al definir funciones dentro de un paquete. Intente evitar realizar cambios en el estado general del usuario. Si dichos cambios son inevitables, asegúrese de revertirlos (si es posible) o documentarlos explícitamente (si están relacionados con el propósito principal de la función).</p>
@@ -993,15 +996,15 @@ Tabla&nbsp;5.1: La marca de tiempo varía según la ubicación y la zona horaria
   // Chapter name
   const currentChapterFile = window.location.pathname.split('/').pop().replace('.html', '');
 
-  //Deffining urls
+  //Defining urls
   const originalURL = "https://github.com/hadley/r-pkgs/";
-  const translationURL = "https://github.com/davidrsch/r-pkgses";
+  const translationURL = "https://github.com/davidrsch/rpkgs-es";
 
-  //Deffining texts
+  //Defining texts
   const edit_text = "Editar esta página";
   const issue_text = "Informar de un problema"
 
-  //Deffining git_i
+  //Defining git_i
   const git_i = '<div><i class="bi bi-github"></i></div>';
 
   // Adding TOC if not exist
@@ -1106,13 +1109,14 @@ Tabla&nbsp;5.1: La marca de tiempo varía según la ubicación y la zona horaria
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy

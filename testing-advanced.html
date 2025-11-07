@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.33">
+<meta name="generator" content="quarto-1.8.25">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="author" content="Hadley Wickham y Jenny Bryan">
 <meta name="description" content="Aprenda a crear un paquete, la unidad fundamental de contenido compartible, reutilizable, y código R reproducible.">
@@ -67,14 +67,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="./logo.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-cecd649be66239f4a3c9dceaf651ba2d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+<link href="site_libs/bootstrap/bootstrap-6a8d939bdf32084eecd9f414bffd5650.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
@@ -88,7 +89,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   ],
   "show-item-context": false,
   "language": {
-    "search-no-results-text": "Sin resultados",
+    "search-no-results-text": "No se han encontrado resultados",
     "search-matching-documents-text": "documentos encontrados",
     "search-copy-link-title": "Copiar el enlace en la búsqueda",
     "search-hide-matches-text": "Ocultar resultados adicionales",
@@ -118,7 +119,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </div>
   </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="./index.html" class="sidebar-logo-link">
+      </a>
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Paquetes de R</a> 
         <div class="sidebar-tools-main">
@@ -131,7 +134,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             </a>
           </li>
           <li>
-            <a class="dropdown-item sidebar-tools-main-item" href="https://github.com/davidrsch/r-pkgses">
+            <a class="dropdown-item sidebar-tools-main-item" href="https://github.com/davidrsch/rpkgs-es">
             Traducción
             </a>
           </li>
@@ -462,8 +465,8 @@ Importante
 <div class="callout-body-container callout-body">
 <p>Sus archivos de prueba no deben incluir estas llamadas <code><a href="https://rdrr.io/r/base/library.html">library()</a></code>. También solicitamos explícitamente testthat edición 3, pero en un paquete real esto se declarará en DESCRIPTION.</p>
 <div class="cell">
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://testthat.r-lib.org">testthat</a></span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://testthat.r-lib.org/reference/local_edition.html">local_edition</a></span><span class="op">(</span><span class="fl">3</span><span class="op">)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://testthat.r-lib.org">testthat</a></span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://testthat.r-lib.org/reference/local_edition.html">local_edition</a></span><span class="op">(</span><span class="fl">3</span><span class="op">)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -499,13 +502,13 @@ num_colors <- local({
 <span class="header-section-number">15.1.1</span> Crear <code>cosas_útiles</code> con una función auxiliar</h3>
 <p>¿Es complicado crear una <code>useful_thing</code>? ¿Se necesitan varias líneas de código, pero no mucho tiempo ni memoria? En ese caso, escriba una función auxiliar para crear una <code>useful_thing</code> a pedido:</p>
 <div class="cell">
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">new_useful_thing</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="op">)</span> <span class="op">{</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">new_useful_thing</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="co"># tu complicado código para crear algo útil va aquí</span></span>
-<span><span class="op">}</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="op">}</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>y llamar a ese ayudante en las pruebas afectadas:</p>
 <div class="cell">
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://testthat.r-lib.org/reference/test_that.html">test_that</a></span><span class="op">(</span><span class="st">"foofy() does this"</span>, <span class="op">{</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://testthat.r-lib.org/reference/test_that.html">test_that</a></span><span class="op">(</span><span class="st">"foofy() does this"</span>, <span class="op">{</span></span>
 <span>  <span class="va">useful_thing1</span> <span class="op">&lt;-</span> <span class="fu">new_useful_thing</span><span class="op">(</span><span class="op">)</span></span>
 <span>  <span class="fu"><a href="https://testthat.r-lib.org/reference/equality-expectations.html">expect_equal</a></span><span class="op">(</span><span class="fu">foofy</span><span class="op">(</span><span class="va">useful_thing1</span>, x <span class="op">=</span> <span class="st">"this"</span><span class="op">)</span>, <span class="va">EXPECTED_FOOFY_OUTPUT</span><span class="op">)</span></span>
 <span><span class="op">}</span><span class="op">)</span></span>
@@ -513,7 +516,7 @@ num_colors <- local({
 <span><span class="fu"><a href="https://testthat.r-lib.org/reference/test_that.html">test_that</a></span><span class="op">(</span><span class="st">"foofy() does that"</span>, <span class="op">{</span></span>
 <span>  <span class="va">useful_thing2</span> <span class="op">&lt;-</span> <span class="fu">new_useful_thing</span><span class="op">(</span><span class="op">)</span></span>
 <span>  <span class="fu"><a href="https://testthat.r-lib.org/reference/equality-expectations.html">expect_equal</a></span><span class="op">(</span><span class="fu">foofy</span><span class="op">(</span><span class="va">useful_thing2</span>, x <span class="op">=</span> <span class="st">"that"</span><span class="op">)</span>, <span class="va">EXPECTED_FOOFY_OUTPUT</span><span class="op">)</span></span>
-<span><span class="op">}</span><span class="op">)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="op">}</span><span class="op">)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>¿Dónde debería definirse el asistente <code>new_useful_thing()</code>? Esto vuelve a lo que describimos en <a href="testing-design.html#sec-tests-files-overview" class="quarto-xref"><span>Sección 14.3</span></a>. Los ayudantes de prueba se pueden definir debajo de <code>R/</code>, como cualquier otra utilidad interna de su paquete. Otra ubicación popular es en un archivo auxiliar de prueba, por ejemplo, <code>tests/testthat/helper.R</code>. Una característica clave de ambas opciones es que los asistentes están disponibles durante el mantenimiento interactivo a través de <code><a href="https://devtools.r-lib.org/reference/load_all.html">devtools::load_all()</a></code>.</p>
 <p>Si es complicado Y costoso crear una <code>useful_thing</code>, su función auxiliar podría incluso usar la memorización para evitar un nuevo cálculo innecesario. Una vez que tienes una ayuda como <code>new_useful_thing()</code>, a menudo descubres que tiene usos más allá de las pruebas, por ejemplo, detrás de escena en una viñeta. A veces incluso te das cuenta de que debes definirlo debajo de <code>R/</code> y exportarlo y documentarlo, para que puedas usarlo libremente en documentación y pruebas.</p>
@@ -521,17 +524,17 @@ num_colors <- local({
 <span class="header-section-number">15.1.2</span> Crear (y destruir) una <code>cosa_útil</code> “local”</h3>
 <p>SHasta ahora, nuestro ejemplo de <code>useful_thing</code> era un objeto R normal, que se limpia automáticamente al final de cada prueba. ¿Qué pasa si la creación de algo útil tiene un efecto secundario en el sistema de archivos local, en un recurso remoto, en las opciones de sesión de R, en las variables de entorno o similares? Entonces su función auxiliar debería crear una <code>useful_thing</code> <strong>y limpiarla después</strong>. En lugar de un simple constructor <code>new_useful_thing()</code>, escribirás una función personalizada al estilo de las funciones <code>local_*()</code> de withr:</p>
 <div class="cell">
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">local_useful_thing</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">...</span>, <span class="va">env</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sys.parent.html">parent.frame</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">local_useful_thing</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">...</span>, <span class="va">env</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sys.parent.html">parent.frame</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="co"># tu complicado código para crear algo útil va aquí</span></span>
 <span>  <span class="fu">withr</span><span class="fu">::</span><span class="fu"><a href="https://withr.r-lib.org/reference/defer.html">defer</a></span><span class="op">(</span></span>
 <span>    <span class="co"># tu complicado código para limpiar después de algo útil va aquí</span></span>
 <span>    envir <span class="op">=</span> <span class="va">env</span></span>
 <span>  <span class="op">)</span></span>
-<span><span class="op">}</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="op">}</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Úselo en sus pruebas de esta manera:</p>
 <div class="cell">
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://testthat.r-lib.org/reference/test_that.html">test_that</a></span><span class="op">(</span><span class="st">"foofy() does this"</span>, <span class="op">{</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://testthat.r-lib.org/reference/test_that.html">test_that</a></span><span class="op">(</span><span class="st">"foofy() does this"</span>, <span class="op">{</span></span>
 <span>  <span class="va">useful_thing1</span> <span class="op">&lt;-</span> <span class="fu">local_useful_thing</span><span class="op">(</span><span class="op">)</span></span>
 <span>  <span class="fu"><a href="https://testthat.r-lib.org/reference/equality-expectations.html">expect_equal</a></span><span class="op">(</span><span class="fu">foofy</span><span class="op">(</span><span class="va">useful_thing1</span>, x <span class="op">=</span> <span class="st">"this"</span><span class="op">)</span>, <span class="va">EXPECTED_FOOFY_OUTPUT</span><span class="op">)</span></span>
 <span><span class="op">}</span><span class="op">)</span></span>
@@ -539,7 +542,7 @@ num_colors <- local({
 <span><span class="fu"><a href="https://testthat.r-lib.org/reference/test_that.html">test_that</a></span><span class="op">(</span><span class="st">"foofy() does that"</span>, <span class="op">{</span></span>
 <span>  <span class="va">useful_thing2</span> <span class="op">&lt;-</span> <span class="fu">local_useful_thing</span><span class="op">(</span><span class="op">)</span></span>
 <span>  <span class="fu"><a href="https://testthat.r-lib.org/reference/equality-expectations.html">expect_equal</a></span><span class="op">(</span><span class="fu">foofy</span><span class="op">(</span><span class="va">useful_thing2</span>, x <span class="op">=</span> <span class="st">"that"</span><span class="op">)</span>, <span class="va">EXPECTED_FOOFY_OUTPUT</span><span class="op">)</span></span>
-<span><span class="op">}</span><span class="op">)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="op">}</span><span class="op">)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>¿Dónde debería definirse el asistente <code>local_useful_thing()</code>? Se aplican todos los consejos dados anteriormente para <code>new_useful_thing()</code>: defínalo debajo de <code>R/</code> o en un archivo auxiliar de prueba.</p>
 <p>Para obtener más información sobre cómo escribir ayudas personalizadas como <code>local_useful_thing()</code>, consulte la <a href="https://testthat.r-lib.org/articles/test-fixtures.html">viñeta de testthat en dispositivos de prueba</a>.</p>
@@ -547,7 +550,7 @@ num_colors <- local({
 <span class="header-section-number">15.1.3</span> Almacenar una <code>cosa_útil</code> concreta de forma persistente</h3>
 <p>Si crear una <code>useful_thing</code> es costosa, en términos de tiempo o memoria, tal vez no necesites volver a crearla para cada ejecución de prueba. Puede crear <code>useful_thing</code> una vez, almacenarlo como un dispositivo de prueba estático y cargarlo en las pruebas que lo necesiten. Aquí hay un boceto de cómo podría verse esto:</p>
 <div class="cell">
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://testthat.r-lib.org/reference/test_that.html">test_that</a></span><span class="op">(</span><span class="st">"foofy() does this"</span>, <span class="op">{</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://testthat.r-lib.org/reference/test_that.html">test_that</a></span><span class="op">(</span><span class="st">"foofy() does this"</span>, <span class="op">{</span></span>
 <span>  <span class="va">useful_thing1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/readRDS.html">readRDS</a></span><span class="op">(</span><span class="fu"><a href="https://testthat.r-lib.org/reference/test_path.html">test_path</a></span><span class="op">(</span><span class="st">"fixtures"</span>, <span class="st">"useful_thing1.rds"</span><span class="op">)</span><span class="op">)</span></span>
 <span>  <span class="fu"><a href="https://testthat.r-lib.org/reference/equality-expectations.html">expect_equal</a></span><span class="op">(</span><span class="fu">foofy</span><span class="op">(</span><span class="va">useful_thing1</span>, x <span class="op">=</span> <span class="st">"this"</span><span class="op">)</span>, <span class="va">EXPECTED_FOOFY_OUTPUT</span><span class="op">)</span></span>
 <span><span class="op">}</span><span class="op">)</span></span>
@@ -555,7 +558,7 @@ num_colors <- local({
 <span><span class="fu"><a href="https://testthat.r-lib.org/reference/test_that.html">test_that</a></span><span class="op">(</span><span class="st">"foofy() does that"</span>, <span class="op">{</span></span>
 <span>  <span class="va">useful_thing2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/readRDS.html">readRDS</a></span><span class="op">(</span><span class="fu"><a href="https://testthat.r-lib.org/reference/test_path.html">test_path</a></span><span class="op">(</span><span class="st">"fixtures"</span>, <span class="st">"useful_thing2.rds"</span><span class="op">)</span><span class="op">)</span></span>
 <span>  <span class="fu"><a href="https://testthat.r-lib.org/reference/equality-expectations.html">expect_equal</a></span><span class="op">(</span><span class="fu">foofy</span><span class="op">(</span><span class="va">useful_thing2</span>, x <span class="op">=</span> <span class="st">"that"</span><span class="op">)</span>, <span class="va">EXPECTED_FOOFY_OUTPUT</span><span class="op">)</span></span>
-<span><span class="op">}</span><span class="op">)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="op">}</span><span class="op">)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Ahora podemos revisar una lista de archivos anterior, que abordaba exactamente este escenario:</p>
 <pre><code>.
@@ -578,7 +581,7 @@ num_colors <- local({
 <span class="header-section-number">15.2.1</span> Ayudante definido dentro de una prueba</h3>
 <p>Considere esta prueba para la función <code>str_trunc()</code> en stringr:</p>
 <div class="cell">
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># de stringr (hipotéticamente)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># de stringr (hipotéticamente)</span></span>
 <span><span class="fu"><a href="https://testthat.r-lib.org/reference/test_that.html">test_that</a></span><span class="op">(</span><span class="st">"truncations work for all sides"</span>, <span class="op">{</span></span>
 <span>  <span class="fu"><a href="https://testthat.r-lib.org/reference/equality-expectations.html">expect_equal</a></span><span class="op">(</span></span>
 <span>    <span class="fu">str_trunc</span><span class="op">(</span><span class="st">"This string is moderately long"</span>, width <span class="op">=</span> <span class="fl">20</span>, side <span class="op">=</span> <span class="st">"right"</span><span class="op">)</span>,</span>
@@ -592,11 +595,11 @@ num_colors <- local({
 <span>    <span class="fu">str_trunc</span><span class="op">(</span><span class="st">"This string is moderately long"</span>, width <span class="op">=</span> <span class="fl">20</span>, side <span class="op">=</span> <span class="st">"center"</span><span class="op">)</span>,</span>
 <span>    <span class="st">"This stri...ely long"</span></span>
 <span>  <span class="op">)</span></span>
-<span><span class="op">}</span><span class="op">)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="op">}</span><span class="op">)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Hay mucha repetición aquí, lo que aumenta la posibilidad de errores de copiar y pegar y, en general, hace que los ojos se pongan vidriosos. A veces es bueno crear un asistente hiperlocal, <em>dentro de la prueba</em>. Así es como se ve realmente la prueba en stringr</p>
 <div class="cell">
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># de stringr (en realidad)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># de stringr (en realidad)</span></span>
 <span><span class="fu"><a href="https://testthat.r-lib.org/reference/test_that.html">test_that</a></span><span class="op">(</span><span class="st">"truncations work for all sides"</span>, <span class="op">{</span></span>
 <span></span>
 <span>  <span class="va">trunc</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">direction</span><span class="op">)</span> <span class="fu">str_trunc</span><span class="op">(</span></span>
@@ -608,7 +611,7 @@ num_colors <- local({
 <span>  <span class="fu"><a href="https://testthat.r-lib.org/reference/equality-expectations.html">expect_equal</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Round.html">trunc</a></span><span class="op">(</span><span class="st">"right"</span><span class="op">)</span>,   <span class="st">"This string is mo..."</span><span class="op">)</span></span>
 <span>  <span class="fu"><a href="https://testthat.r-lib.org/reference/equality-expectations.html">expect_equal</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Round.html">trunc</a></span><span class="op">(</span><span class="st">"left"</span><span class="op">)</span>,    <span class="st">"...s moderately long"</span><span class="op">)</span></span>
 <span>  <span class="fu"><a href="https://testthat.r-lib.org/reference/equality-expectations.html">expect_equal</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Round.html">trunc</a></span><span class="op">(</span><span class="st">"center"</span><span class="op">)</span>,  <span class="st">"This stri...ely long"</span><span class="op">)</span></span>
-<span><span class="op">}</span><span class="op">)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="op">}</span><span class="op">)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Un asistente hiperlocal como <code><a href="https://rdrr.io/r/base/Round.html">trunc()</a></code> es particularmente útil cuando le permite encajar todos los negocios importantes para cada expectativa en una línea. Luego, sus expectativas se pueden leer casi como una tabla entre lo real y lo esperado, para un conjunto de casos de uso relacionados. Arriba, es muy fácil ver cómo cambia el resultado a medida que truncamos la entrada desde la derecha, la izquierda y el centro.</p>
 <p>Tenga en cuenta que esta técnica debe utilizarse con extrema moderación. Un asistente como <code><a href="https://rdrr.io/r/base/Round.html">trunc()</a></code> es otro lugar donde puedes introducir un error, por lo que es mejor mantener dichos asistentes extremadamente breves y simples.</p>
@@ -617,13 +620,13 @@ num_colors <- local({
 <p>Si se considera necesario un ayudante más complicado, es un buen momento para reflexionar sobre por qué es así. Si es complicado ponerse en posición para <em>probar</em> una función, eso podría ser una señal de que también es complicado <em>usar</em> esa función. ¿Necesitas refactorizarlo? Si la función parece sólida, entonces probablemente necesite utilizar un asistente más formal, definido fuera de cualquier prueba individual, como se describió anteriormente.</p>
 <p>Un tipo específico de ayuda que quizás quieras crear es una expectativa personalizada. Aquí hay dos muy simples de usethis:</p>
 <div class="cell">
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">expect_usethis_error</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">...</span><span class="op">)</span> <span class="op">{</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">expect_usethis_error</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">...</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="fu"><a href="https://testthat.r-lib.org/reference/expect_error.html">expect_error</a></span><span class="op">(</span><span class="va">...</span>, class <span class="op">=</span> <span class="st">"usethis_error"</span><span class="op">)</span></span>
 <span><span class="op">}</span></span>
 <span></span>
 <span><span class="va">expect_proj_file</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">...</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="fu"><a href="https://testthat.r-lib.org/reference/logical-expectations.html">expect_true</a></span><span class="op">(</span><span class="fu">file_exists</span><span class="op">(</span><span class="fu">proj_path</span><span class="op">(</span><span class="va">...</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="op">}</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="op">}</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><code>expect_usethis_error()</code> comprueba que un error tenga la clase <code>"usethis_error"</code>. <code>expect_proj_file()</code> es un contenedor simple alrededor de <code>file_exists()</code> que busca el archivo en el proyecto actual. Son funciones muy simples, pero la gran cantidad de repeticiones y la expresividad de sus nombres las hacen sentir justificadas.</p>
 <p>Es algo complicado crear una expectativa personalizada adecuada, es decir, una que se comporte como las expectativas integradas en testthat. Lo remitimos a la viñeta <a href="https://testthat.r-lib.org/articles/custom-expectation.html">Expectativas personalizadas</a> si desea obtener más información al respecto.</p>
@@ -632,17 +635,17 @@ num_colors <- local({
 <li>
 <p>La variable de entorno <code>TESTTHAT</code> está establecida en <code>"true"</code>. <code><a href="https://testthat.r-lib.org/reference/is_testing.html">testthat::is_testing()</a></code> es un atajo:</p>
 <div class="cell">
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">is_testing</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="op">)</span> <span class="op">{</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">is_testing</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/Sys.getenv.html">Sys.getenv</a></span><span class="op">(</span><span class="st">"TESTTHAT"</span><span class="op">)</span></span>
-<span><span class="op">}</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="op">}</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </li>
 <li>
 <p>El paquete bajo prueba está disponible como la variable de entorno <code>TESTTHAT_PKG</code> y <code><a href="https://testthat.r-lib.org/reference/is_testing.html">testthat::testing_package()</a></code> es un acceso directo:</p>
 <div class="cell">
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">testing_package</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="op">)</span> <span class="op">{</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">testing_package</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/Sys.getenv.html">Sys.getenv</a></span><span class="op">(</span><span class="st">"TESTTHAT_PKG"</span><span class="op">)</span></span>
-<span><span class="op">}</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="op">}</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </li>
 </ul>
@@ -663,7 +666,7 @@ num_colors <- local({
 </h4>
 <p>Aquí usamos <code><a href="https://testthat.r-lib.org/reference/skip.html">testthat::skip()</a></code> para escribir un skipper personalizado hipotético, <code>skip_if_no_api()</code>:</p>
 <div class="cell">
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">skip_if_no_api</span><span class="op">(</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="op">)</span> <span class="op">{</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">skip_if_no_api</span><span class="op">(</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="kw">if</span> <span class="op">(</span><span class="fu">api_unavailable</span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
 <span>    <span class="fu"><a href="https://testthat.r-lib.org/reference/skip.html">skip</a></span><span class="op">(</span><span class="st">"API not available"</span><span class="op">)</span></span>
 <span>  <span class="op">}</span></span>
@@ -672,12 +675,12 @@ num_colors <- local({
 <span><span class="fu"><a href="https://testthat.r-lib.org/reference/test_that.html">test_that</a></span><span class="op">(</span><span class="st">"foo api returns bar when given baz"</span>, <span class="op">{</span></span>
 <span>  <span class="fu">skip_if_no_api</span><span class="op">(</span><span class="op">)</span></span>
 <span>  <span class="va">...</span></span>
-<span><span class="op">}</span><span class="op">)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="op">}</span><span class="op">)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><code>skip_if_no_api()</code> es otro ejemplo más de ayuda de prueba y los consejos ya dados sobre dónde definirlo se aplican aquí también.</p>
 <p>Los <code><a href="https://testthat.r-lib.org/reference/skip.html">skip()</a></code> y los motivos asociados se informan en línea a medida que se ejecutan las pruebas y también se indican claramente en el resumen:</p>
 <div class="cell">
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org/reference/test.html">test</a></span><span class="op">(</span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org/reference/test.html">test</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; ℹ Loading abcde</span></span>
 <span><span class="co">#&gt; ℹ Testing abcde</span></span>
 <span><span class="co">#&gt; ✔ | F W S  OK | Context</span></span>
@@ -694,11 +697,11 @@ num_colors <- local({
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; [ FAIL 0 | WARN 0 | SKIP 1 | PASS 4 ]</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; 🥳</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; 🥳</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Es probable que aparezca algo como <code>skip_if_no_api()</code> muchas veces en su conjunto de pruebas. Esta es otra ocasión en la que resulta tentador SECAR las cosas, elevando <code><a href="https://testthat.r-lib.org/reference/skip.html">skip()</a></code> al nivel superior del archivo. Sin embargo, todavía nos inclinamos por llamar a <code>skip_if_no_api()</code> en cada prueba donde sea necesario.</p>
 <div class="cell">
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># we prefer this:</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># we prefer this:</span></span>
 <span><span class="fu"><a href="https://testthat.r-lib.org/reference/test_that.html">test_that</a></span><span class="op">(</span><span class="st">"foo api returns bar when given baz"</span>, <span class="op">{</span></span>
 <span>  <span class="fu">skip_if_no_api</span><span class="op">(</span><span class="op">)</span></span>
 <span>  <span class="va">...</span></span>
@@ -714,14 +717,14 @@ num_colors <- local({
 <span></span>
 <span><span class="fu"><a href="https://testthat.r-lib.org/reference/test_that.html">test_that</a></span><span class="op">(</span><span class="st">"foo api returns bar when given baz"</span>, <span class="op">{</span><span class="va">...</span><span class="op">}</span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu"><a href="https://testthat.r-lib.org/reference/test_that.html">test_that</a></span><span class="op">(</span><span class="st">"foo api returns an errors when given qux"</span>, <span class="op">{</span><span class="va">...</span><span class="op">}</span><span class="op">)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="fu"><a href="https://testthat.r-lib.org/reference/test_that.html">test_that</a></span><span class="op">(</span><span class="st">"foo api returns an errors when given qux"</span>, <span class="op">{</span><span class="va">...</span><span class="op">}</span><span class="op">)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Dentro del ámbito del código de nivel superior en archivos de prueba, tener un <code><a href="https://testthat.r-lib.org/reference/skip.html">skip()</a></code> al principio de un archivo de prueba es una de las situaciones más benignas. Pero una vez que un archivo de prueba no cabe completamente en su pantalla, crea una conexión implícita pero fácil de pasar por alto entre <code><a href="https://testthat.r-lib.org/reference/skip.html">skip()</a></code> y las pruebas individuales.</p>
 </section><section id="funciones-skip-incorporadas" class="level4" data-number="15.3.1.2"><h4 data-number="15.3.1.2" class="anchored" data-anchor-id="funciones-skip-incorporadas">
 <span class="header-section-number">15.3.1.2</span> Funciones <code>skip()</code> incorporadas</h4>
 <p>De manera similar a las expectativas integradas de test, existe una familia de funciones <code><a href="https://testthat.r-lib.org/reference/skip.html">skip()</a></code> que anticipan algunas situaciones comunes. Estas funciones a menudo le liberan de la necesidad de escribir un patrón personalizado. A continuación se muestran algunos ejemplos de las funciones <code><a href="https://testthat.r-lib.org/reference/skip.html">skip()</a></code> más útiles:</p>
 <div class="cell">
-<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://testthat.r-lib.org/reference/test_that.html">test_that</a></span><span class="op">(</span><span class="st">"foo api returns bar when given baz"</span>, <span class="op">{</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://testthat.r-lib.org/reference/test_that.html">test_that</a></span><span class="op">(</span><span class="st">"foo api returns bar when given baz"</span>, <span class="op">{</span></span>
 <span>  <span class="fu"><a href="https://testthat.r-lib.org/reference/skip.html">skip_if</a></span><span class="op">(</span><span class="fu">api_unavailable</span><span class="op">(</span><span class="op">)</span>, <span class="st">"API not available"</span><span class="op">)</span></span>
 <span>  <span class="va">...</span></span>
 <span><span class="op">}</span><span class="op">)</span></span>
@@ -735,7 +738,7 @@ num_colors <- local({
 <span></span>
 <span><span class="fu"><a href="https://testthat.r-lib.org/reference/skip.html">skip_if_offline</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://testthat.r-lib.org/reference/skip.html">skip_on_cran</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://testthat.r-lib.org/reference/skip.html">skip_on_os</a></span><span class="op">(</span><span class="st">"windows"</span><span class="op">)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="fu"><a href="https://testthat.r-lib.org/reference/skip.html">skip_on_os</a></span><span class="op">(</span><span class="st">"windows"</span><span class="op">)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section><section id="peligros-de-saltar" class="level4" data-number="15.3.1.3"><h4 data-number="15.3.1.3" class="anchored" data-anchor-id="peligros-de-saltar">
 <span class="header-section-number">15.3.1.3</span> Peligros de saltar</h4>
@@ -773,10 +776,10 @@ num_colors <- local({
 <span class="header-section-number">15.4.1</span> Saltar una prueba</h3>
 <p>Si una prueba específica simplemente no es apropiada para ser ejecutada por CRAN, incluya <code><a href="https://testthat.r-lib.org/reference/skip.html">skip_on_cran()</a></code> desde el principio.</p>
 <div class="cell">
-<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://testthat.r-lib.org/reference/test_that.html">test_that</a></span><span class="op">(</span><span class="st">"some long-running thing works"</span>, <span class="op">{</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://testthat.r-lib.org/reference/test_that.html">test_that</a></span><span class="op">(</span><span class="st">"some long-running thing works"</span>, <span class="op">{</span></span>
 <span>  <span class="fu"><a href="https://testthat.r-lib.org/reference/skip.html">skip_on_cran</a></span><span class="op">(</span><span class="op">)</span></span>
 <span>  <span class="co"># código de prueba que potencialmente puede tardar "un tiempo" en ejecutarse  </span></span>
-<span><span class="op">}</span><span class="op">)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="op">}</span><span class="op">)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Debajo del capó, <code><a href="https://testthat.r-lib.org/reference/skip.html">skip_on_cran()</a></code> consulta la variable de entorno <code>NOT_CRAN</code>. Dicha prueba solo se ejecutará cuando <code>NOT_CRAN</code> se haya definido explícitamente como <code>"true"</code>. Esta variable la establecen devtools y testthat, lo que permite que esas pruebas se ejecuten en entornos donde espera tener éxito (y donde puede tolerar y solucionar fallas ocasionales).</p>
 <p>En particular, los flujos de trabajo de GitHub Actions que recomendamos en <a href="software-development-practices.html#sec-sw-dev-practices-gha" class="quarto-xref"><span>Sección 20.2.1</span></a> <strong>ejecutarán</strong> pruebas con <code>NOT_CRAN = "true"</code>. Para ciertos tipos de funcionalidad, no existe una forma práctica de probarlas en CRAN y sus propias comprobaciones, en GitHub Actions o un servicio de integración continua equivalente, son su mejor método de control de calidad.</p>
@@ -827,15 +830,15 @@ https://abseil.io/resources/swe-book/html/ch12.html
   // Chapter name
   const currentChapterFile = window.location.pathname.split('/').pop().replace('.html', '');
 
-  //Deffining urls
+  //Defining urls
   const originalURL = "https://github.com/hadley/r-pkgs/";
-  const translationURL = "https://github.com/davidrsch/r-pkgses";
+  const translationURL = "https://github.com/davidrsch/rpkgs-es";
 
-  //Deffining texts
+  //Defining texts
   const edit_text = "Editar esta página";
   const issue_text = "Informar de un problema"
 
-  //Deffining git_i
+  //Defining git_i
   const git_i = '<div><i class="bi bi-github"></i></div>';
 
   // Adding TOC if not exist
@@ -940,13 +943,14 @@ https://abseil.io/resources/swe-book/html/ch12.html
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy

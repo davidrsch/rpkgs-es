@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.33">
+<meta name="generator" content="quarto-1.8.25">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="author" content="Hadley Wickham y Jenny Bryan">
 <meta name="description" content="Aprenda a crear un paquete, la unidad fundamental de contenido compartible, reutilizable, y código R reproducible.">
@@ -67,14 +67,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="./logo.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-cecd649be66239f4a3c9dceaf651ba2d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+<link href="site_libs/bootstrap/bootstrap-6a8d939bdf32084eecd9f414bffd5650.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
@@ -88,7 +89,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   ],
   "show-item-context": false,
   "language": {
-    "search-no-results-text": "Sin resultados",
+    "search-no-results-text": "No se han encontrado resultados",
     "search-matching-documents-text": "documentos encontrados",
     "search-copy-link-title": "Copiar el enlace en la búsqueda",
     "search-hide-matches-text": "Ocultar resultados adicionales",
@@ -118,7 +119,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </div>
   </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="./index.html" class="sidebar-logo-link">
+      </a>
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Paquetes de R</a> 
         <div class="sidebar-tools-main">
@@ -131,7 +134,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             </a>
           </li>
           <li>
-            <a class="dropdown-item sidebar-tools-main-item" href="https://github.com/davidrsch/r-pkgses">
+            <a class="dropdown-item sidebar-tools-main-item" href="https://github.com/davidrsch/rpkgs-es">
             Traducción
             </a>
           </li>
@@ -451,7 +454,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="header-section-number">17.1</span> Flujo de trabajo para escribir una viñeta</h2>
 <p>Para crear su primera viñeta, ejecute:</p>
 <div class="cell">
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">usethis</span><span class="fu">::</span><span class="fu"><a href="https://usethis.r-lib.org/reference/use_vignette.html">use_vignette</a></span><span class="op">(</span><span class="st">"my-vignette"</span><span class="op">)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">usethis</span><span class="fu">::</span><span class="fu"><a href="https://usethis.r-lib.org/reference/use_vignette.html">use_vignette</a></span><span class="op">(</span><span class="st">"my-vignette"</span><span class="op">)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Esto hace lo siguiente:</p>
 <ol type="1">
@@ -499,16 +502,16 @@ vignette: &gt;
 <li><p><code>date</code>: creemos que esto suele hacer más daño que bien, ya que no está claro qué pretende transmitir la <code>date</code>. ¿Es la última vez que se actualizó la fuente de la viñeta? En ese caso, tendrás que administrarlo manualmente y es fácil olvidarte de actualizarlo. Si administra <code>date</code> programáticamente con <code>Sys.date()</code>, la fecha refleja cuándo se creó la viñeta, es decir, cuándo se creó el paquete, que no tiene nada que ver con cuándo se modificó por última vez la viñeta o el paquete. Hemos decidido que es mejor omitir la <code>date</code>.</p></li>
 </ul>
 <p>El borrador de la viñeta también incluye dos fragmentos de R. El primero configura nuestra forma preferida de mostrar la salida del código y tiene este aspecto:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>```{r, include = FALSE}</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>```{r, include = FALSE}</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>knitr::opts_chunk$set(</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  collapse = TRUE,</span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  comment = "#&gt;"</span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>```</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>```</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <p>El segundo fragmento simplemente adjunta el paquete al que pertenece la viñeta.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>```{r setup}</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>```{r setup}</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>library(yourpackage)</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>```</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>```</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Es posible que tenga la tentación de reemplazar (temporalmente) esta llamada <code><a href="https://rdrr.io/r/base/library.html">library()</a></code> con <code>load_all()</code>, pero le recomendamos que no lo haga. En su lugar, utilice las técnicas proporcionadas en <a href="#sec-vignettes-workflow-writing" class="quarto-xref"><span>Sección 17.1</span></a> para ejercitar su código de viñeta con el paquete fuente actual.</p>
 </section><section id="consejos-para-escribir-viñetas" class="level2" data-number="17.3"><h2 data-number="17.3" class="anchored" data-anchor-id="consejos-para-escribir-viñetas">
 <span class="header-section-number">17.3</span> Consejos para escribir viñetas</h2>
@@ -532,7 +535,7 @@ vignette: &gt;
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Envío a CRAN
+<span class="screen-reader-only">Advertencia</span>Envío a CRAN
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -554,26 +557,26 @@ Envío a CRAN
 <li><p>Una figura creada por código evaluado en la viñeta: De forma predeterminada, en el flujo de trabajo <code>.Rmd</code> que recomendamos, esto se soluciona solo. Estas cifras se incrustan automáticamente en <code>.html</code> mediante URI de datos. No necesitas hacer nada. Ejemplo: <code><a href="https://ggplot2.tidyverse.org/articles/extending-ggplot2.html">vignette("extending-ggplot2", package = "ggplot2")</a></code> genera algunas cifras en fragmentos de código evaluados.</p></li>
 <li>
 <p>Un archivo externo que podría ser útil para los usuarios o en cualquier otra parte del paquete (no solo en viñetas): coloque dicho archivo en <code>inst/</code> (<a href="misc.html#sec-misc-inst" class="quarto-xref"><span>Sección 8.2</span></a>), tal vez en <code>inst/extdata/</code> (<a href="data.html#sec-data-extdata" class="quarto-xref"><span>Sección 7.3</span></a>), y consúltelo con <code><a href="https://rdrr.io/r/base/system.file.html">system.file()</a></code> o <code><a href="https://fs.r-lib.org/reference/path_package.html">fs::path_package()</a></code> (<a href="data.html#sec-data-system-file" class="quarto-xref"><span>Sección 7.3.1</span></a>). Ejemplo de <code><a href="https://r-spatial.github.io/sf/articles/sf2.html">vignette("sf2", package = "sf")</a></code>:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>````{r}</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>````{r}</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>library(sf)</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>fname &lt;- system.file("shape/nc.shp", package="sf")</span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>fname</span>
 <span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>nc &lt;- st_read(fname)</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>```</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>```</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </li>
 <li>
 <p>Un archivo externo cuya utilidad se limita a sus viñetas: colóquelo junto a los archivos fuente de las viñetas en <code>vignettes/</code> y consúltelo con una ruta de archivo relativa a <code>vignettes/</code>.</p>
 <p>Ejemplo: la fuente de <code><a href="https://tidyr.tidyverse.org/articles/tidy-data.html">vignette("tidy-data", package = "tidyr")</a></code> se encuentra en <code>vignettes/tidy-data.Rmd</code> e incluye un fragmento que lee un archivo ubicado en <code>vignettes/weather.csv</code>así:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>```{r}</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>```{r}</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>weather &lt;- as_tibble(read.csv("weather.csv", stringsAsFactors = FALSE))</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>weather</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>```</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>```</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </li>
 <li>
 <p>Un archivo de gráficos externo: colóquelo en <code>vignettes/</code>, consúltelo con una ruta de archivo relativa a <code>vignettes/</code> y use <code><a href="https://rdrr.io/pkg/knitr/man/include_graphics.html">knitr::include_graphics()</a></code> dentro de un fragmento de código. Ejemplo de <code><a href="https://readxl.tidyverse.org/articles/sheet-geometry.html">vignette("sheet-geometry", package = "readxl")</a></code>:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>```{r out.width = '70%', echo = FALSE}</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>```{r out.width = '70%', echo = FALSE}</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>knitr::include_graphics("img/geometry.png")</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>```</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>```</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </li>
 </ul></section><section id="cuántas-viñetas" class="level3" data-number="17.3.4"><h3 data-number="17.3.4" class="anchored" data-anchor-id="cuántas-viñetas">
 <span class="header-section-number">17.3.4</span> ¿Cuántas viñetas?</h3>
@@ -597,7 +600,7 @@ Envío a CRAN
 <p>La opción <code>eval</code> se puede configurar para un fragmento individual, pero en una viñeta es probable que desees evaluar la mayoría o todos los fragmentos o prácticamente ninguno de ellos. En el último caso, querrás usar <code>knitr::opts_chunk$set(eval = FALSE)</code> en un fragmento inicial oculto para hacer que <code>eval = FALSE</code> sea el valor predeterminado para el resto de la viñeta. Aún puedes anular con <code>eval = TRUE</code> en fragmentos individuales.</p>
 <p>En viñetas, usamos la opción <code>eval</code> de manera similar a <code>@examplesIf</code> en los ejemplos (<a href="man.html#sec-man-examples-dependencies-conditional-execution" class="quarto-xref"><span>Sección 16.5.4</span></a>). Si el código solo se puede ejecutar bajo condiciones específicas, debe encontrar una manera de verificar esas condiciones previas mediante programación en tiempo de ejecución y usar el resultado para configurar la opción <code>eval</code>.</p>
 <p>Estos son los primeros fragmentos de una viñeta de googlesheets4, que engloba la API de Google Sheets. El código de viñeta solo se puede ejecutar si somos capaces de descifrar un token que nos permita autenticarnos con la API. Ese hecho se registra en <code>can_decrypt</code>, que luego se establece como el valor predeterminado de toda la viñeta para <code>eval</code>.</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>```{r setup, include = FALSE}</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>```{r setup, include = FALSE}</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>can_decrypt &lt;- gargle:::secret_can_decrypt("googlesheets4")</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>knitr::opts_chunk$set(</span>
 <span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  collapse = TRUE,</span>
@@ -617,7 +620,7 @@ Envío a CRAN
 <span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>```{r}</span>
 <span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>library(googlesheets4)</span>
-<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>```</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>```</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Observe que el segundo fragmento usa <code>eval = !can_decrypt</code>, que imprime un mensaje explicativo para cualquiera que cree la viñeta sin las credenciales necesarias.</p>
 <p>El ejemplo anterior muestra algunas opciones de fragmentos más útiles. Utilice <code>include = FALSE</code> para fragmentos que deben evaluarse pero no verse en la viñeta representada. La opción <code>echo</code> controla si se imprime el código, además de la salida. Finalmente, <code>error = TRUE</code> es lo que le permite ejecutar código intencionalmente que podría generar un error. El error aparecerá en la viñeta, tal como lo haría para su usuario, pero no impedirá la ejecución del resto del código de su viñeta, ni provocará que falle la <code>R CMD check</code>. Esto es algo que funciona mucho mejor en una viñeta que en un ejemplo.</p>
 <p>Muchas otras opciones se describen en <a href="https://yihui.name/knitr/options" class="uri">https://yihui.name/knitr/options</a>.</p>
@@ -668,7 +671,7 @@ https://github.com/r-lib/devtools/issues/2485
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Viñetas prediseñadas (or other documentation)
+<span class="screen-reader-only">Tip</span>Viñetas prediseñadas (or other documentation)
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -692,7 +695,7 @@ Viñetas prediseñadas (or other documentation)
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Envío a CRAN
+<span class="screen-reader-only">Advertencia</span>Envío a CRAN
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -713,15 +716,15 @@ Envío a CRAN
   // Chapter name
   const currentChapterFile = window.location.pathname.split('/').pop().replace('.html', '');
 
-  //Deffining urls
+  //Defining urls
   const originalURL = "https://github.com/hadley/r-pkgs/";
-  const translationURL = "https://github.com/davidrsch/r-pkgses";
+  const translationURL = "https://github.com/davidrsch/rpkgs-es";
 
-  //Deffining texts
+  //Defining texts
   const edit_text = "Editar esta página";
   const issue_text = "Informar de un problema"
 
-  //Deffining git_i
+  //Defining git_i
   const git_i = '<div><i class="bi bi-github"></i></div>';
 
   // Adding TOC if not exist
@@ -826,13 +829,14 @@ Envío a CRAN
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy
