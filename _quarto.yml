@@ -36,7 +36,7 @@ book:
           - text: Original
             url: https://github.com/hadley/r-pkgs/
           - text: Traducción
-            url: https://github.com/davidrsch/r-pkgses
+            url: https://github.com/davidrsch/rpkgs-es
   page-navigation: true
   
   chapters:
