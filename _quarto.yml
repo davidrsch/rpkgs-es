@@ -11,6 +11,7 @@ bibliography: book.bib
 book:
   title: "Paquetes de R"
   reader-mode: true
+  site-url: https://davidrsch.github.io/rpkgs-es/
   
   page-footer: 
     left: |
