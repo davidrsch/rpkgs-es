@@ -626,7 +626,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">#&gt; function (x, na.rm = FALSE) </span></span>
 <span><span class="co">#&gt; sqrt(var(if (is.vector(x) || is.factor(x)) x else as.double(x), </span></span>
 <span><span class="co">#&gt;     na.rm = na.rm))</span></span>
-<span><span class="co">#&gt; &lt;bytecode: 0x56548afac9b8&gt;</span></span>
+<span><span class="co">#&gt; &lt;bytecode: 0x55bb96a67208&gt;</span></span>
 <span><span class="co">#&gt; &lt;environment: namespace:stats&gt;</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Se define en términos de otra función, <code><a href="https://rdrr.io/r/stats/cor.html">var()</a></code>, también del paquete de estadísticas. Entonces, ¿qué sucede si anulamos <code><a href="https://rdrr.io/r/stats/cor.html">var()</a></code> con nuestra propia definición? ¿Se rompe <code><a href="https://rdrr.io/r/stats/sd.html">sd()</a></code>?</p>
@@ -1002,7 +1002,7 @@ Tabla&nbsp;10.1: Funciones que cargan o adjuntan un paquete.
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp('/' + window.location.host + '/');
+        var filterRegex = new RegExp("https:\/\/davidrsch\.github\.io\/rpkgs-es\/");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }

@@ -470,7 +470,7 @@ Tip
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">usethis</span><span class="fu">::</span><span class="fu"><a href="https://usethis.r-lib.org/reference/use_pkgdown.html">use_pkgdown</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell">
-<pre><code>#&gt; ✔ Setting active project to '/tmp/RtmpllNbaY/mypackage'
+<pre><code>#&gt; ✔ Setting active project to '/tmp/Rtmp5dSOZH/mypackage'
 #&gt; ✔ Adding '^_pkgdown\\.yml$', '^docs$', '^pkgdown$' to '.Rbuildignore'
 #&gt; ✔ Adding 'docs' to '.gitignore'
 #&gt; ✔ Writing '_pkgdown.yml'
@@ -488,11 +488,11 @@ Tip
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">pkgdown</span><span class="fu">::</span><span class="fu"><a href="https://pkgdown.r-lib.org/reference/build_site.html">build_site</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell">
-<pre><code>#&gt; ✔ Setting active project to '/tmp/RtmpllNbaY/mypackage'
+<pre><code>#&gt; ✔ Setting active project to '/tmp/Rtmp5dSOZH/mypackage'
 #&gt; ── Installing package mypackage into temporary library ─────────────
 #&gt; ── Building pkgdown site for package mypackage ─────────────────────────────────
-#&gt; Reading from: /tmp/RtmpllNbaY/mypackage
-#&gt; Writing to: /tmp/RtmpllNbaY/mypackage/docs
+#&gt; Reading from: /tmp/Rtmp5dSOZH/mypackage
+#&gt; Writing to: /tmp/Rtmp5dSOZH/mypackage/docs
 #&gt; ── Initialising site ───────────────────────────────────────────────────────────
 #&gt; Copying
 #&gt; ../../../home/runner/work/_temp/renv/cache/v5/linux-ubuntu-noble/R-4.4/x86_64-pc-linux-gnu/pkgdown/2.0.9/8bf1151ed1a48328d71b937e651117a6/pkgdown/BS5/assets/link.svg
@@ -896,7 +896,7 @@ Improve error message     v0.2.9000  &lt;-- dev/ site documenta esta
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp('/' + window.location.host + '/');
+        var filterRegex = new RegExp("https:\/\/davidrsch\.github\.io\/rpkgs-es\/");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }

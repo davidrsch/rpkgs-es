@@ -52,7 +52,7 @@ lobstr::mem_used()
 #> 74.61 MB
 library(nycflights13)
 lobstr::mem_used()
-#> 76.33 MB
+#> 76.34 MB
 
 invisible(flights)
 lobstr::mem_used()

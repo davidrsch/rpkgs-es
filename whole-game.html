@@ -509,8 +509,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>Para la creación de este libro tenemos que trabajar en un directorio temporal, porque el libro está construido de forma no interactiva en la nube. Detrás de escena, estamos ejecutando nuestro propio comando <code><a href="https://usethis.r-lib.org/reference/create_package.html">create_package()</a></code>, pero no te sorprendas si nuestra salida difiere un poco de la tuya.</p>
 <div class="cell">
-<pre><code>#&gt; ✔ Creating '/tmp/RtmpQDQtZD/regexcite/'
-#&gt; ✔ Setting active project to '/tmp/RtmpQDQtZD/regexcite'
+<pre><code>#&gt; ✔ Creating '/tmp/RtmpA51qZz/regexcite/'
+#&gt; ✔ Setting active project to '/tmp/RtmpA51qZz/regexcite'
 #&gt; ✔ Creating 'R/'
 #&gt; ✔ Writing 'DESCRIPTION'
 #&gt; Package: regexcite
@@ -637,7 +637,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <th style="text-align: left;">message</th>
 </tr></thead>
 <tbody><tr class="odd">
-<td style="text-align: left;">ef5117387c…</td>
+<td style="text-align: left;">095257c2ac…</td>
 <td style="text-align: left;">Quarto GHA Workflow Runner <a href="mailto:quarto-github-actions-publish@example.com" class="email">quarto-github-actions-publish@example.com</a>
 </td>
 <td style="text-align: left;">Initial commit</td>
@@ -788,7 +788,7 @@ index 0000000..29efb88
 </div>
 <div class="cell">
 <pre><code>── R CMD check results ─────────────────── regexcite 0.0.0.9000 ────
-Duration: 5.7s
+Duration: 5.9s
 
 ❯ checking DESCRIPTION meta-information ... WARNING
   Non-standard license specification:
@@ -948,7 +948,7 @@ export(strsplit1)</code></pre>
 </div>
 <div class="cell">
 <pre><code>── R CMD check results ─────────────────── regexcite 0.0.0.9000 ────
-Duration: 7.1s
+Duration: 7.5s
 
 0 errors ✔ | 0 warnings ✔ | 0 notes ✔</code></pre>
 </div>
@@ -961,14 +961,14 @@ Duration: 7.1s
 </div>
 <div class="cell">
 <pre><code>── R CMD build ─────────────────────────────────────────────────────
-* checking for file ‘/tmp/RtmpQDQtZD/regexcite/DESCRIPTION’ ... OK
+* checking for file ‘/tmp/RtmpA51qZz/regexcite/DESCRIPTION’ ... OK
 * preparing ‘regexcite’:
 * checking DESCRIPTION meta-information ... OK
 * checking for LF line-endings in source and make files and shell scripts
 * checking for empty or unneeded directories
 * building ‘regexcite_0.0.0.9000.tar.gz’
 Running /opt/R/4.4.0/lib/R/bin/R CMD INSTALL \
-  /tmp/RtmpQDQtZD/regexcite_0.0.0.9000.tar.gz --install-tests 
+  /tmp/RtmpA51qZz/regexcite_0.0.0.9000.tar.gz --install-tests 
 * installing to library ‘/home/runner/work/rpkgs-es/rpkgs-es/renv/library/linux-ubuntu-noble/R-4.4/x86_64-pc-linux-gnu’
 * installing *source* package ‘regexcite’ ...
 ** using staged installation
@@ -1274,7 +1274,7 @@ str_split_one(y, pattern = stringr::fixed("."))
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb45"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://devtools.r-lib.org/reference/build_rmd.html">build_readme</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; ℹ Installing regexcite in temporary library</span></span>
-<span><span class="co">#&gt; ℹ Building '/tmp/RtmpQDQtZD/regexcite/README.Rmd'</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<span><span class="co">#&gt; ℹ Building '/tmp/RtmpA51qZz/regexcite/README.Rmd'</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Puede ver el <code>README.md</code> renderizado simplemente <a href="https://github.com/jennybc/regexcite#readme">visitando regexcite en GitHub</a>.</p>
 <p>Finalmente, no olvides hacer una última confirmación. Y realiza un push, si estás usando GitHub.</p>
@@ -1287,7 +1287,7 @@ str_split_one(y, pattern = stringr::fixed("."))
 </div>
 <div class="cell">
 <pre><code>── R CMD check results ─────────────────── regexcite 0.0.0.9000 ────
-Duration: 8.4s
+Duration: 8.8s
 
 0 errors ✔ | 0 warnings ✔ | 0 notes ✔</code></pre>
 </div>
@@ -1297,7 +1297,7 @@ Duration: 8.4s
 </div>
 <div class="cell">
 <pre><code>── R CMD build ─────────────────────────────────────────────────────
-* checking for file ‘/tmp/RtmpQDQtZD/regexcite/DESCRIPTION’ ... OK
+* checking for file ‘/tmp/RtmpA51qZz/regexcite/DESCRIPTION’ ... OK
 * preparing ‘regexcite’:
 * checking DESCRIPTION meta-information ... OK
 * checking for LF line-endings in source and make files and shell scripts
@@ -1305,7 +1305,7 @@ Duration: 8.4s
 Removed empty directory ‘regexcite/tests/testthat/_snaps’
 * building ‘regexcite_0.0.0.9000.tar.gz’
 Running /opt/R/4.4.0/lib/R/bin/R CMD INSTALL \
-  /tmp/RtmpQDQtZD/regexcite_0.0.0.9000.tar.gz --install-tests 
+  /tmp/RtmpA51qZz/regexcite_0.0.0.9000.tar.gz --install-tests 
 * installing to library ‘/home/runner/work/rpkgs-es/rpkgs-es/renv/library/linux-ubuntu-noble/R-4.4/x86_64-pc-linux-gnu’
 * installing *source* package ‘regexcite’ ...
 ** using staged installation
@@ -1504,7 +1504,7 @@ Figura&nbsp;1.1: El flujo de trabajo de desarrollo del paquete devtools.
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp('/' + window.location.host + '/');
+        var filterRegex = new RegExp("https:\/\/davidrsch\.github\.io\/rpkgs-es\/");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
