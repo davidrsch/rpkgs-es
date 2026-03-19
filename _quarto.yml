@@ -28,6 +28,7 @@ book:
   description: |
     Aprenda a crear un paquete, la unidad fundamental de contenido compartible, reutilizable,
     y código R reproducible.
+  open-graph: true
   search: true
   sidebar: 
     pinned: true
