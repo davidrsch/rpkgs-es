@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.25">
+<meta name="generator" content="quarto-1.8.27">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="author" content="Hadley Wickham y Jenny Bryan">
 <meta name="description" content="Aprenda a crear un paquete, la unidad fundamental de contenido compartible, reutilizable, y código R reproducible.">
@@ -72,10 +72,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-6a8d939bdf32084eecd9f414bffd5650.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+<link href="site_libs/bootstrap/bootstrap-1260cdf48f6465608b04ac4359e4516e.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
@@ -102,6 +102,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Buscar"
   }
 }</script><script defer="" data-domain="r-pkgs.org" src="https://plausible.io/js/plausible.js"></script><meta name="google-site-verification" content="kphyQu6n4JhBUuoLZxnJpD9dbw9q5FLwqXb9AkI2fhU">
+<meta property="og:title" content="19&nbsp; Sitio web – Paquetes de R">
+<meta property="og:description" content="Aprenda a crear un paquete, la unidad fundamental de contenido compartible, reutilizable, y código R reproducible.">
+<meta property="og:image" content="https://davidrsch.github.io/rpkgs-es/diagrams/hex-image.png">
+<meta property="og:site_name" content="Paquetes de R">
+<meta property="og:image:alt" content="Un hexágono orientado con puntos en la parte superior e inferior. y lados verticales planos. Está etiquetado con dimensiones: 5,08 cm (2&quot;) verticalmente (punto a punto), y 4,39 cm (1,73&quot;) horizontalmente (de lado plano a lado plano).">
+<meta property="og:image:height" content="443">
+<meta property="og:image:width" content="384">
 </head>
 <body class="nav-sidebar floating quarto-light">
 
@@ -119,9 +126,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </div>
   </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
-      <a href="./index.html" class="sidebar-logo-link">
-      </a>
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Paquetes de R</a> 
         <div class="sidebar-tools-main">
@@ -470,7 +475,7 @@ Tip
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">usethis</span><span class="fu">::</span><span class="fu"><a href="https://usethis.r-lib.org/reference/use_pkgdown.html">use_pkgdown</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell">
-<pre><code>#&gt; ✔ Setting active project to '/tmp/Rtmp5dSOZH/mypackage'
+<pre><code>#&gt; ✔ Setting active project to '/tmp/RtmpgJSTPA/mypackage'
 #&gt; ✔ Adding '^_pkgdown\\.yml$', '^docs$', '^pkgdown$' to '.Rbuildignore'
 #&gt; ✔ Adding 'docs' to '.gitignore'
 #&gt; ✔ Writing '_pkgdown.yml'
@@ -488,11 +493,11 @@ Tip
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">pkgdown</span><span class="fu">::</span><span class="fu"><a href="https://pkgdown.r-lib.org/reference/build_site.html">build_site</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell">
-<pre><code>#&gt; ✔ Setting active project to '/tmp/Rtmp5dSOZH/mypackage'
+<pre><code>#&gt; ✔ Setting active project to '/tmp/RtmpgJSTPA/mypackage'
 #&gt; ── Installing package mypackage into temporary library ─────────────
 #&gt; ── Building pkgdown site for package mypackage ─────────────────────────────────
-#&gt; Reading from: /tmp/Rtmp5dSOZH/mypackage
-#&gt; Writing to: /tmp/Rtmp5dSOZH/mypackage/docs
+#&gt; Reading from: /tmp/RtmpgJSTPA/mypackage
+#&gt; Writing to: /tmp/RtmpgJSTPA/mypackage/docs
 #&gt; ── Initialising site ───────────────────────────────────────────────────────────
 #&gt; Copying
 #&gt; ../../../home/runner/work/_temp/renv/cache/v5/linux-ubuntu-noble/R-4.4/x86_64-pc-linux-gnu/pkgdown/2.0.9/8bf1151ed1a48328d71b937e651117a6/pkgdown/BS5/assets/link.svg
