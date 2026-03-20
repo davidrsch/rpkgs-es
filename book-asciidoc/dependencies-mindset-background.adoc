@@ -210,7 +210,7 @@ sd
 #> function (x, na.rm = FALSE) 
 #> sqrt(var(if (is.vector(x) || is.factor(x)) x else as.double(x), 
 #>     na.rm = na.rm))
-#> <bytecode: 0x55a5c7c30ce8>
+#> <bytecode: 0x55613cb66140>
 #> <environment: namespace:stats>
 ----
 
