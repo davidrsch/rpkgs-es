@@ -2,12 +2,15 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.27">
+<meta name="generator" content="quarto-1.9.37">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="author" content="Hadley Wickham y Jenny Bryan">
 <meta name="description" content="Aprenda a crear un paquete, la unidad fundamental de contenido compartible, reutilizable, y código R reproducible.">
 <title>4&nbsp; Flujos de trabajo de desarrollo fundamentales – Paquetes de R</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -58,7 +61,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
-  margin-bottom: 0em;
 }
 .hanging-indent div.csl-entry {
   margin-left:2em;
@@ -87,15 +89,14 @@ div.csl-indent {
 <link href="./logo.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-1260cdf48f6465608b04ac4359e4516e.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+<link href="site_libs/bootstrap/bootstrap-ff7aed25c6df07280a05307dd761d324.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
@@ -489,7 +490,7 @@ div.csl-indent {
 <li>Producto: tu vida será mejor cuando esta funcionalidad se implemente formalmente, en un paquete.</li>
 <li>Proceso: un mayor dominio de R te hará más eficaz en tu trabajo.</li>
 </ul>
-<p>Si lo único que le importa es la existencia de un producto, entonces su objetivo principal es navegar por el espacio de los paquetes existentes. Silge, Nash y Graves organizaron una encuesta y sesiones sobre este tema en useR! 2017 y su artículo para el R Journal <span class="citation" data-cites="silge-nash-graves">(<a href="references.html#ref-silge-nash-graves" role="doc-biblioref">Silge, Nash, y Graves 2018</a>)</span> proporciona un resumen completo de recursos.</p>
+<p>Si lo único que le importa es la existencia de un producto, entonces su objetivo principal es navegar por el espacio de los paquetes existentes. Silge, Nash y Graves organizaron una encuesta y sesiones sobre este tema en useR! 2017 y su artículo para el R Journal <span class="citation" data-cites="silge-nash-graves">(<a href="references.html#ref-silge-nash-graves" role="doc-biblioref">Silge et&nbsp;al. 2018</a>)</span> proporciona un resumen completo de recursos.</p>
 <p>Si está buscando formas de aumentar su dominio de R, aún debe informarse sobre el panorama. Pero hay muchas buenas razones para crear su propio paquete, incluso si existe un trabajo previo relevante. La forma en que los expertos llegaron a ese camino es construyendo cosas, a menudo cosas muy básicas, y usted merece la misma oportunidad de aprender haciendo retoques. Si sólo se le permite trabajar en cosas que nunca se han tocado, es probable que esté enfrentando problemas que son muy oscuros o muy difíciles.</p>
 <p>También es válido evaluar la idoneidad de las herramientas existentes en función de la interfaz de usuario, los valores predeterminados y el comportamiento de los casos extremos. Técnicamente, un paquete puede hacer lo que necesita, pero quizás sea muy poco ergonómico para su caso de uso. En este caso, puede tener sentido que usted desarrolle su propia implementación o escriba funciones contenedoras que suavicen los bordes afilados.</p>
 <p>Si su trabajo pertenece a un dominio bien definido, infórmese sobre los paquetes R existentes, incluso si ha decidido crear su propio paquete. ¿Siguen patrones de diseño específicos? ¿Existen estructuras de datos específicas que sean comunes como entrada y salida principal? Por ejemplo, existe una comunidad R muy activa en torno al análisis de datos espaciales (<a href="https://www.r-spatial.org">r-spatial.org</a>) que se ha autoorganizado con éxito para promover una mayor coherencia entre paquetes con diferentes mantenedores. En el modelado, el <a href="https://hardhat.tidymodels.org">paquete de hardhat</a> proporciona una base para crear un paquete de modelado que funciona bien con el ecosistema <a href="https://www.tidymodels.org">tidymodels</a>. Su paquete se utilizará más y necesitará menos documentación si encaja bien en el entorno.</p>
@@ -895,7 +896,7 @@ Figura&nbsp;4.4: devtools::load_all() vs.&nbsp;library().
 <p>Para obtener más información, consulte la sección <a href="https://cran.r-project.org/doc/manuals/R-exts.html#Checking-packages">Comprobación de paquetes</a> de <a href="https://cran.r-project.org/doc/manuals/R-exts.html">Escribir extensiones R</a>.</p>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
+<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
 <div id="ref-silge-nash-graves" class="csl-entry" role="listitem">
 Silge, Julia, John C. Nash, y Spencer Graves. 2018. <span>«<span>Navigating the R Package Universe</span>»</span>. <em><span>The R Journal</span></em> 10 (2): 558-63. <a href="https://doi.org/10.32614/RJ-2018-058">https://doi.org/10.32614/RJ-2018-058</a>.
 </div>

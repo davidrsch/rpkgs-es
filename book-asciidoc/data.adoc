@@ -56,7 +56,7 @@ lobstr::mem_used()
 
 invisible(flights)
 lobstr::mem_used()
-#> 117.03 MB
+#> 117.04 MB
 ----
 
 Le recomendamos que incluya `LazyData: true` en su `DESCRIPTION` si envía archivos `.rda` debajo de `data/`. Si utiliza `use++_++data()` para crear dichos conjuntos de datos, automáticamente realizará esta modificación en `DESCRIPTION` por usted.
